@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- progressdialog布局样式 -->
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:gravity="center"
+	android:background="#00000000">
+	<ProgressBar
+		android:id="@+id/progress_bar_sending"
+		android:layout_width="32dp"
+		android:layout_height="32dp">
+	</ProgressBar>
+	<TextView
+		android:layout_marginTop="15dp"
+		android:textSize="18dp"
+		android:textColor="#fafafa"
+		android:shadowColor="#333"
+		android:shadowDy="2"
+		android:shadowRadius="2"
+		android:text="通讯中，请稍后。"
+		android:id="@+id/processTxt"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:textStyle="bold"
+		android:layout_width="wrap_content">
+	</TextView>
+</LinearLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="160dp">
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/event_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:id="@+id/event_item_title_container"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/event_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="劳森伯格在中国"
+            android:textColor="@color/text_bright_white"
+            android:textSize="24dp"/>
+
+        <TextView
+            android:id="@+id/event_item_sub_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="2016.6.12-2016.8.21"
+            android:textColor="@color/text_bright_white"
+            android:textSize="14dp"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/event_type"
+        android:layout_height="16dp"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="美术展"
+        android:textSize="8dp"
+        android:textColor="@color/text_bright_white"/>
+
+
+    <TextView
+        android:id="@+id/event_going"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="12dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="正在进行"
+        android:textSize="12dp"
+        android:textColor="@color/text_bright_white"/>
+
+    <TextView
+        android:id="@+id/take_people_bumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6932人参与"
+        android:textColor="@color/text_bright_white"
+        android:textSize="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_toLeftOf="@id/event_going"
+        android:layout_alignBaseline="@id/event_going"/>
+
+
+</RelativeLayout>

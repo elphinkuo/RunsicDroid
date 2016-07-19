@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.runningmusic.runninspire"
+    android:versionCode="6"
+    android:versionName="1.2.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <application
+        android:name="com.runningmusic.application.WearelfApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name="com.runningmusic.runninspire.WelcomeActivity" />
+        <activity
+            android:name="com.runningmusic.runninspire.RunningMusicActivity"
+            android:label="@string/title_activity_running_music"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.runningmusic.runninspire.StartActivity"
+            android:launchMode="singleTask" />
+
+        <service
+            android:name="com.runningmusic.service.RunsicService"
+            android:enabled="true" />
+        <!--
+             ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="56cbf449e0f55a53e10031d4" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="xiaomi" />
+
+        <activity android:name="com.runningmusic.runninspire.RunninspireMainActivity" />
+        <activity android:name="com.runningmusic.runninspire.ShareActivity" />
+        <activity android:name="com.runningmusic.activity.MusicListDetailActivity" />
+        <activity android:name="com.runningmusic.share.BaseShareActivity" />
+        <activity android:name="com.runningmusic.application.BaseActivity" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 100424468，如果你使用的公用账号，则不需要修改；否则修改成你在QQ开放平台申请的 APP ID -->
+                <data android:scheme="1104829333" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" />
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.runningmusic.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="com.runningmusic.runninspire.FuckingActivity" />
+        <activity android:name="com.runningmusic.activity.StartRun" />
+        <activity android:name="com.runningmusic.runninspire.AdStartActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.runningmusic.activity.WebViewActivity" />
+    </application>
+
+</manifest>

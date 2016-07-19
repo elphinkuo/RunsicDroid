@@ -1,0 +1,518 @@
+[
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/pgc_detail_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/pgc_detail_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_full_alert_dialog_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_full_alert_dialog_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_comment_more.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_comment_more.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/tb_munion_aditem.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/tb_munion_aditem.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_oauth_dialog.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_oauth_dialog.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_bak_at_list.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_bak_at_list.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_facebook_login_activity_layout.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_facebook_login_activity_layout.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_ucenter.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_ucenter.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_at_view.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_at_view.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/notification_template_lines.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_lines.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_screen_content_include.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_bak_platform_item_simple.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_bak_platform_item_simple.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_layout_tab_icon.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_popup_menu_item_layout.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/select_dialog_item_material.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_main_page.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_main_page.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_navigation_item_header.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_fucking.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_fucking.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_post_comment_platform.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_post_comment_platform.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_shareboard_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_shareboard_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_layout_tab_text.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_layout_tab_text.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_bak_platform_selector_dialog.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_bak_platform_selector_dialog.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_action_menu_item_layout.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_failed_load_page.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_failed_load_page.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_test.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_test.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_screen_simple.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_activity_chooser_view.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/progressdialog_indicator.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/progressdialog_indicator.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_action_bar_title_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_simple_spinner_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_simple_spinner_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_action_mode_bar.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_list_menu_item_icon.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/share_bottom.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/share_bottom.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/musiclist_detail_pager1.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/musiclist_detail_pager1.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_post_comment.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_post_comment.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/event_list_item_layout.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/event_list_item_layout.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_main.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_share.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_share.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/notification_template_media.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/shake_umeng_socialize_share_dlg.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/shake_umeng_socialize_share_dlg.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_alert_dialog_button_bar_material.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/tab_center_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/tab_center_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/notification_media_cancel_action.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/pulse.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/pulse.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_start_run.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_start_run.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_history_record.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_history_record.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_composer_header.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_composer_header.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/grid_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/grid_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_pull_to_refresh_header.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_pull_to_refresh_header.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_running_music.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_running_music.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_update_dialog.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/umeng_update_dialog.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_item_list.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_item_list.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_base_acitivyt.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_base_acitivyt.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_at_overlay.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_at_overlay.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_action_menu_layout.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_static_music_play.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_static_music_play.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_base_alert_dialog.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_base_alert_dialog.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_alert_dialog_material.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_comment_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_comment_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/musiclist_detail_pager2.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/musiclist_detail_pager2.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_screen_toolbar.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_login.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_login.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_navigation_item_separator.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_layout_snackbar_include.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_bak_at_list_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_bak_at_list_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_actionbar.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_actionbar.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/viewpager_rm_welcome.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/viewpager_rm_welcome.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_at_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_at_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/shake_umeng_socialize_scrshot_snapshot.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/shake_umeng_socialize_scrshot_snapshot.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_navigation_menu_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_post_share.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_post_share.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_bind_select_dialog.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_bind_select_dialog.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_menu_item_action_area.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/select_dialog_multichoice_material.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_navigation_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/tab_item_layout.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/tab_item_layout.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_comment_detail_nomap.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_comment_detail_nomap.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/notification_template_big_media_narrow.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_ucenter_platform_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_ucenter_platform_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_settings_page.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_settings_page.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_music_list_detail.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_music_list_detail.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_start.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_start.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_person_page.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_person_page.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_dialog_title_material.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_welcome.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_welcome.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_navigation_menu.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_navigation_menu.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_action_mode_close_item_material.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_ad_start.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_ad_start.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_titile_bar.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_titile_bar.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_expanded_menu_layout.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_event_list.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_event_list.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_person_page2.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_person_page2.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_base_alert_dialog_button.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_base_alert_dialog_button.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_select_dialog_material.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/runnin_spire_layout.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/runnin_spire_layout.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_music_list2.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_music_list2.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/notification_template_big_media.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_full_curtain.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_full_curtain.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_full_alert_dialog.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_full_alert_dialog.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_list_menu_item_layout.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/pageview_header_row.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/pageview_header_row.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/notification_template_part_time.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_search_view.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/runsic_data_panel.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/runsic_data_panel.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_comment_view.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_comment_view.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_comment_detail.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_comment_detail.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_web_view.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_web_view.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_layout_snackbar.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/notification_media_action.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_action_bar_up_container.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/select_dialog_singlechoice_material.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/content_running_music.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/content_running_music.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/abc_list_menu_item_radio.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_comment_content.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_comment_content.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/fragment_music_list.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_music_list.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_bottom_sheet_dialog.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/umeng_socialize_titile_bar_comment.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_titile_bar_comment.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_base.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_base.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/design_navigation_item_subheader.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/horizontal_item.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/horizontal_item.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Yingyongbao/release/layout/activity_base_share.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_base_share.xml"
+    }
+]

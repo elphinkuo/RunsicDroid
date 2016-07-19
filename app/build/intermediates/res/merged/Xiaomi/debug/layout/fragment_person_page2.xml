@@ -1,0 +1,336 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_background_color"
+    android:fitsSystemWindows="true"
+    tools:context="com.runningmusic.newfrag.PersonPageFrag">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/ad_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="188dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/ad_collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:collapsedTitleGravity="center"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="center"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <RelativeLayout
+                android:id="@+id/person_header_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/content_foreground_color"
+                android:fitsSystemWindows="true">
+
+                <ImageView
+                    android:id="@+id/weather_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:background="@mipmap/weather_bg"
+                    android:fitsSystemWindows="true" />
+
+                <ImageView
+                    android:id="@+id/portrait"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@mipmap/user_png"
+                    android:fitsSystemWindows="true" />
+
+                <LinearLayout
+                    android:id="@+id/person_header_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/portrait"
+                    android:fitsSystemWindows="true"
+                    android:gravity="left|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/person_header_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp"
+                        android:layout_toRightOf="@id/portrait"
+                        android:fitsSystemWindows="true"
+                        android:text="UserName"
+                        android:textColor="@color/text_bright_white"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/person_header_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/portrait"
+                        android:fitsSystemWindows="true"
+                        android:text="ID:123456"
+                        android:textColor="@color/text_dark_white"
+                        android:textSize="11dp" />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/ad_tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:fitsSystemWindows="false"
+                app:layout_collapseMode="pin">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/add_tool_bar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="0dp"
+                        android:gravity="center"
+                        android:text="@string/app_name"
+                        android:textColor="@color/text_bright_white"
+                        android:textSize="20dp" />
+
+                    <ImageView
+                        android:id="@+id/person_page_scanqr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="0dp"
+                        android:background="@mipmap/person_scan" />
+
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.Toolbar>
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <LinearLayout
+            android:id="@+id/nested_scroll_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/person_run_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/content_foreground_color"
+                android:minHeight="70dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/record_total_distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="0.00"
+                        android:textColor="@color/text_bright_white"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/record_total_distance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="9dp"
+                        android:text="累计里程"
+                        android:textColor="@color/text_dark_white"
+                        android:textSize="10dp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@android:color/transparent" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/record_total_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="00:00:00"
+                        android:textColor="@color/text_bright_white"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/record_total_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="9dp"
+                        android:text="累计时长"
+                        android:textColor="@color/text_dark_white"
+                        android:textSize="10dp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@android:color/transparent" />
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <LinearLayout
+                        android:id="@+id/record_total_times_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/record_total_times"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="00"
+                            android:textColor="@color/text_bright_white"
+                            android:textSize="24dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/record_total_times_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="9dp"
+                            android:text="累计次数"
+                            android:textColor="@color/text_dark_white"
+                            android:textSize="10dp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/person_run_record_detail"
+                        android:layout_width="33dp"
+                        android:layout_height="33dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="4dp"
+                        android:layout_toRightOf="@id/record_total_times_container"
+                        android:background="@mipmap/person_more" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/music_energy_container"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/content_foreground_color"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/music_energy_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="音乐能量"
+                    android:textSize="20dp"
+                    android:textColor="@color/text_bright_white"
+                    android:layout_marginLeft="15dp"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/favourite_music_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/fav_music_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="12dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="16dp"
+                    android:text="收藏歌单"
+                    android:textSize="16dp"
+                    android:textColor="@color/text_bright_white"/>
+
+                <ImageView
+                    android:id="@+id/fav_music_split"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@id/fav_music_text"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="9dp"
+                    android:background="@color/content_foreground_color"/>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

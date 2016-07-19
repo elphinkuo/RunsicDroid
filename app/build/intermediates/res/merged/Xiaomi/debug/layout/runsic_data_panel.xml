@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/distance_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp" >
+
+        <ImageView
+            android:id="@+id/distance_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="8dp"
+            android:background="@mipmap/distance"/>
+        
+        <TextView
+            android:id="@+id/distance_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/distance_icon"
+            android:layout_alignBottom="@+id/distance_icon"
+            android:text="0.00"
+            android:textSize="40dp"
+            android:gravity="bottom"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/distance_data_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/distance_data"
+            android:layout_alignBottom="@+id/distance_icon"
+            android:text="km"
+            android:textSize="20dp"
+            android:gravity="bottom"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:id="@+id/time_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:gravity="center"
+        android:layout_weight="0"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/time_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="center"
+            android:background="@mipmap/time" />
+        
+        <Chronometer
+            android:id="@+id/time_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/time_icon"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="00:00:00"
+            android:textColor="@color/white"
+            android:textSize="40dp" >
+        </Chronometer>
+        
+
+    </LinearLayout>
+
+</LinearLayout>

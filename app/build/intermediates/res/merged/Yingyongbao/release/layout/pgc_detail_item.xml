@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="#1c1d1e">
+
+    <TextView
+        android:id="@+id/pgc_detail_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:textSize="14dp"
+        android:textColor="@color/white_transparent"
+        android:layout_marginLeft="16dp"/>
+
+    <TextView
+        android:id="@+id/pgc_detail_music_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See your again"
+        android:textColor="@color/white_transparent"
+        android:textSize="14dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="40dp"/>
+
+    <TextView
+        android:id="@+id/pgc_detail_music_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wiz Khalifa Charlie Puth"
+        android:textColor="@color/white_transparent"
+        android:textSize="11dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="9dp"
+        android:layout_marginLeft="40dp"/>
+
+
+    <ImageView
+        android:id="@+id/pgc_detail_more_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:background="@mipmap/detailspage_small_more"
+        android:layout_marginRight="8dp"/>
+
+
+
+
+
+
+</RelativeLayout>

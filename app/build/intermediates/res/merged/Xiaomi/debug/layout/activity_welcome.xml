@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".WelcomeActivity">
+
+    <!--
+         The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc.
+    -->
+
+    <SurfaceView
+        android:id="@+id/welcome_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:keepScreenOn="true"></SurfaceView>
+
+    <LinearLayout
+        android:id="@+id/slogan_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/slogan_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/rm_logo" />
+
+        <LinearLayout
+            android:id="@+id/slogan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/slogan_running"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="0.8"
+                android:paddingLeft="10dp"
+                android:text="Running\nMusic"
+                android:textColor="@color/white"
+                android:textSize="40dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/login_signup_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/bt_skip_register"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#301ed760"
+            android:gravity="center"
+            android:text="立即使用"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/bt_skip_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#00000000" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/shoufa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/login_signup_panel"
+        android:layout_marginBottom="4dp"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/shoufa_yingyongbao"
+        android:visibility="invisible"/>
+
+    <com.runningmusic.view.AutoScrollViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="140dp" />
+
+
+
+
+    <!--<com.viewpagerindicator.CirclePageIndicator-->
+    <!--android:id="@+id/share_indicator"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="10dp"-->
+    <!--android:layout_marginBottom="120dp"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:layout_marginRight="5dp"-->
+    <!--android:layout_gravity="bottom"-->
+    <!--android:gravity="center"-->
+    <!--android:padding="3dp" />-->
+
+</RelativeLayout>

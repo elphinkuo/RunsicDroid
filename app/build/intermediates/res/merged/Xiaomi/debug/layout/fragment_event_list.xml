@@ -1,0 +1,42 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:background="@color/content_background_color"
+    tools:context="com.runningmusic.newfrag.EventListFrag">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/event_title_container"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:text="赛事活动"
+            android:gravity="center"
+            android:textColor="@color/text_bright_white"
+            android:textSize="20dp"
+            android:fitsSystemWindows="false"
+            android:layout_alignParentTop="true"
+            app:layout_scrollFlags="scroll|enterAlways" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/event_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/event_title_container"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior" />
+
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

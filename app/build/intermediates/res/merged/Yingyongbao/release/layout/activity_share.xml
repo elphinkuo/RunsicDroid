@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/share_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.runningmusic.runninspire.ShareActivity">
+
+    <!--<ImageView-->
+        <!--android:id="@+id/share_bg_gradient"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:alpha="0.2"-->
+        <!--android:background="@color/clear"/>-->
+
+    <RelativeLayout
+        android:id="@+id/share_title_container"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:background="@mipmap/sharepage_nav_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/share_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@mipmap/sharepage_running_music" />
+
+        <ImageView
+            android:id="@+id/share_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/sharepage_share" />
+
+        <ImageView
+            android:id="@+id/share_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@mipmap/sharepage_return" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/share_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/share_title_container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/sharepage_logo" />
+
+    <TextView
+        android:id="@+id/share_song"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/share_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="本次运动您听了12首歌"
+        android:textColor="@color/dark"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/share_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/share_song"
+        android:layout_centerHorizontal="true"
+        android:text="2016.02.25"
+        android:textColor="@color/dark"
+        android:textSize="15dp" />
+
+    <RelativeLayout
+        android:id="@+id/share_image_container"
+        android:layout_width="250dp"
+        android:layout_height="262dp"
+        android:layout_below="@id/share_date"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/share_image3"
+            android:layout_width="194dp"
+            android:layout_height="194dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/grey_1" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/share_image2"
+            android:layout_width="222dp"
+            android:layout_height="222dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="6dp"
+            android:background="@color/green_normal_logo" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/share_image1"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitCenter" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/share_data_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/share_distance_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/share_distance_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textColor="@color/black33"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/share_distance_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总路程 (公里)"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/share_split"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/dark" />
+
+        <LinearLayout
+            android:id="@+id/share_time_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/share_time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textColor="@color/black33"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/share_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="累计时长 (分)"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/share_bottom" />
+
+</RelativeLayout>

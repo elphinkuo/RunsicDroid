@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="runsiccpplib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/runsiccpplib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/raw/running_video.mp4",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/raw/running_video.mp4"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/raw/shake_sound.mp3",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/raw/shake_sound.mp3"
+    }
+]

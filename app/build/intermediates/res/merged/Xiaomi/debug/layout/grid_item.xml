@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/grid_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dp">
+
+
+    <LinearLayout
+        android:id="@+id/grid_item_image_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/grid_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/list_holder_music"
+            android:scaleType="fitCenter" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/grid_item_text"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+
+        android:layout_below="@id/grid_item_image_frame"
+        android:background="@color/gird_text_background">
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@color/green_normal_logo" />
+
+        <TextView
+            android:id="@+id/grid_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:text="Song Title"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/grid_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="9dp"
+            android:singleLine="true"
+            android:text="Song Artist"
+            android:textColor="@color/white_transparent"
+            android:textSize="10dp" />
+    </RelativeLayout>
+
+</LinearLayout>
