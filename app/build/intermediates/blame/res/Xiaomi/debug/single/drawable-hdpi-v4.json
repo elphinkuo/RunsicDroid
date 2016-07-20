@@ -240,12 +240,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-hdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-hdpi-v4/abc_cab_background_top_mtrl_alpha.9.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-hdpi-v4/abc_cab_background_top_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-hdpi-v4/umeng_update_close_bg_normal.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable-hdpi/umeng_update_close_bg_normal.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-hdpi-v4/abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-hdpi-v4/abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-hdpi-v4/abc_ic_star_black_36dp.png",

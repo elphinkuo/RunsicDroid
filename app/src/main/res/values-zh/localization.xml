@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="app_name">奔跑吧音乐</string>
+    <string name="title_activity_running_music">RunningMusicActivity</string>
+
+    <string name="title_activity_test">test</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start_line">当音乐遇到你 让脚步听到它的声音</string>
+
+    <color name="tb_munion_item_force">#e3e3e3</color>
+    <string name="tb_munion_tip_download_prefix">正在下载:</string>
+</resources>

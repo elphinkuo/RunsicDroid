@@ -32,12 +32,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_item.xml"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/content_running_music.xml",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/content_running_music.xml"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/design_navigation_item_subheader.xml",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/content_running_music.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/content_running_music.xml"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/design_menu_item_action_area.xml",
@@ -240,12 +240,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/activity_test.xml"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/fragment_main_page.xml",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_main_page.xml"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/select_dialog_item_material.xml",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/fragment_main_page.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/layout/fragment_main_page.xml"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/umeng_socialize_oauth_dialog.xml",
@@ -336,12 +336,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_post_comment.xml"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/select_dialog_singlechoice_material.xml",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/select_dialog_singlechoice_material.xml"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/umeng_socialize_pull_to_refresh_header.xml",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/layout/umeng_socialize_pull_to_refresh_header.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/select_dialog_singlechoice_material.xml"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/layout/pulse.xml",

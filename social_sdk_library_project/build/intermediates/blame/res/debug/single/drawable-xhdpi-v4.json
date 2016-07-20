@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/debug/drawable-xhdpi-v4/umeng_socialize_switchimage_unchoose.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable-xhdpi/umeng_socialize_switchimage_unchoose.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/debug/drawable-xhdpi-v4/umeng_socialize_switchimage_choose.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable-xhdpi/umeng_socialize_switchimage_choose.png"
+    }
+]

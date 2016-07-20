@@ -360,12 +360,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable/umeng_update_button_ok_bg_normal.xml"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable/umeng_socialize_comment_item_bg_shape.xml",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/drawable/umeng_socialize_comment_item_bg_shape.xml"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable/pulse_background.xml",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable/pulse_background.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable/umeng_socialize_comment_item_bg_shape.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/drawable/umeng_socialize_comment_item_bg_shape.xml"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable/umeng_socialize_title_tab_left_normal.png",

@@ -1,0 +1,81 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/black_overlay</item>
+        <item name="colorPrimaryDark">@color/black_overlay</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ToolBarPopUp" parent="ThemeOverlay.AppCompat.Light">
+
+        <item name="android:colorBackground">@color/green_normal_logo</item>
+        <item name="android:windowBackground">@color/green_normal_logo</item>
+        <item name="android:colorForeground">@color/green_normal_logo</item>
+        <item name="android:colorForegroundInverse">@color/green_normal_logo</item>
+        <item name="android:colorBackgroundCacheHint">@color/green_normal_logo</item>
+
+        <item name="android:textColorPrimary">@color/green_normal_logo</item>
+        <item name="android:textColorPrimaryInverse">@color/green_normal_logo</item>
+        <item name="android:textColorSecondary">@color/green_normal_logo</item>
+        <item name="android:textColorSecondaryInverse">@color/green_normal_logo</item>
+        <item name="android:textColorTertiary">@color/green_normal_logo</item>
+        <item name="android:textColorTertiaryInverse">@color/green_normal_logo</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/green_normal_logo</item>
+        <item name="android:textColorPrimaryInverseDisableOnly">@color/green_normal_logo</item>
+        <item name="android:textColorHint">@color/green_normal_logo</item>
+        <item name="android:textColorHintInverse">@color/green_normal_logo</item>
+        <item name="android:textColorHighlight">@color/green_normal_logo</item>
+
+        <item name="colorControlNormal">?android:attr/textColorSecondary</item>
+        <item name="colorControlHighlight">@color/green_normal_logo</item>
+        <item name="colorButtonNormal">@color/green_normal_logo</item>
+        <item name="colorSwitchThumbNormal">@color/green_normal_logo</item>
+    </style>
+    <style name="RunninSpireTheme" parent="AppTheme">
+
+
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <!--<item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>-->
+        <!--<item name="android:windowActionBarOverlay">true</item>-->
+        <!--<item name="android:windowBackground">@null</item>-->
+        <!--<item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>-->
+        <!--<item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>-->
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="ProgressDialog1" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+</resources>

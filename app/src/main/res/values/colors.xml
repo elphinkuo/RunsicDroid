@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF1ED760</color>
+    <color name="colorPrimaryDark">#ff212121</color>
+    <color name="colorAccent">#ff1BDE61</color>
+    <color name="white">#ffffffff</color>
+    <color name="white_transparent">#f2ffffff</color>
+    <color name="light_grey">#fffafafa</color>
+
+    <color name="tab_bar_background">#ff3f4044</color>
+
+    <color name="content_foreground_color">#ff3f4044</color>
+    <color name="content_background_color">#ff2d2d2f</color>
+
+    <color name="title_backgroud">#ff222325</color>>
+
+    <color name="setting_split_1">#ff4b4c51</color>
+    <color name="setting_split_2">#ff37383b</color>
+
+    <color name="orange_red">#ffff5B4A</color>
+
+
+
+    <color name="black_overlay">#ff000000</color>
+    <color name="green_shine">#ff1BDE61</color>
+    <color name="green_normal_logo">#FF1ED760</color>
+
+    <color name="tab_sel_green">#ff2bd672</color>
+    <color name="tab_unsel_dark">#ffcccccc</color>
+
+    <color name="text_bright_white">#fff5f5f5</color>
+    <color name="text_dark_white">#ffcccccc</color>
+
+    <color name="gird_text_background">#252525</color>
+    
+    <color name="black33">#333333</color>
+    <color name="clear">#00000000</color>
+
+    <color name="grey_1">#ff3b3b3b</color>
+    <color name="activity_bg">#fff0f0f0</color>
+    <color name="orange">#ffDD7a58</color>
+    <color name="grey_transparent">#FFE0E0E0</color>
+    <color name="grep_ripple">#50f1f1f1</color>
+    <color name="orange_share">#ffff7e00</color>
+    <color name="middle_grey">#ff808080</color>
+    <color name="shallow_grep">#ffd4d4d4</color>
+    <color name="text_grey">#50ffffff</color>
+    <color name="secondary_text">#ff999999</color>
+    <color name="dark">#ff000000</color>
+    <color name="dark_cover">#40000000</color>
+    <color name="blue">#ff009aff</color>
+    <!-- 群组 -->
+    <color name="orange_group_name">#ffff7e00</color>
+    <color name="orange_text_down">#80ff7e00</color>
+    <color name="grey_group">#ffb0b0b0</color>
+    <color name="light_grey_group">#ffe2e2e2</color>
+    <color name="white_group_rank_btn">#ccffffff</color>
+    <color name="dark_grey_group">#ff777777</color>
+    <color name="groupmanagement_grey_left">#ffe2e2e2</color>
+    <color name="groupmanagement_grey_left_null">#fff3f3f3</color>
+    <color name="groupmanagement_grey_line">#ffb9b9b9</color>
+    <color name="dark_grey_button">#ff9e9e9e</color>
+    <color name="light_orange_button">#ffff7e00</color>
+    <color name="dark_orange_button">#ffe76b00</color>
+    <color name="transparent_orange_bar">#66ffbe00</color>
+    <color name="transparent_blue_bar">#667ae3ff</color>
+    <color name="bottom_line_green">#57ccaf</color>
+    <color name="bottom_line_orange">#ff7e00</color>
+    <color name="bottom_line_blue">#56c6f1</color>
+
+    <color name="history_nav_back">#202124</color>
+
+    <color name="transparent_selected">#00000088</color>
+
+
+
+
+</resources>

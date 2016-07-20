@@ -1,0 +1,2363 @@
+[
+    {
+        "outputFile": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/androidTest/debug/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 61,
+                    "endOffset": 112
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 61,
+                        "endOffset": 112
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 117,
+                    "endColumn": 61,
+                    "endOffset": 174
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 117,
+                        "endColumn": 61,
+                        "endOffset": 174
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 179,
+                    "endColumn": 57,
+                    "endOffset": 232
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 179,
+                        "endColumn": 57,
+                        "endOffset": 232
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 237,
+                    "endColumn": 57,
+                    "endOffset": 290
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 237,
+                        "endColumn": 57,
+                        "endOffset": 290
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 295,
+                    "endColumn": 67,
+                    "endOffset": 358
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 295,
+                        "endColumn": 67,
+                        "endOffset": 358
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 363,
+                    "endColumn": 67,
+                    "endOffset": 426
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 363,
+                        "endColumn": 67,
+                        "endOffset": 426
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 431,
+                    "endColumn": 69,
+                    "endOffset": 496
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 431,
+                        "endColumn": 69,
+                        "endOffset": 496
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 501,
+                    "endColumn": 67,
+                    "endOffset": 564
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 501,
+                        "endColumn": 67,
+                        "endOffset": 564
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 569,
+                    "endColumn": 68,
+                    "endOffset": 633
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 569,
+                        "endColumn": 68,
+                        "endOffset": 633
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 638,
+                    "endColumn": 59,
+                    "endOffset": 693
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 638,
+                        "endColumn": 59,
+                        "endOffset": 693
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 698,
+                    "endColumn": 60,
+                    "endOffset": 754
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 698,
+                        "endColumn": 60,
+                        "endOffset": 754
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 759,
+                    "endColumn": 62,
+                    "endOffset": 817
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 759,
+                        "endColumn": 62,
+                        "endOffset": 817
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 822,
+                    "endColumn": 60,
+                    "endOffset": 878
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 822,
+                        "endColumn": 60,
+                        "endOffset": 878
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 883,
+                    "endColumn": 45,
+                    "endOffset": 924
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 883,
+                        "endColumn": 45,
+                        "endOffset": 924
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 929,
+                    "endColumn": 66,
+                    "endOffset": 991
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 929,
+                        "endColumn": 66,
+                        "endOffset": 991
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 996,
+                    "endColumn": 65,
+                    "endOffset": 1057
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 996,
+                        "endColumn": 65,
+                        "endOffset": 1057
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1062,
+                    "endColumn": 70,
+                    "endOffset": 1128
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1062,
+                        "endColumn": 70,
+                        "endOffset": 1128
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1133,
+                    "endColumn": 73,
+                    "endOffset": 1202
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1133,
+                        "endColumn": 73,
+                        "endOffset": 1202
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1207,
+                    "endColumn": 117,
+                    "endOffset": 1320
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1207,
+                        "endColumn": 117,
+                        "endOffset": 1320
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1325,
+                    "endColumn": 94,
+                    "endOffset": 1415
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1325,
+                        "endColumn": 94,
+                        "endOffset": 1415
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1420,
+                    "endColumn": 59,
+                    "endOffset": 1475
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1420,
+                        "endColumn": 59,
+                        "endOffset": 1475
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1480,
+                    "endColumn": 71,
+                    "endOffset": 1547
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1480,
+                        "endColumn": 71,
+                        "endOffset": 1547
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1552,
+                    "endColumn": 85,
+                    "endOffset": 1633
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1552,
+                        "endColumn": 85,
+                        "endOffset": 1633
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1638,
+                    "endColumn": 73,
+                    "endOffset": 1707
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 1638,
+                        "endColumn": 73,
+                        "endOffset": 1707
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1712,
+                    "endColumn": 73,
+                    "endOffset": 1781
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1712,
+                        "endColumn": 73,
+                        "endOffset": 1781
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1786,
+                    "endColumn": 82,
+                    "endOffset": 1864
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1786,
+                        "endColumn": 82,
+                        "endOffset": 1864
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1869,
+                    "endColumn": 100,
+                    "endOffset": 1965
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1869,
+                        "endColumn": 100,
+                        "endOffset": 1965
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1970,
+                    "endColumn": 79,
+                    "endOffset": 2045
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1970,
+                        "endColumn": 79,
+                        "endOffset": 2045
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 2050,
+                    "endColumn": 54,
+                    "endOffset": 2100
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 2050,
+                        "endColumn": 54,
+                        "endOffset": 2100
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 2105,
+                    "endColumn": 69,
+                    "endOffset": 2170
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 2105,
+                        "endColumn": 69,
+                        "endOffset": 2170
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 2175,
+                    "endColumn": 87,
+                    "endOffset": 2258
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 2175,
+                        "endColumn": 87,
+                        "endOffset": 2258
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 2263,
+                    "endColumn": 91,
+                    "endOffset": 2350
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 33,
+                        "startColumn": 4,
+                        "startOffset": 2263,
+                        "endColumn": 91,
+                        "endOffset": 2350
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 2355,
+                    "endColumn": 99,
+                    "endOffset": 2450
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 2355,
+                        "endColumn": 99,
+                        "endOffset": 2450
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 2455,
+                    "endColumn": 173,
+                    "endOffset": 2624
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 2455,
+                        "endColumn": 173,
+                        "endOffset": 2624
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 2629,
+                    "endColumn": 165,
+                    "endOffset": 2790
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 2629,
+                        "endColumn": 165,
+                        "endOffset": 2790
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 2795,
+                    "endColumn": 130,
+                    "endOffset": 2921
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 37,
+                        "startColumn": 4,
+                        "startOffset": 2795,
+                        "endColumn": 130,
+                        "endOffset": 2921
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 2926,
+                    "endColumn": 128,
+                    "endOffset": 3050
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 2926,
+                        "endColumn": 128,
+                        "endOffset": 3050
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 3055,
+                    "endColumn": 142,
+                    "endOffset": 3193
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 39,
+                        "startColumn": 4,
+                        "startOffset": 3055,
+                        "endColumn": 142,
+                        "endOffset": 3193
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 3198,
+                    "endColumn": 83,
+                    "endOffset": 3277
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 3198,
+                        "endColumn": 83,
+                        "endOffset": 3277
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 3282,
+                    "endColumn": 81,
+                    "endOffset": 3359
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 3282,
+                        "endColumn": 81,
+                        "endOffset": 3359
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 3364,
+                    "endColumn": 89,
+                    "endOffset": 3449
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 3364,
+                        "endColumn": 89,
+                        "endOffset": 3449
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 3454,
+                    "endColumn": 84,
+                    "endOffset": 3534
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 43,
+                        "startColumn": 4,
+                        "startOffset": 3454,
+                        "endColumn": 84,
+                        "endOffset": 3534
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 3539,
+                    "endColumn": 86,
+                    "endOffset": 3621
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 44,
+                        "startColumn": 4,
+                        "startOffset": 3539,
+                        "endColumn": 86,
+                        "endOffset": 3621
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 3626,
+                    "endColumn": 85,
+                    "endOffset": 3707
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 3626,
+                        "endColumn": 85,
+                        "endOffset": 3707
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 3712,
+                    "endColumn": 79,
+                    "endOffset": 3787
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 3712,
+                        "endColumn": 79,
+                        "endOffset": 3787
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 47,
+                    "startColumn": 4,
+                    "startOffset": 3792,
+                    "endColumn": 60,
+                    "endOffset": 3848
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 47,
+                        "startColumn": 4,
+                        "startOffset": 3792,
+                        "endColumn": 60,
+                        "endOffset": 3848
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 3853,
+                    "endColumn": 72,
+                    "endOffset": 3921
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 3853,
+                        "endColumn": 72,
+                        "endOffset": 3921
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 49,
+                    "startColumn": 4,
+                    "startOffset": 3926,
+                    "endColumn": 61,
+                    "endOffset": 3983
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 3926,
+                        "endColumn": 61,
+                        "endOffset": 3983
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 50,
+                    "startColumn": 4,
+                    "startOffset": 3988,
+                    "endColumn": 75,
+                    "endOffset": 4059
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 3988,
+                        "endColumn": 75,
+                        "endOffset": 4059
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 51,
+                    "startColumn": 4,
+                    "startOffset": 4064,
+                    "endColumn": 84,
+                    "endOffset": 4144
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 4064,
+                        "endColumn": 84,
+                        "endOffset": 4144
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 52,
+                    "startColumn": 4,
+                    "startOffset": 4149,
+                    "endColumn": 61,
+                    "endOffset": 4206
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 52,
+                        "startColumn": 4,
+                        "startOffset": 4149,
+                        "endColumn": 61,
+                        "endOffset": 4206
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 53,
+                    "startColumn": 4,
+                    "startOffset": 4211,
+                    "endColumn": 78,
+                    "endOffset": 4285
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 4211,
+                        "endColumn": 78,
+                        "endOffset": 4285
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 4290,
+                    "endColumn": 44,
+                    "endOffset": 4330
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 4290,
+                        "endColumn": 44,
+                        "endOffset": 4330
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 55,
+                    "startColumn": 4,
+                    "startOffset": 4335,
+                    "endColumn": 95,
+                    "endOffset": 4426
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 55,
+                        "startColumn": 4,
+                        "startOffset": 4335,
+                        "endColumn": 95,
+                        "endOffset": 4426
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 4431,
+                    "endColumn": 52,
+                    "endOffset": 4479
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 4431,
+                        "endColumn": 52,
+                        "endOffset": 4479
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 57,
+                    "startColumn": 4,
+                    "startOffset": 4484,
+                    "endColumn": 57,
+                    "endOffset": 4537
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 57,
+                        "startColumn": 4,
+                        "startOffset": 4484,
+                        "endColumn": 57,
+                        "endOffset": 4537
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 58,
+                    "startColumn": 4,
+                    "startOffset": 4542,
+                    "endColumn": 76,
+                    "endOffset": 4614
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 4542,
+                        "endColumn": 76,
+                        "endOffset": 4614
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 59,
+                    "startColumn": 4,
+                    "startOffset": 4619,
+                    "endColumn": 76,
+                    "endOffset": 4691
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 59,
+                        "startColumn": 4,
+                        "startOffset": 4619,
+                        "endColumn": 76,
+                        "endOffset": 4691
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 60,
+                    "startColumn": 4,
+                    "startOffset": 4696,
+                    "endColumn": 75,
+                    "endOffset": 4767
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 4696,
+                        "endColumn": 75,
+                        "endOffset": 4767
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 61,
+                    "startColumn": 4,
+                    "startOffset": 4772,
+                    "endColumn": 80,
+                    "endOffset": 4848
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 4772,
+                        "endColumn": 80,
+                        "endOffset": 4848
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 62,
+                    "startColumn": 4,
+                    "startOffset": 4853,
+                    "endColumn": 95,
+                    "endOffset": 4944
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 4853,
+                        "endColumn": 95,
+                        "endOffset": 4944
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 63,
+                    "startColumn": 4,
+                    "startOffset": 4949,
+                    "endColumn": 72,
+                    "endOffset": 5017
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 4949,
+                        "endColumn": 72,
+                        "endOffset": 5017
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 64,
+                    "startColumn": 4,
+                    "startOffset": 5022,
+                    "endColumn": 59,
+                    "endOffset": 5077
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 64,
+                        "startColumn": 4,
+                        "startOffset": 5022,
+                        "endColumn": 59,
+                        "endOffset": 5077
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 65,
+                    "startColumn": 4,
+                    "startOffset": 5082,
+                    "endColumn": 52,
+                    "endOffset": 5130
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 65,
+                        "startColumn": 4,
+                        "startOffset": 5082,
+                        "endColumn": 52,
+                        "endOffset": 5130
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 66,
+                    "startColumn": 4,
+                    "startOffset": 5135,
+                    "endLine": 68,
+                    "endColumn": 60,
+                    "endOffset": 5361
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 66,
+                        "startColumn": 4,
+                        "startOffset": 5135,
+                        "endLine": 68,
+                        "endColumn": 60,
+                        "endOffset": 5361
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 69,
+                    "startColumn": 4,
+                    "startOffset": 5366,
+                    "endColumn": 76,
+                    "endOffset": 5438
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 69,
+                        "startColumn": 4,
+                        "startOffset": 5366,
+                        "endColumn": 76,
+                        "endOffset": 5438
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 70,
+                    "startColumn": 4,
+                    "startOffset": 5443,
+                    "endColumn": 61,
+                    "endOffset": 5500
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 70,
+                        "startColumn": 4,
+                        "startOffset": 5443,
+                        "endColumn": 61,
+                        "endOffset": 5500
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 71,
+                    "startColumn": 4,
+                    "startOffset": 5505,
+                    "endColumn": 72,
+                    "endOffset": 5573
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 71,
+                        "startColumn": 4,
+                        "startOffset": 5505,
+                        "endColumn": 72,
+                        "endOffset": 5573
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 72,
+                    "startColumn": 4,
+                    "startOffset": 5578,
+                    "endColumn": 68,
+                    "endOffset": 5642
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 72,
+                        "startColumn": 4,
+                        "startOffset": 5578,
+                        "endColumn": 68,
+                        "endOffset": 5642
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 73,
+                    "startColumn": 4,
+                    "startOffset": 5647,
+                    "endColumn": 63,
+                    "endOffset": 5706
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 73,
+                        "startColumn": 4,
+                        "startOffset": 5647,
+                        "endColumn": 63,
+                        "endOffset": 5706
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 74,
+                    "startColumn": 4,
+                    "startOffset": 5711,
+                    "endColumn": 65,
+                    "endOffset": 5772
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 74,
+                        "startColumn": 4,
+                        "startOffset": 5711,
+                        "endColumn": 65,
+                        "endOffset": 5772
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 75,
+                    "startColumn": 4,
+                    "startOffset": 5777,
+                    "endColumn": 73,
+                    "endOffset": 5846
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 75,
+                        "startColumn": 4,
+                        "startOffset": 5777,
+                        "endColumn": 73,
+                        "endOffset": 5846
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 5851,
+                    "endColumn": 63,
+                    "endOffset": 5910
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 76,
+                        "startColumn": 4,
+                        "startOffset": 5851,
+                        "endColumn": 63,
+                        "endOffset": 5910
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 77,
+                    "startColumn": 4,
+                    "startOffset": 5915,
+                    "endColumn": 75,
+                    "endOffset": 5986
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 77,
+                        "startColumn": 4,
+                        "startOffset": 5915,
+                        "endColumn": 75,
+                        "endOffset": 5986
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 78,
+                    "startColumn": 4,
+                    "startOffset": 5991,
+                    "endColumn": 69,
+                    "endOffset": 6056
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 78,
+                        "startColumn": 4,
+                        "startOffset": 5991,
+                        "endColumn": 69,
+                        "endOffset": 6056
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 79,
+                    "startColumn": 4,
+                    "startOffset": 6061,
+                    "endColumn": 58,
+                    "endOffset": 6115
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 79,
+                        "startColumn": 4,
+                        "startOffset": 6061,
+                        "endColumn": 58,
+                        "endOffset": 6115
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 80,
+                    "startColumn": 4,
+                    "startOffset": 6120,
+                    "endColumn": 65,
+                    "endOffset": 6181
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 80,
+                        "startColumn": 4,
+                        "startOffset": 6120,
+                        "endColumn": 65,
+                        "endOffset": 6181
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 81,
+                    "startColumn": 4,
+                    "startOffset": 6186,
+                    "endColumn": 63,
+                    "endOffset": 6245
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 81,
+                        "startColumn": 4,
+                        "startOffset": 6186,
+                        "endColumn": 63,
+                        "endOffset": 6245
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 82,
+                    "startColumn": 4,
+                    "startOffset": 6250,
+                    "endColumn": 60,
+                    "endOffset": 6306
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 82,
+                        "startColumn": 4,
+                        "startOffset": 6250,
+                        "endColumn": 60,
+                        "endOffset": 6306
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 83,
+                    "startColumn": 4,
+                    "startOffset": 6311,
+                    "endColumn": 65,
+                    "endOffset": 6372
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 83,
+                        "startColumn": 4,
+                        "startOffset": 6311,
+                        "endColumn": 65,
+                        "endOffset": 6372
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 84,
+                    "startColumn": 4,
+                    "startOffset": 6377,
+                    "endColumn": 83,
+                    "endOffset": 6456
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 84,
+                        "startColumn": 4,
+                        "startOffset": 6377,
+                        "endColumn": 83,
+                        "endOffset": 6456
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 85,
+                    "startColumn": 4,
+                    "startOffset": 6461,
+                    "endColumn": 78,
+                    "endOffset": 6535
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 85,
+                        "startColumn": 4,
+                        "startOffset": 6461,
+                        "endColumn": 78,
+                        "endOffset": 6535
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 86,
+                    "startColumn": 4,
+                    "startOffset": 6540,
+                    "endColumn": 80,
+                    "endOffset": 6616
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 86,
+                        "startColumn": 4,
+                        "startOffset": 6540,
+                        "endColumn": 80,
+                        "endOffset": 6616
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 87,
+                    "startColumn": 4,
+                    "startOffset": 6621,
+                    "endColumn": 106,
+                    "endOffset": 6723
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 87,
+                        "startColumn": 4,
+                        "startOffset": 6621,
+                        "endColumn": 106,
+                        "endOffset": 6723
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 88,
+                    "startColumn": 4,
+                    "startOffset": 6728,
+                    "endColumn": 61,
+                    "endOffset": 6785
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 88,
+                        "startColumn": 4,
+                        "startOffset": 6728,
+                        "endColumn": 61,
+                        "endOffset": 6785
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 89,
+                    "startColumn": 4,
+                    "startOffset": 6790,
+                    "endColumn": 64,
+                    "endOffset": 6850
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 89,
+                        "startColumn": 4,
+                        "startOffset": 6790,
+                        "endColumn": 64,
+                        "endOffset": 6850
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 90,
+                    "startColumn": 4,
+                    "startOffset": 6855,
+                    "endColumn": 59,
+                    "endOffset": 6910
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 90,
+                        "startColumn": 4,
+                        "startOffset": 6855,
+                        "endColumn": 59,
+                        "endOffset": 6910
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 91,
+                    "startColumn": 4,
+                    "startOffset": 6915,
+                    "endColumn": 64,
+                    "endOffset": 6975
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 91,
+                        "startColumn": 4,
+                        "startOffset": 6915,
+                        "endColumn": 64,
+                        "endOffset": 6975
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 92,
+                    "startColumn": 4,
+                    "startOffset": 6980,
+                    "endColumn": 73,
+                    "endOffset": 7049
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 92,
+                        "startColumn": 4,
+                        "startOffset": 6980,
+                        "endColumn": 73,
+                        "endOffset": 7049
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 93,
+                    "startColumn": 4,
+                    "startOffset": 7054,
+                    "endColumn": 73,
+                    "endOffset": 7123
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 93,
+                        "startColumn": 4,
+                        "startOffset": 7054,
+                        "endColumn": 73,
+                        "endOffset": 7123
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 7128,
+                    "endColumn": 79,
+                    "endOffset": 7203
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 94,
+                        "startColumn": 4,
+                        "startOffset": 7128,
+                        "endColumn": 79,
+                        "endOffset": 7203
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 95,
+                    "startColumn": 4,
+                    "startOffset": 7208,
+                    "endColumn": 69,
+                    "endOffset": 7273
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 95,
+                        "startColumn": 4,
+                        "startOffset": 7208,
+                        "endColumn": 69,
+                        "endOffset": 7273
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 7278,
+                    "endColumn": 68,
+                    "endOffset": 7342
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 96,
+                        "startColumn": 4,
+                        "startOffset": 7278,
+                        "endColumn": 68,
+                        "endOffset": 7342
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 97,
+                    "startColumn": 4,
+                    "startOffset": 7347,
+                    "endColumn": 77,
+                    "endOffset": 7420
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 97,
+                        "startColumn": 4,
+                        "startOffset": 7347,
+                        "endColumn": 77,
+                        "endOffset": 7420
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 98,
+                    "startColumn": 4,
+                    "startOffset": 7425,
+                    "endColumn": 85,
+                    "endOffset": 7506
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 98,
+                        "startColumn": 4,
+                        "startOffset": 7425,
+                        "endColumn": 85,
+                        "endOffset": 7506
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 99,
+                    "startColumn": 4,
+                    "startOffset": 7511,
+                    "endColumn": 76,
+                    "endOffset": 7583
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 99,
+                        "startColumn": 4,
+                        "startOffset": 7511,
+                        "endColumn": 76,
+                        "endOffset": 7583
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 100,
+                    "startColumn": 4,
+                    "startOffset": 7588,
+                    "endColumn": 86,
+                    "endOffset": 7670
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 100,
+                        "startColumn": 4,
+                        "startOffset": 7588,
+                        "endColumn": 86,
+                        "endOffset": 7670
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 101,
+                    "startColumn": 4,
+                    "startOffset": 7675,
+                    "endColumn": 72,
+                    "endOffset": 7743
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 101,
+                        "startColumn": 4,
+                        "startOffset": 7675,
+                        "endColumn": 72,
+                        "endOffset": 7743
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 102,
+                    "startColumn": 4,
+                    "startOffset": 7748,
+                    "endColumn": 62,
+                    "endOffset": 7806
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 102,
+                        "startColumn": 4,
+                        "startOffset": 7748,
+                        "endColumn": 62,
+                        "endOffset": 7806
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 103,
+                    "startColumn": 4,
+                    "startOffset": 7811,
+                    "endColumn": 98,
+                    "endOffset": 7905
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 103,
+                        "startColumn": 4,
+                        "startOffset": 7811,
+                        "endColumn": 98,
+                        "endOffset": 7905
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 104,
+                    "startColumn": 4,
+                    "startOffset": 7910,
+                    "endColumn": 86,
+                    "endOffset": 7992
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 104,
+                        "startColumn": 4,
+                        "startOffset": 7910,
+                        "endColumn": 86,
+                        "endOffset": 7992
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 105,
+                    "startColumn": 4,
+                    "startOffset": 7997,
+                    "endColumn": 95,
+                    "endOffset": 8088
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 105,
+                        "startColumn": 4,
+                        "startOffset": 7997,
+                        "endColumn": 95,
+                        "endOffset": 8088
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 106,
+                    "startColumn": 4,
+                    "startOffset": 8093,
+                    "endColumn": 98,
+                    "endOffset": 8187
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 106,
+                        "startColumn": 4,
+                        "startOffset": 8093,
+                        "endColumn": 98,
+                        "endOffset": 8187
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 107,
+                    "startColumn": 4,
+                    "startOffset": 8192,
+                    "endLine": 119,
+                    "endColumn": 12,
+                    "endOffset": 8731
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 107,
+                        "startColumn": 4,
+                        "startOffset": 8192,
+                        "endLine": 119,
+                        "endColumn": 12,
+                        "endOffset": 8731
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 120,
+                    "startColumn": 4,
+                    "startOffset": 8736,
+                    "endLine": 123,
+                    "endColumn": 12,
+                    "endOffset": 8895
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 120,
+                        "startColumn": 4,
+                        "startOffset": 8736,
+                        "endLine": 123,
+                        "endColumn": 12,
+                        "endOffset": 8895
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 124,
+                    "startColumn": 4,
+                    "startOffset": 8900,
+                    "endColumn": 75,
+                    "endOffset": 8971
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 124,
+                        "startColumn": 4,
+                        "startOffset": 8900,
+                        "endColumn": 75,
+                        "endOffset": 8971
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 125,
+                    "startColumn": 4,
+                    "startOffset": 8976,
+                    "endLine": 128,
+                    "endColumn": 12,
+                    "endOffset": 9189
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 125,
+                        "startColumn": 4,
+                        "startOffset": 8976,
+                        "endLine": 128,
+                        "endColumn": 12,
+                        "endOffset": 9189
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 129,
+                    "startColumn": 4,
+                    "startOffset": 9194,
+                    "endLine": 131,
+                    "endColumn": 12,
+                    "endOffset": 9377
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 129,
+                        "startColumn": 4,
+                        "startOffset": 9194,
+                        "endLine": 131,
+                        "endColumn": 12,
+                        "endOffset": 9377
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 132,
+                    "startColumn": 4,
+                    "startOffset": 9382,
+                    "endLine": 144,
+                    "endColumn": 12,
+                    "endOffset": 9841
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 132,
+                        "startColumn": 4,
+                        "startOffset": 9382,
+                        "endLine": 144,
+                        "endColumn": 12,
+                        "endOffset": 9841
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 145,
+                    "startColumn": 4,
+                    "startOffset": 9846,
+                    "endLine": 154,
+                    "endColumn": 12,
+                    "endOffset": 10432
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 145,
+                        "startColumn": 4,
+                        "startOffset": 9846,
+                        "endLine": 154,
+                        "endColumn": 12,
+                        "endOffset": 10432
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 155,
+                    "startColumn": 4,
+                    "startOffset": 10437,
+                    "endLine": 158,
+                    "endColumn": 12,
+                    "endOffset": 10721
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 155,
+                        "startColumn": 4,
+                        "startOffset": 10437,
+                        "endLine": 158,
+                        "endColumn": 12,
+                        "endOffset": 10721
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 159,
+                    "startColumn": 4,
+                    "startOffset": 10726,
+                    "endLine": 164,
+                    "endColumn": 12,
+                    "endOffset": 11016
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 159,
+                        "startColumn": 4,
+                        "startOffset": 10726,
+                        "endLine": 164,
+                        "endColumn": 12,
+                        "endOffset": 11016
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 165,
+                    "startColumn": 4,
+                    "startOffset": 11021,
+                    "endLine": 174,
+                    "endColumn": 12,
+                    "endOffset": 11516
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 165,
+                        "startColumn": 4,
+                        "startOffset": 11021,
+                        "endLine": 174,
+                        "endColumn": 12,
+                        "endOffset": 11516
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 175,
+                    "startColumn": 4,
+                    "startOffset": 11521,
+                    "endLine": 183,
+                    "endColumn": 12,
+                    "endOffset": 11977
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 175,
+                        "startColumn": 4,
+                        "startOffset": 11521,
+                        "endLine": 183,
+                        "endColumn": 12,
+                        "endOffset": 11977
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 184,
+                    "startColumn": 4,
+                    "startOffset": 11982,
+                    "endLine": 187,
+                    "endColumn": 12,
+                    "endOffset": 12216
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 184,
+                        "startColumn": 4,
+                        "startOffset": 11982,
+                        "endLine": 187,
+                        "endColumn": 12,
+                        "endOffset": 12216
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 188,
+                    "startColumn": 4,
+                    "startOffset": 12221,
+                    "endLine": 191,
+                    "endColumn": 12,
+                    "endOffset": 12482
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 188,
+                        "startColumn": 4,
+                        "startOffset": 12221,
+                        "endLine": 191,
+                        "endColumn": 12,
+                        "endOffset": 12482
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 192,
+                    "startColumn": 4,
+                    "startOffset": 12487,
+                    "endLine": 196,
+                    "endColumn": 12,
+                    "endOffset": 12731
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 192,
+                        "startColumn": 4,
+                        "startOffset": 12487,
+                        "endLine": 196,
+                        "endColumn": 12,
+                        "endOffset": 12731
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 197,
+                    "startColumn": 4,
+                    "startOffset": 12736,
+                    "endLine": 205,
+                    "endColumn": 12,
+                    "endOffset": 13237
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 197,
+                        "startColumn": 4,
+                        "startOffset": 12736,
+                        "endLine": 205,
+                        "endColumn": 12,
+                        "endOffset": 13237
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 206,
+                    "startColumn": 4,
+                    "startOffset": 13242,
+                    "endLine": 212,
+                    "endColumn": 12,
+                    "endOffset": 13604
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 206,
+                        "startColumn": 4,
+                        "startOffset": 13242,
+                        "endLine": 212,
+                        "endColumn": 12,
+                        "endOffset": 13604
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 213,
+                    "startColumn": 4,
+                    "startOffset": 13609,
+                    "endLine": 222,
+                    "endColumn": 12,
+                    "endOffset": 14206
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 213,
+                        "startColumn": 4,
+                        "startOffset": 13609,
+                        "endLine": 222,
+                        "endColumn": 12,
+                        "endOffset": 14206
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 223,
+                    "startColumn": 4,
+                    "startOffset": 14211,
+                    "endLine": 225,
+                    "endColumn": 12,
+                    "endOffset": 14415
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 223,
+                        "startColumn": 4,
+                        "startOffset": 14211,
+                        "endLine": 225,
+                        "endColumn": 12,
+                        "endOffset": 14415
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 226,
+                    "startColumn": 4,
+                    "startOffset": 14420,
+                    "endLine": 229,
+                    "endColumn": 12,
+                    "endOffset": 14690
+                },
+                "from": {
+                    "file": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 226,
+                        "startColumn": 4,
+                        "startOffset": 14420,
+                        "endLine": 229,
+                        "endColumn": 12,
+                        "endOffset": 14690
+                    }
+                }
+            }
+        ]
+    }
+]

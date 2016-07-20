@@ -1,0 +1,118 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig.with {
+        applicationId "com.runningmusic.runninspire"
+        minSdkVersion 16
+        targetSdkVersion 23
+
+        multiDexEnabled true
+        versionCode 6
+        versionName "1.2.0"
+
+        ndk {
+            abiFilters 'armeabi'
+        }
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_7
+        targetCompatibility = JavaVersion.VERSION_1_7
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = false
+            proguardFiles.add(file('proguard-rules.pro'))
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META_INF/MANIFEST.MK'
+
+    }
+
+    productFlavors {
+        Xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL: "xiaomi"]
+        }
+        Baidu {
+            manifestPlaceholders = [UMENG_CHANNEL: "baidu"]
+        }
+        san360 {
+            manifestPlaceholders = [UMENG_CHANNEL: "360"]
+        }
+        Wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL: "wandoujia"]
+        }
+        Yingyongbao {
+            manifestPlaceholders = [UMENG_CHANNEL: "yingyongbao"]
+        }
+        Oppo {
+            manifestPlaceholders = [UMENG_CHANNEL: "oppo"]
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ["libs"]
+        }
+    }
+
+}
+
+//android.sources {
+//    main {
+//        jniLibs {
+//            dependencies {
+//                library file("libs/armeabi/libleveldb.so") abi "armeabi"
+//                library file("libs/armeabi/libRunsicCPP.so") abi "armeabi"
+//                library file("libs/armeabi-v7a/libleveldb.so") abi "armeabi-v7a"
+//                library file("libs/armeabi-v7a/libRunsicCPP.so") abi "armeabi-v7a"
+//                library file("libs/x86/libleveldb.so") abi "x86"
+//                library file("libs/x86/libRunsicCPP.so") abi "x86"
+//
+//            }
+//        }
+//    }
+//}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //    compile project(':runsicCPPLib')
+    compile project(':viewpagerindicator')
+    testCompile 'junit:junit:4.12'
+    compile project(':social_sdk_library_project')
+    compile files('libs/fastjson-1.1.26.jar')
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.jakewharton:disklrucache:2.0.2'
+    compile 'com.makeramen:roundedimageview:2.2.1'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:palette-v7:23.4.0'
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'com.twotoasters.jazzylistview:library:1.2.1'
+    compile 'com.twotoasters.jazzylistview:library-recyclerview:1.2.1'
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile 'com.tencent.bugly:crashreport:1.2.9'
+    compile 'com.android.support:support-v4:23.4.0'
+}
