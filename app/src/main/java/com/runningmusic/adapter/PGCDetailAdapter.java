@@ -59,7 +59,7 @@ public class PGCDetailAdapter extends RecyclerView.Adapter<PGCDetailAdapter.PGCD
     }
 
     public void setOnItemClickListener(PGCDetailItemClickListener listener) {
-        this.itemClickListener = listener;
+        itemClickListener = listener;
     }
 
     public class PGCDetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

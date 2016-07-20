@@ -307,7 +307,7 @@ public class ArcProgress extends View {
         if (DEBUG) {
             Log.d("FM", "startAngle is" + startAngle);
         }
-        float finishedSweepAngle = progress / (float) getMax() * arcAngle;
+        float finishedSweepAngle = progress / getMax() * arcAngle;
         if (DEBUG) {
             Log.d("FM", "finishedSweepAngle is" + finishedSweepAngle);
         }

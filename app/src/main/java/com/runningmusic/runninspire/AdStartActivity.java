@@ -16,13 +16,15 @@ public class AdStartActivity extends AppCompatActivity {
     private static String TAG = AdStartActivity.class.getName();
     private AQuery aQuery;
     private Activity context;
+    private Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ad_start);
         aQuery = new AQuery(this);
         context = this;
-
+        handler = new Handler();
         Window window = this.getWindow();
         //系统通知栏透明
         window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -32,11 +34,12 @@ public class AdStartActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(context, RunninspireMainActivity.class);
+                if (handler != null) {
+                    handler.removeCallbacksAndMessages(null);
+                }
                 startActivity(intent);
             }
         });
-
-
 
 
     }
@@ -44,15 +47,31 @@ public class AdStartActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        new Handler().postDelayed(new Runnable() {
+        if (handler != null) {
+            handler.postDelayed(new Runnable() {
 
-            @Override
-            public void run() {
-                Intent intent = new Intent();
-                intent.setClass(context, RunninspireMainActivity.class);
-                startActivity(intent);
-            }
+                @Override
+                public void run() {
+                    Intent intent = new Intent();
+                    intent.setClass(context, RunninspireMainActivity.class);
+                    startActivity(intent);
+                }
 
-        }, 2500);
+            }, 2500);
+
+        } else {
+            handler = new Handler();
+            handler.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    Intent intent = new Intent();
+                    intent.setClass(context, RunninspireMainActivity.class);
+                    startActivity(intent);
+                }
+
+            }, 2500);
+        }
     }
+
 }

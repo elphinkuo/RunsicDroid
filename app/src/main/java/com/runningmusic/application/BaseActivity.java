@@ -76,7 +76,9 @@ public class BaseActivity extends LifecycleActivity {
                     // drawable
                     // for the content view
                     if (tv.resourceId != 0) {
-                        ((FrameLayout) contentView).setForeground(getResources().getDrawable(tv.resourceId));
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            contentView.setForeground(getResources().getDrawable(tv.resourceId));
+                        }
                         // ((FrameLayout)
                         // contentView).setForegroundGravity(tv.resourceId);
 

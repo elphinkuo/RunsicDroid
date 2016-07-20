@@ -160,10 +160,7 @@ public class HttpClientHelper {
 			}
 			HttpRequest request = (HttpRequest) context.getAttribute(ExecutionContext.HTTP_REQUEST);
 			boolean idempotent = (request instanceof HttpEntityEnclosingRequest);
-			if (!idempotent) {
-				return true;
-			}
-			return false;
+			return !idempotent;
 		}
 	};
 

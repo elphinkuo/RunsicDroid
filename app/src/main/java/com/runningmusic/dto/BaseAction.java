@@ -5,7 +5,7 @@ import org.apache.http.HttpEntity;
 public abstract class BaseAction<Req, Resp> {
 
 	//请求类型normal正常 circulate循环
-	public static enum ActionType {
+	public enum ActionType {
 		Normal, Circulate
 	}
 	

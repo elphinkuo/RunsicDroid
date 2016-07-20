@@ -129,11 +129,7 @@ public class Util {
     public static boolean userGender() {
         SharedPreferences sPreferences = Util.getUserPreferences();
         String sexString = sPreferences.getString(Constants.USER_INFO_GENDER, "m");
-        if (sexString.equalsIgnoreCase("m")) {
-            return true;
-        } else {
-            return false;
-        }
+        return sexString.equalsIgnoreCase("m");
     }
 
     public static float userWeight() {
@@ -417,10 +413,7 @@ public class Util {
     }
 
     public static boolean isEmpty(String str) {
-        if (str == null || str.isEmpty() || str.equals("null") || str.equals("")) {
-            return true;
-        }
-        return false;
+        return str == null || str.isEmpty() || str.equals("null") || str.equals("");
     }
 
     /**
@@ -564,11 +557,7 @@ public class Util {
 
     public static boolean hasSdcard() {
         String status = Environment.getExternalStorageState();
-        if (status.equals(Environment.MEDIA_MOUNTED)) {
-            return true;
-        } else {
-            return false;
-        }
+        return status.equals(Environment.MEDIA_MOUNTED);
     }
 
     private static String version = null;
@@ -598,11 +587,8 @@ public class Util {
         boolean hasMenuKey = ViewConfiguration.get(activity).hasPermanentMenuKey();
         boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
 
-        if (!hasMenuKey && !hasBackKey) {
-            return true;
-        }
+        return !hasMenuKey && !hasBackKey;
 
-        return false;
     }
 
     /**

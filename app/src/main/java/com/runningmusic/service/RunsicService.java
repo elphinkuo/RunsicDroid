@@ -228,12 +228,18 @@ public class RunsicService extends Service implements SensorEventListener, Obser
         // 创建用户
 //		createUser();
         // 初始化c++服务
-        ServiceLauncher.launch(Util.context());
-        ActivityManagerWrapper.checkStatsOnStart();
-        MobclickAgent.openActivityDurationTrack(false);
+
+        /**
+         * RSBG
+         */
+//        ServiceLauncher.launch(Util.context());
+//        ActivityManagerWrapper.checkStatsOnStart();
+//        MobclickAgent.openActivityDurationTrack(false);
+
+
 //        MobclickAgent.updateOnlineConfig(Util.context());
         // 开启运动跟踪
-        startMotionTrack();
+//        startMotionTrack();
         // 开启位置跟踪
 //		startLocationTrack();
 //		int userid = Util.userId();

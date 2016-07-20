@@ -211,7 +211,7 @@ ADDED from /Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/AndroidMa
 		ADDED from /Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/AndroidManifest.xml:80:13-72
 	android:name
 		ADDED from /Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/AndroidManifest.xml:79:13-65
-activity#com.runningmusic.wxapi.WXEntryActivity
+activity#com.runningmusic.runninspire.wxapi.WXEntryActivity
 ADDED from /Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/AndroidManifest.xml:81:9-86:75
 	android:screenOrientation
 		ADDED from /Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/AndroidManifest.xml:85:13-49
@@ -222,7 +222,7 @@ ADDED from /Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/AndroidMa
 	android:exported
 		ADDED from /Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/AndroidManifest.xml:84:13-36
 	android:name
-		ADDED from /Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/AndroidManifest.xml:82:13-66
+		ADDED from /Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/AndroidManifest.xml:82:13-78
 activity#com.runningmusic.runninspire.FuckingActivity
 ADDED from /Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/AndroidManifest.xml:87:9-53
 	android:name

@@ -17,15 +17,8 @@ public class CPUSleepyDetector implements AccLooper {
 			lastEventTime_ = System.currentTimeMillis();
 			isCPUOFF_ = false;
 		}
-		
-		if(System.currentTimeMillis() - lastEventTime_ > 1000)
-		{
-			isCPUOFF_ = true;
-		}
-		else
-		{
-			isCPUOFF_ = false;
-		}
+
+		isCPUOFF_ = System.currentTimeMillis() - lastEventTime_ > 1000;
 		
 		lastEventTime_ = System.currentTimeMillis();
 	}

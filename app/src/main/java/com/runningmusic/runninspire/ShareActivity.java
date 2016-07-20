@@ -134,7 +134,7 @@ public class ShareActivity extends BaseShareActivity implements View.OnClickList
                     if (isImmediate && imageContainer.getBitmap() == null) return;
                     roundImageView.setImageBitmap(imageContainer.getBitmap());
 
-                    palette.generateAsync(imageContainer.getBitmap(), new Palette.PaletteAsyncListener() {
+                    Palette.generateAsync(imageContainer.getBitmap(), new Palette.PaletteAsyncListener() {
                         @Override
                         public void onGenerated(Palette palette) {
                             Palette.Swatch vibrant = palette.getDarkMutedSwatch();

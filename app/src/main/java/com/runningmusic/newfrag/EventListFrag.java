@@ -94,7 +94,7 @@ public class EventListFrag extends Fragment implements EventItemClickListener{
 
     @Override
     public void onStop() {
-        super.onStop();;
+        super.onStop();
         EventBus.getDefault().unregister(this);
     }
 

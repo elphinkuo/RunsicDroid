@@ -144,10 +144,6 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/start_btn_2.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/start_bg.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/start_bg.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/login_weixin.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/login_weixin.png"
     },

@@ -130,7 +130,6 @@ public class StaticMusicPlayFragment extends Fragment implements Observer, View.
                     View v = recyclerView.getChildAt(j);
                     //往左 从 padding 到 -(v.getWidth()-padding) 的过程中，由大到小
                     float rate = 0;
-                    ;
                     if (v.getLeft() <= padding) {
                         if (v.getLeft() >= padding - v.getWidth()) {
                             rate = (padding - v.getLeft()) * 1f / v.getWidth();
@@ -227,7 +226,6 @@ public class StaticMusicPlayFragment extends Fragment implements Observer, View.
                         protected Bitmap doInBackground(String... params) {
 
 //                            imageContainer.getBitmap().compress(0, 20, )
-                            ;
                             return Blur.fastblur(context, ThumbnailUtils.extractThumbnail(imageContainer.getBitmap(), 150, 250), 80);
                         }
 
@@ -422,7 +420,7 @@ public class StaticMusicPlayFragment extends Fragment implements Observer, View.
     }
 
     public interface OnStaticMusicPlayFragmentClose {
-        public void onStaticMusicPlayFragmentClose();
+        void onStaticMusicPlayFragmentClose();
     }
 
 }

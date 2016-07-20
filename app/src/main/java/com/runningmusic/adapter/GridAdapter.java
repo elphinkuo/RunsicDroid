@@ -43,7 +43,7 @@ public class GridAdapter extends RecyclerView.Adapter<PGCMusicViewHolder> {
         view = inflater.inflate(itemLayoutRes, parent, false);
 
 
-        return new PGCMusicViewHolder(view, this.itemClickListener);
+        return new PGCMusicViewHolder(view, itemClickListener);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class GridAdapter extends RecyclerView.Adapter<PGCMusicViewHolder> {
     }
 
     public void setOnItemClickListener(PGCItemClickListener listener) {
-        this.itemClickListener = listener;
+        itemClickListener = listener;
     }
 
 

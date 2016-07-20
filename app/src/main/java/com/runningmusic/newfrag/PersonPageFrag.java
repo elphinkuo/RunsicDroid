@@ -21,11 +21,20 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.androidquery.AQuery;
-import com.facebook.AppEventsConstants;
+//import com.facebook.AppEventsConstants;
+import com.runningmusic.event.UserInfoEvent;
+import com.runningmusic.network.service.ImageSingleton;
+import com.runningmusic.network.service.NetworkChangeReceiver;
 import com.runningmusic.runninspire.R;
 import com.runningmusic.utils.Log;
 import com.runningmusic.utils.Util;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,10 +47,15 @@ public class PersonPageFrag extends Fragment {
     private AppBarLayout appBarLayout;
     private CoordinatorLayout.LayoutParams appBarLayoutParams;
 
+    private ImageLoader imageLoader;
+    private NetworkImageView portraitImage;
+
     private AQuery aQuery;
 
     private AppCompatActivity context;
+
     public PersonPageFrag() {
+
         // Required empty public constructor
     }
 
@@ -50,27 +64,32 @@ public class PersonPageFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        context = (AppCompatActivity)this.getActivity();
-
+        context = (AppCompatActivity) this.getActivity();
 
 
         View fragmentView = inflater.inflate(R.layout.fragment_person_page2, container, false);
         collapsingToolbarLayout = (CollapsingToolbarLayout) fragmentView.findViewById(R.id.ad_collapsing_toolbar);
         toolbar = (Toolbar) fragmentView.findViewById(R.id.ad_tool_bar);
         appBarLayout = (AppBarLayout) fragmentView.findViewById(R.id.ad_app_bar);
-
+        imageLoader = ImageSingleton.getInstance(context).getImageLoader();
+        portraitImage = (NetworkImageView) fragmentView.findViewById(R.id.portrait);
 //        appBarLayoutParams = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
 //        int height = appBarLayoutParams.height;
 //        height += Util.getStatusBarHeight(context);
 //        appBarLayoutParams.height = height;
 //        appBarLayout.setLayoutParams(appBarLayoutParams);
 
-        appBarLayout.setMinimumHeight(appBarLayout.getHeight()+Util.getStatusBarHeight(context));
+        appBarLayout.setMinimumHeight(appBarLayout.getHeight() + Util.getStatusBarHeight(context));
         aQuery = new AQuery(fragmentView);
 
         collapsingToolbarLayout.setTitle("奔跑吧音乐");
         toolbar.setCollapsible(true);
 
+        if (getArguments() != null) {
+            portraitImage.setImageUrl(getArguments().getString("headimgurl"), imageLoader);
+            aQuery.id(R.id.person_header_name).text(getArguments().getString("nickname"));
+            aQuery.id(R.id.person_header_id).text(getArguments().getString("city"));
+        }
 
         collapsingToolbarLayout.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
             @Override
@@ -101,7 +120,7 @@ public class PersonPageFrag extends Fragment {
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 Log.e(TAG, "appBarLayout " + verticalOffset);
 
-                if ( (verticalOffset+240)<0) {
+                if ((verticalOffset + 240) < 0) {
                     aQuery.id(R.id.add_tool_bar_title).visible();
                 } else {
                     aQuery.id(R.id.add_tool_bar_title).invisible();
@@ -124,4 +143,21 @@ public class PersonPageFrag extends Fragment {
         return fragmentView;
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onUserInfoEvent(UserInfoEvent userInfoEvent) {
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
 }

@@ -41,7 +41,7 @@
                     android:background="@mipmap/weather_bg"
                     android:fitsSystemWindows="true" />
 
-                <ImageView
+                <com.android.volley.toolbox.NetworkImageView
                     android:id="@+id/portrait"
                     android:layout_width="60dp"
                     android:layout_height="60dp"

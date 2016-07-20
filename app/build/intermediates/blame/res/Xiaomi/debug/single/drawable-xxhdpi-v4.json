@@ -56,12 +56,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xxhdpi-v4/abc_list_divider_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xxhdpi-v4/tabicon_user_unsel.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable-xxhdpi/tabicon_user_unsel.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xxhdpi-v4/tabicon_user_unsel.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable-xxhdpi/tabicon_user_unsel.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png",

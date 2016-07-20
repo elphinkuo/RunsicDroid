@@ -13,7 +13,7 @@ import android.hardware.SensorManager;
 
 public class CompatibilityDetector implements SensorEventListener {
 	public interface DetectCompletedCallBack {
-		public void onCompleted(int status);
+		void onCompleted(int status);
 	}
 
 	public static final int STATUS_NORMAL = 3, STATUS_OPTIMIZED = 2, STATUS_LOW = 1, STATUS_FROZEN = 0;

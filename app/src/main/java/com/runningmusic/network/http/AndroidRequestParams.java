@@ -7,7 +7,7 @@ public class AndroidRequestParams extends RequestParams{
 	public String getString(String key) {
 		String value = null;
 		//value = getParamsList();
-		value = (String) urlParams.get(key);
+		value = urlParams.get(key);
 		return value;
 	}
 	

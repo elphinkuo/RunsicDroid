@@ -3,7 +3,7 @@ package com.runningmusic.network.http;
 
 public class HttpReqResult {
 	
-	public static enum ResultType {
+	public enum ResultType {
 		SUCCESS, FAILED
 	}
 	

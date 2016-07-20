@@ -37,7 +37,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder>{
     public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         view = inflater.inflate(itemLayoutRes, parent, false);
-        return new EventViewHolder(view, this.itemClickListener);
+        return new EventViewHolder(view, itemClickListener);
     }
 
     @Override
@@ -61,6 +61,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder>{
     }
 
     public void setOnItemClickListener(EventItemClickListener listener) {
-        this.itemClickListener = listener;
+        itemClickListener = listener;
     }
 }

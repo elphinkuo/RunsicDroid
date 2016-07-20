@@ -339,7 +339,7 @@ public class RunsicRestClientUsage {
     }
 
     private enum TypeInfo {
-        Tencent, Sinaweibo, Wandoujia;
+        Tencent, Sinaweibo, Wandoujia
     }
 
 

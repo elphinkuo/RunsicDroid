@@ -26,7 +26,6 @@ public class NetStatus {
 	/**
 	 * 返回当前网络状态
 	 * 
-	 * @param context
 	 * @return
 	 */
 	public static int getNetState() {
@@ -84,7 +83,6 @@ public class NetStatus {
 	/**
 	 * 判断当前网络是否是3G网络
 	 * 
-	 * @param context
 	 * @return boolean
 	 */
 	public static boolean is3G() {
@@ -92,17 +90,13 @@ public class NetStatus {
 		ConnectivityManager connectivityManager = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-		if (activeNetInfo != null
-				&& activeNetInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-			return true;
-		}
-		return false;
+		return activeNetInfo != null
+				&& activeNetInfo.getType() == ConnectivityManager.TYPE_MOBILE;
 	}
 
 	/**
 	 * 判断当前网络是否是wifi网络
 	 * 
-	 * @param context
 	 * @return boolean
 	 */
 	public static boolean isWifi() {
@@ -110,17 +104,13 @@ public class NetStatus {
 		ConnectivityManager connectivityManager = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-		if (activeNetInfo != null
-				&& activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI) {
-			return true;
-		}
-		return false;
+		return activeNetInfo != null
+				&& activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI;
 	}
 
 	/**
 	 * 判断当前网络是否是2G网络
 	 * 
-	 * @param context
 	 * @return boolean
 	 */
 	public static boolean is2G() {
@@ -128,13 +118,10 @@ public class NetStatus {
 		ConnectivityManager connectivityManager = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-		if (activeNetInfo != null
+		return activeNetInfo != null
 				&& (activeNetInfo.getSubtype() == TelephonyManager.NETWORK_TYPE_EDGE
-						|| activeNetInfo.getSubtype() == TelephonyManager.NETWORK_TYPE_GPRS || activeNetInfo
-						.getSubtype() == TelephonyManager.NETWORK_TYPE_CDMA)) {
-			return true;
-		}
-		return false;
+				|| activeNetInfo.getSubtype() == TelephonyManager.NETWORK_TYPE_GPRS || activeNetInfo
+				.getSubtype() == TelephonyManager.NETWORK_TYPE_CDMA);
 	}
 
 	/**
@@ -177,7 +164,6 @@ public class NetStatus {
 
 	/**
 	 * 获取本机串号imei
-	 * @param context
 	 * @return
 	 */
 	public static String getIMEI() {

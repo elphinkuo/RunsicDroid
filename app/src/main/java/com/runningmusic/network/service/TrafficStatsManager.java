@@ -13,8 +13,10 @@ import android.os.Process;
 public class TrafficStatsManager {
     public static final String TAG = "TrafficStatsManager";
     public static String TRAFFIC_DAILYSTATS_ACTION = "cn.ledongli.ldl.broadcast.traffic";
-    enum WifiState {unknown, connected, disconnected};
-    enum TrafficType {mobileForeground, mobileBackground, wifiForeground, wifiBackground};
+    enum WifiState {unknown, connected, disconnected}
+
+    enum TrafficType {mobileForeground, mobileBackground, wifiForeground, wifiBackground}
+
     final static int TYPE_NONE = -1;
     private WifiState lastWifiState_ = WifiState.unknown;
     private static int lastNetworkType_;

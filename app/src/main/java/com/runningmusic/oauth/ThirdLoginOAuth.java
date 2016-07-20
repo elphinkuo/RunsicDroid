@@ -83,6 +83,7 @@ public class ThirdLoginOAuth {
 
     private void doOauthVerify(Context context, final SHARE_MEDIA media, final SucceedAndFailedHandler sh) {
 
+        Log.e("doOauthVerify", "context is " + context + " media is " + media + " sh is " + sh);
         controller_.doOauthVerify(context, media, new SocializeListeners.UMAuthListener() {
 
             @Override
@@ -112,10 +113,12 @@ public class ThirdLoginOAuth {
      */
     public void loginWechat(final Context context, final SucceedAndFailedHandler sh) {
         Log.e("LoginWechat", "conext is " + context);
-        IWXAPI wxAPI= WXAPIFactory.createWXAPI(context, null);
-        wxAPI.registerApp("wx1360512d25eaad2e");
-        final SendAuth.Req req = new SendAuth.Req();
-        wxAPI.sendReq(req);
+//        final IWXAPI wxAPI= WXAPIFactory.createWXAPI(context, null);
+//        wxAPI.registerApp("wx1360512d25eaad2e");
+//        final SendAuth.Req req = new SendAuth.Req();
+//        wxAPI.sendReq(req);
+        controller_.getConfig().setSsoHandler(new UMWXHandler(context, "wx1360512d25eaad2e", "00a1cb7f140aafc2fd4933b765247ec0"));
+        doOauthVerify(context, SHARE_MEDIA.WEIXIN, sh);
     }
 
     /**
@@ -306,6 +309,10 @@ public class ThirdLoginOAuth {
 
     public long getQQAccessTokenExpireTime(Context context) {
         return OauthHelper.getTokenExpiresIn(context, SHARE_MEDIA.QZONE);
+    }
+
+    public void getWechatUserInfo(Context context, final SucceedAndFailedHandler sh) {
+        getUserInfoFromShareMedia(context, SHARE_MEDIA.WEIXIN, sh);
     }
 
     public void getSinaWeiboUserInfo(Context context, final SucceedAndFailedHandler sh) {
