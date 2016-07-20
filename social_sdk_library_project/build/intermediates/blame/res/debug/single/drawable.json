@@ -64,12 +64,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_yixin_circle_gray.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/debug/drawable/umeng_socialize_laiwang_dynamic_gray.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_laiwang_dynamic_gray.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/debug/drawable/umeng_socialize_wechat_gray.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_wechat_gray.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/debug/drawable/umeng_socialize_laiwang_dynamic_gray.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_laiwang_dynamic_gray.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/debug/drawable/umeng_socialize_laiwang_gray.png",
@@ -344,12 +344,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_follow_check.xml"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/debug/drawable/umeng_socialize_yixin_gray.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_yixin_gray.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/debug/drawable/umeng_socialize_divider_line.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_divider_line.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/debug/drawable/umeng_socialize_yixin_gray.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_yixin_gray.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/debug/drawable/shake_umeng_socialize_close_pressed.png",

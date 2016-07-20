@@ -184,16 +184,16 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_laiwang.png"
     },
     {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/release/drawable/umeng_socialize_instagram_off.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_instagram_off.png"
+    },
+    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/release/drawable/umeng_socialize_action_back_selected.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_action_back_selected.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/release/drawable/umeng_socialize_comment_icon.xml",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_comment_icon.xml"
-    },
-    {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/release/drawable/umeng_socialize_instagram_off.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_instagram_off.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/release/drawable/umeng_socialize_action_personal_icon.xml",
@@ -240,12 +240,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_shape_solid_black.xml"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/release/drawable/umeng_socialize_action_share_icon.xml",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_action_share_icon.xml"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/release/drawable/shake_umeng_socialize_imgview_border.xml",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/shake_umeng_socialize_imgview_border.xml"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/release/drawable/umeng_socialize_action_share_icon.xml",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/src/main/res/drawable/umeng_socialize_action_share_icon.xml"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/social_sdk_library_project/build/intermediates/res/merged/release/drawable/umeng_socialize_action_like.png",
