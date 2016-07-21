@@ -17,11 +17,7 @@ import android.view.WindowManager;
 import com.runningmusic.music.Music;
 import com.runningmusic.videocache.file.FileNameGenerator;
 import com.runningmusic.videocache.file.Md5FileNameGenerator;
-import com.runningmusiclib.cppwrapper.DailyStats;
-import com.runningmusiclib.cppwrapper.ServiceLauncher;
-import com.runningmusiclib.cppwrapper.TimeSlot;
-import com.runningmusiclib.cppwrapper.TimeSlotsManagerWrapper;
-import com.runningmusiclib.cppwrapper.utils.Date;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,6 +27,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
 
 //import com.runningmusic.MainFragmentActivity;
 //import com.runningmusic.oauth.ThirdLoginOAuth;
@@ -48,35 +45,35 @@ public class Util {
 
 
 
-    @SuppressLint("SimpleDateFormat")
-    public static String dateFormat(Date date, String format) {
-        if (format == null) {
-            format = "yyyy-MM-dd HH:mm:ss";
-        }
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
-        String string = simpleDateFormat.format(calendar.getTime());
-
-        return string;
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    public static String dateFormat(java.util.Date date, String format) {
-        if (format == null) {
-            format = "yyyy-MM-dd HH:mm:ss";
-        }
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
-        String string = simpleDateFormat.format(calendar.getTime());
-
-        return string;
-    }
+//    @SuppressLint("SimpleDateFormat")
+//    public static String dateFormat(Date date, String format) {
+//        if (format == null) {
+//            format = "yyyy-MM-dd HH:mm:ss";
+//        }
+//
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(date);
+//
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+//        String string = simpleDateFormat.format(calendar.getTime());
+//
+//        return string;
+//    }
+//
+//    @SuppressLint("SimpleDateFormat")
+//    public static String dateFormat(java.util.Date date, String format) {
+//        if (format == null) {
+//            format = "yyyy-MM-dd HH:mm:ss";
+//        }
+//
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(date);
+//
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+//        String string = simpleDateFormat.format(calendar.getTime());
+//
+//        return string;
+//    }
 
     // public static Date SecondToDate(double second) {
     // return new Date((long) (second * 1000));
@@ -92,14 +89,14 @@ public class Util {
      *
      * @return
      */
-    public static long getSetupTime() {
-        TimeSlot timeSlot = TimeSlotsManagerWrapper.firstTimeSlot(Util.context());
-        if (timeSlot == null) {
-            Log.e(TAG, "timeSlot is NULL!");
-            return Date.now().startOfCurrentDay().getTime();
-        }
-        return timeSlot.getStartTime().startOfCurrentDay().getTime();
-    }
+//    public static long getSetupTime() {
+//        TimeSlot timeSlot = TimeSlotsManagerWrapper.firstTimeSlot(Util.context());
+//        if (timeSlot == null) {
+//            Log.e(TAG, "timeSlot is NULL!");
+//            return Date.now().startOfCurrentDay().getTime();
+//        }
+//        return timeSlot.getStartTime().startOfCurrentDay().getTime();
+//    }
 
     public static boolean saveUserPreferences(String[] args) {
         SharedPreferences sPreferences = context().getSharedPreferences("XIAOBAI_SP", 0);
@@ -238,61 +235,61 @@ public class Util {
         return style == 1;
     }
 
-    public static int getDayCount() {
-        long setupTimeLong = Util.getSetupTime();
-        long nowTimeLong = System.currentTimeMillis();
+//    public static int getDayCount() {
+//        long setupTimeLong = Util.getSetupTime();
+//        long nowTimeLong = System.currentTimeMillis();
+//
+//        long timeDiff = nowTimeLong - setupTimeLong;
+//
+//        int dayCount = (int) Math.ceil(((double) (timeDiff)) / (24 * 60 * 60 * 1000));
+//
+//        // 防止dayCount为0
+//        if (timeDiff <= 0 || dayCount == 0) {
+//            dayCount = 1;
+//        }
+//        return dayCount;
+//    }
 
-        long timeDiff = nowTimeLong - setupTimeLong;
+//    public static void saveUserInfo() {
+//        SharedPreferences sPreferences = Util.getUserPreferences();
+//        int steps = sPreferences.getInt(Constants.USER_GOAL_STEPS, 10000);
+//        int calories = sPreferences.getInt(Constants.USER_GOAL_CALORIES, 300);
+//        String sexString = sPreferences.getString(Constants.USER_INFO_GENDER, "f");
+//        float weight = sPreferences.getFloat(Constants.USER_INFO_WEIGHT, 70);
+//        float height = sPreferences.getFloat(Constants.USER_INFO_HEIGHT, 1.72f);
+//        float birthday = sPreferences.getFloat(Constants.USER_INFO_BIRTHDAY, 1980);
+//        boolean gender = true;
+//        if (sexString.equals("f")) {
+//            gender = false;
+//        }
+//
+//        ServiceLauncher.saveProfile(gender, (int) birthday, (int) (height * 100), weight);
+//        ServiceLauncher.saveGoal(calories, steps);
+//    }
 
-        int dayCount = (int) Math.ceil(((double) (timeDiff)) / (24 * 60 * 60 * 1000));
+//    public static int getGoalSteps() {
+//        return getGoalSteps(null);
+//    }
 
-        // 防止dayCount为0
-        if (timeDiff <= 0 || dayCount == 0) {
-            dayCount = 1;
-        }
-        return dayCount;
-    }
+//    public static int getGoalSteps(DailyStats dailyStats) {
+//        int goalSteps = getUserPreferences().getInt(Constants.USER_GOAL_STEPS, 200);
+//        if (dailyStats != null) {
+//            goalSteps = dailyStats.getGoalSteps();
+//        }
+//        return goalSteps;
+//    }
 
-    public static void saveUserInfo() {
-        SharedPreferences sPreferences = Util.getUserPreferences();
-        int steps = sPreferences.getInt(Constants.USER_GOAL_STEPS, 10000);
-        int calories = sPreferences.getInt(Constants.USER_GOAL_CALORIES, 300);
-        String sexString = sPreferences.getString(Constants.USER_INFO_GENDER, "f");
-        float weight = sPreferences.getFloat(Constants.USER_INFO_WEIGHT, 70);
-        float height = sPreferences.getFloat(Constants.USER_INFO_HEIGHT, 1.72f);
-        float birthday = sPreferences.getFloat(Constants.USER_INFO_BIRTHDAY, 1980);
-        boolean gender = true;
-        if (sexString.equals("f")) {
-            gender = false;
-        }
+//    public static int getGoalCalories() {
+//        return getGoalCalories(null);
+//    }
 
-        ServiceLauncher.saveProfile(gender, (int) birthday, (int) (height * 100), weight);
-        ServiceLauncher.saveGoal(calories, steps);
-    }
-
-    public static int getGoalSteps() {
-        return getGoalSteps(null);
-    }
-
-    public static int getGoalSteps(DailyStats dailyStats) {
-        int goalSteps = getUserPreferences().getInt(Constants.USER_GOAL_STEPS, 200);
-        if (dailyStats != null) {
-            goalSteps = dailyStats.getGoalSteps();
-        }
-        return goalSteps;
-    }
-
-    public static int getGoalCalories() {
-        return getGoalCalories(null);
-    }
-
-    public static int getGoalCalories(DailyStats dailyStats) {
-        int goalCalories = getUserPreferences().getInt(Constants.USER_GOAL_CALORIES, 200);
-        if (dailyStats != null) {
-            goalCalories = dailyStats.getGoalCalories();
-        }
-        return goalCalories;
-    }
+//    public static int getGoalCalories(DailyStats dailyStats) {
+//        int goalCalories = getUserPreferences().getInt(Constants.USER_GOAL_CALORIES, 200);
+//        if (dailyStats != null) {
+//            goalCalories = dailyStats.getGoalCalories();
+//        }
+//        return goalCalories;
+//    }
 
     public static void showMsg(String msgString) {
 

@@ -5,11 +5,14 @@ package com.runningmusic.event;
  */
 public class BPMEvent {
 
-    public final String message;
+    public int bpm;
+
+    public int step;
     
 
 
-    public BPMEvent(String message) {
-        this.message = message;
+    public BPMEvent(int stepInput, int bpmInput) {
+        this.step = stepInput;
+        this.bpm = bpmInput;
     }
 }

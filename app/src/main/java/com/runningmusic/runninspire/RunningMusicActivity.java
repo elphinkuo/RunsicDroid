@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -39,23 +40,34 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
+import com.amap.api.maps.LocationSource;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.androidquery.AQuery;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.runningmusic.adapter.GridAdapter;
 import com.runningmusic.db.Record;
 import com.runningmusic.db.RecordDB;
 import com.runningmusic.event.BPMEvent;
+import com.runningmusic.event.FavMusicListEvent;
+import com.runningmusic.event.LocationChangedEvent;
+import com.runningmusic.fragment.MoveMapFragment;
 import com.runningmusic.fragment.MusicList;
 import com.runningmusic.fragment.OnBackPressedListener;
 import com.runningmusic.fragment.StaticMusicPlayFragment;
+import com.runningmusic.jni.SportTracker;
 import com.runningmusic.music.Music;
 import com.runningmusic.music.MusicPlayCallback;
 import com.runningmusic.network.NetworkMode;
+import com.runningmusic.network.http.RunsicRestClientUsage;
 import com.runningmusic.network.service.ImageSingleton;
-import com.runningmusic.runninspire.jni.Runsic;
 import com.runningmusic.service.RunsicService;
 import com.runningmusic.service.StepMessage;
 import com.runningmusic.utils.Constants;
@@ -64,33 +76,31 @@ import com.runningmusic.utils.Util;
 import com.runningmusic.view.ArcProgress;
 import com.runningmusic.view.DonutProgress;
 import com.runningmusic.view.PulseView;
-import com.runningmusiclib.cppwrapper.Activity;
-import com.runningmusiclib.cppwrapper.ActivityManagerWrapper;
-import com.runningmusiclib.cppwrapper.ActivityType;
-import com.runningmusiclib.cppwrapper.DailyStats;
-import com.runningmusiclib.cppwrapper.ServiceLauncher;
 import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class RunningMusicActivity extends FragmentActivity implements SensorEventListener, View.OnClickListener, View.OnTouchListener, Observer, MusicList.onMusicListCloseListener, StaticMusicPlayFragment.OnStaticMusicPlayFragmentClose {
+public class RunningMusicActivity extends FragmentActivity implements SensorEventListener, AMapLocationListener, View.OnClickListener, View.OnTouchListener, Observer, MusicList.onMusicListCloseListener, StaticMusicPlayFragment.OnStaticMusicPlayFragmentClose {
 
     public String TAG = RunningMusicActivity.class.getName();
 
-    protected Runsic runsic = new Runsic();
     protected int musicBpm = 126;
     protected PulseView pulse;
 
+    private AMapLocationClient locationClient;
+    private AMapLocationClientOption mLocationOption;
+//    private OnLocationChangedListener mListener;
+    private AMapLocation lastLocation;
     private static final String ROTATION = "rotation";
     private boolean mIsListClose = true;
     private boolean mIsPlayStaticClose = true;
@@ -98,6 +108,9 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
     private boolean allowMobile = true;
     private static int currentTempo = 0;
     private static int songSum;
+    private static int CENTER_BPM=0;
+    private static int CENTER_PACE=1;
+    private int centerStatus=0;
 
     private NetworkMode networkMode;
     private MusicPlayCallback musicPlayCallback;
@@ -121,22 +134,21 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
     private TextView distance;
     private TextView distanceUnit;
     private float distanceValue;
-    private ImageView listCornerIcon;
+    private TextView listCornerIcon;
     private NetworkImageView currentMusicThumb;
     private ImageLoader imageLoader;
     private RelativeLayout musicControlMove;
     private RelativeLayout musicControlStatic;
     private RelativeLayout musicHeader;
-    private ArcProgress mMusicProgress;
     private Chronometer mRunTimer;
-    private Chronometer mMusicPlayTimer;
-    private Button stopButton;
 
-    private Activity manualActivity_;
     private static long lastRunPause;
     private static long lastMusicPause;
 
-    private DailyStats dailyStats;
+    private SensorManager sensorManager;
+    private Sensor accelerometerSensor;
+
+
 
 
     private Typeface highNumberTypeface;
@@ -159,14 +171,99 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
 
 
     //菜单按钮动画
-    private ObjectAnimator mMenuAnimation;
     private Timer timer;
     private Timer stopTimer;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.runnin_spire_layout);
+
+        EventBus.getDefault().register(this);
+
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
+        initLocation();
+        start();
+
+
+
+        aQuery_ = new AQuery(this);
+        context = this;
+        listCornerIcon = (TextView) findViewById(R.id.list_corner_icon);
+        distance = (TextView) findViewById(R.id.distance_data);
+        distanceUnit = (TextView) findViewById(R.id.distance_data_unit);
+        musicHeader = (RelativeLayout) findViewById(R.id.runninspire_header);
+        musicControlMove = (RelativeLayout) findViewById(R.id.music_control_panel_move);
+        currentMusicThumb = (NetworkImageView) findViewById(R.id.music_playing_cover_thumb);
+        imageLoader = ImageSingleton.getInstance(this).getImageLoader();
+        donutProgress = (DonutProgress) findViewById(R.id.donut_progress);
+
+        pulse = (PulseView) findViewById(R.id.pulse_view);
+//        pulse.setBpm(126);
+
+        mRunTimer = (Chronometer) findViewById(R.id.time_data);
+
+        fragmentManager = getSupportFragmentManager();
+
+        listCornerIcon.setOnClickListener(this);
+        musicControlMove.setOnClickListener(this);
+
+        recordDB = new RecordDB();
+
+        aQuery_.id(R.id.music_move_play_or_pause).clickable(true).clicked(this);
+        aQuery_.id(R.id.music_control_panel_static).clickable(true).clicked(this);
+        aQuery_.id(R.id.list_corner_right).clickable(true).clicked(this);
+        aQuery_.id(R.id.bpm_up).clickable(true).clicked(this);
+        aQuery_.id(R.id.bpm_down).clickable(true).clicked(this);
+        aQuery_.id(R.id.stop_button).clickable(true).clicked(this);
+        aQuery_.id(R.id.bubble_background).clickable(true).clicked(this);
+        aQuery_.id(R.id.music_like).clickable(true).clicked(this);
+//        stopButton = (Button) this.findViewById(R.id.stop_button);
+//        stopButton.setOnTouchListener(this);
+        highNumberTypeface = Typeface.createFromAsset(this.getAssets(), "fonts/tradegothicltstdbdcn20.ttf");
+        distance.setTypeface(highNumberTypeface);
+        distanceUnit.setTypeface(highNumberTypeface);
+        mRunTimer.setTypeface(highNumberTypeface);
+        aQuery_.id(R.id.pageview_circle_big_tv).typeface(highNumberTypeface);
+
+        lastRunPause = 0;
+        lastMusicPause = 0;
+
+//        Intent intent = this.getIntent();
+//        if (intent.hasExtra("fromStart")) {
+//            if (serviceConnection != null) {
+//                currentTempo = 140;
+//                playOnTempo(currentTempo);
+//            }
+//
+//        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            //系统通知栏透明
+            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            RelativeLayout.LayoutParams headerParams = (RelativeLayout.LayoutParams) musicHeader.getLayoutParams();
+            headerParams.setMargins(0, (int) Util.dp2px(this.getResources(), 24), 0, 0);
+//            musicHeader.setPadding(0,Util.getStatusBarHeight(this),0,0);
+            //系统底部透明
+//            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+        mHandler = new MyHandler();
+
+        mRunTimer.setBase(SystemClock.elapsedRealtime());
+        mRunTimer.start();
+//        ActivityManagerWrapper.startManualActivity(ActivityType.kActivityCommuteRunning);
+
+        networkMode = RunsicService.getInstance();
+        musicPlayCallback = RunsicService.getInstance();
+
+
+    }
+
 
     @Override
     public void update(Observable observable, Object data) {
@@ -176,7 +273,6 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         aQuery_.id(R.id.music_playing_artist).text(music.artist);
         aQuery_.id(R.id.music_control_current_bpm).text("" + music.tempo);
         currentMusicThumb.setImageUrl(music.coverURL, imageLoader);
-        mMusicProgress.setProgress(0);
         final float duration = music.duration;
 
         songSum += 1;
@@ -188,25 +284,11 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
             timer = new Timer();
         }
 
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mMusicProgress.setProgress(mMusicProgress.getProgress() + 100000 / duration);
-                        manualActivity_ = ActivityManagerWrapper.getCurrentManualActivity();
-                        distanceValue = ((float) manualActivity_.getStep()) / 1000;
-                        distance.setText(String.format("%.02f", distanceValue));
-                    }
-                });
-            }
-        }, 0, 1000);
+
 
         aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.stop);
 
-        mMusicPlayTimer.setBase(SystemClock.elapsedRealtime());
-        mMusicPlayTimer.start();
+
     }
 
     /**
@@ -268,7 +350,7 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     stopTimer.cancel();
                     Log.e(TAG, "" + SystemClock.currentThreadTimeMillis());
-                    if ((SystemClock.currentThreadTimeMillis()-stopTimeRecord) > 200) {
+                    if ((SystemClock.currentThreadTimeMillis() - stopTimeRecord) > 200) {
 
                     } else {
                         donutProgress.setProgress(0);
@@ -284,6 +366,62 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         }
         return false;
     }
+
+    @Override
+    public void onLocationChanged(AMapLocation location) {
+        Log.e(TAG, "location is " + location);
+        if (lastLocation == null || lastLocation.getLatitude() != location.getLatitude() || lastLocation.getLongitude() != location.getLongitude()) {
+            Toast.makeText(getApplicationContext(), String.format("%f, %f, %.0f",
+                    location.getLatitude(), location.getLongitude(), location.getAccuracy()), Toast.LENGTH_SHORT).show();
+
+
+            SportTracker.pushLocation(new Date().getTime(), location.getLatitude(), location.getLongitude(), location.getSpeed());
+            lastLocation = location;
+
+            SportTracker.getDistance();
+            SportTracker.getSpeed();
+
+            Log.e(TAG, "LOCATION CHANGE DISTANCE IS " + SportTracker.getDistance() + " SPEED IS " + SportTracker.getSpeed());
+            EventBus.getDefault().post(new LocationChangedEvent(SportTracker.getDistance(), SportTracker.getSpeed()));
+
+        }
+    }
+
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+//    @Override
+//    public void activate( OnLocationChangedListener onLocationChangedListener ) {
+//        mListener = onLocationChangedListener;
+//        if (locationClient == null) {
+//            locationClient = new AMapLocationClient(this);
+//            mLocationOption = new AMapLocationClientOption();
+//            //设置定位监听
+//            locationClient.setLocationListener(this);
+//            //设置为高精度定位模式
+//            mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+//            //设置定位参数
+//            locationClient.setLocationOption(mLocationOption);
+//            // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
+//            // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
+//            // 在定位结束后，在合适的生命周期调用onDestroy()方法
+//            // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
+//            locationClient.startLocation();
+//        }
+//    }
+//
+//    @Override
+//    public void deactivate() {
+//        mListener = null;
+//        if (locationClient != null) {
+//            locationClient.stopLocation();
+//            locationClient.onDestroy();
+//        }
+//        locationClient = null;
+//    }
 
 //    @Override
 //    public boolean onLongClick(View v) {
@@ -388,102 +526,7 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         }
     };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.runnin_spire_layout);
 
-        EventBus.getDefault().register(this);
-        SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        Sensor accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
-
-        aQuery_ = new AQuery(this);
-        context = this;
-        listCornerIcon = (ImageView) findViewById(R.id.list_corner_icon);
-        distance = (TextView) findViewById(R.id.distance_data);
-        distanceUnit = (TextView) findViewById(R.id.distance_data_unit);
-        musicHeader = (RelativeLayout) findViewById(R.id.runninspire_header);
-        musicControlMove = (RelativeLayout) findViewById(R.id.music_control_panel_move);
-        mMusicProgress = (ArcProgress) findViewById(R.id.music_progress_move);
-        currentMusicThumb = (NetworkImageView) findViewById(R.id.music_playing_cover_thumb);
-        imageLoader = ImageSingleton.getInstance(this).getImageLoader();
-        donutProgress = (DonutProgress) findViewById(R.id.donut_progress);
-
-        pulse = (PulseView) findViewById(R.id.pulse_view);
-        pulse.setBpm(126);
-
-        mRunTimer = (Chronometer) findViewById(R.id.time_data);
-        mMusicPlayTimer = (Chronometer) findViewById(R.id.music_playing_duration);
-
-        fragmentManager = getSupportFragmentManager();
-
-        listCornerIcon.setOnClickListener(this);
-        musicControlMove.setOnClickListener(this);
-
-        recordDB = new RecordDB();
-
-        aQuery_.id(R.id.music_move_play_or_pause).clickable(true).clicked(this);
-        aQuery_.id(R.id.music_control_panel_static).clickable(true).clicked(this);
-        aQuery_.id(R.id.list_corner_right).clickable(true).clicked(this);
-        aQuery_.id(R.id.bpm_up).clickable(true).clicked(this);
-        aQuery_.id(R.id.bpm_down).clickable(true).clicked(this);
-        aQuery_.id(R.id.stop_button).clickable(true).clicked(this);
-        aQuery_.id(R.id.bubble_background).clickable(true).clicked(this);
-//        stopButton = (Button) this.findViewById(R.id.stop_button);
-//        stopButton.setOnTouchListener(this);
-        highNumberTypeface = Typeface.createFromAsset(this.getAssets(), "fonts/tradegothicltstdbdcn20.ttf");
-        distance.setTypeface(highNumberTypeface);
-        distanceUnit.setTypeface(highNumberTypeface);
-        mRunTimer.setTypeface(highNumberTypeface);
-        aQuery_.id(R.id.pageview_circle_big_tv).typeface(highNumberTypeface);
-
-        lastRunPause = 0;
-        lastMusicPause = 0;
-
-//        Intent intent = this.getIntent();
-//        if (intent.hasExtra("fromStart")) {
-//            if (serviceConnection != null) {
-//                currentTempo = 140;
-//                playOnTempo(currentTempo);
-//            }
-//
-//        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getWindow();
-            //系统通知栏透明
-            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-            RelativeLayout.LayoutParams headerParams = (RelativeLayout.LayoutParams) musicHeader.getLayoutParams();
-            headerParams.setMargins(0, (int) Util.dp2px(this.getResources(), 24), 0, 0);
-//            musicHeader.setPadding(0,Util.getStatusBarHeight(this),0,0);
-            //系统底部透明
-//            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
-        mHandler = new MyHandler();
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mMusicProgress.setProgress(mMusicProgress.getProgress() + 1);
-                    }
-                });
-            }
-        }, 1000, 1000);
-        mRunTimer.setBase(SystemClock.elapsedRealtime());
-        mRunTimer.start();
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-        ActivityManagerWrapper.startManualActivity(ActivityType.kActivityCommuteRunning);
-
-        networkMode = RunsicService.getInstance();
-        musicPlayCallback = RunsicService.getInstance();
-
-
-    }
 
 
     @Override
@@ -494,7 +537,6 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         }
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
         bindService(new Intent(this, RunsicService.class), serviceConnection, Context.BIND_AUTO_CREATE);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -508,7 +550,6 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
                 // TODO: Make sure this auto-generated app deep link URI is correct.
                 Uri.parse("android-app://com.runningmusic.runninspire/http/host/path")
         );
-        AppIndex.AppIndexApi.start(client, viewAction);
     }
 
     @Override
@@ -544,14 +585,14 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         registerReceiver(runningReceiver, intentFilter);
         if (Util.DEBUG) {
             Log.i(TAG, "APP onResume");
-            manualActivity_ = ActivityManagerWrapper.getCurrentManualActivity();
-            Log.i(TAG, "acttivity start time is " + manualActivity_.getStartTime() + "----------" + manualActivity_.getStartLong());
-            Log.e(TAG, "distance is " + manualActivity_.getDistance());
+//            manualActivity_ = ActivityManagerWrapper.getCurrentManualActivity();
+//            Log.i(TAG, "acttivity start time is " + manualActivity_.getStartTime() + "----------" + manualActivity_.getStartLong());
+//            Log.e(TAG, "distance is " + manualActivity_.getDistance());
             Log.e(TAG, "on Resume lastRunPause is " + lastRunPause);
         }
 
 //        if (lastRunPause == 0) {
-        manualActivity_ = ActivityManagerWrapper.getCurrentManualActivity();
+//        manualActivity_ = ActivityManagerWrapper.getCurrentManualActivity();
 
 //        mRunTimer.setBase(SystemClock.elapsedRealtime() + (long)manualActivity_.getDuration());
 //        } else {
@@ -566,6 +607,7 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         } else {
             aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.play);
         }
+
 
     }
 
@@ -597,7 +639,6 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
                 // TODO: Make sure this auto-generated app deep link URI is correct.
                 Uri.parse("android-app://com.runningmusic.runninspire/http/host/path")
         );
-        AppIndex.AppIndexApi.end(client, viewAction);
         if (Util.DEBUG) {
             Log.i(TAG, "ON STOP");
         }
@@ -613,7 +654,6 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         RunsicService.getInstance().deleteCurrentMusicObserver(this);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.disconnect();
     }
 
 //    public void updateStepNotification(StepMessage sm) {
@@ -702,25 +742,28 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
     public void onListOpen() {
 
         //Header 按钮动画
-        mMenuAnimation = ObjectAnimator.ofFloat(listCornerIcon, ROTATION, mIsListClose ? 0 : 90, mIsListClose ? 90 : 0);
         mIsListClose = false;
-        mMenuAnimation.setDuration(300);
-        mMenuAnimation.setInterpolator(new DecelerateInterpolator());
-        mMenuAnimation.start();
 
         // 打开MuiscList Fragment
-        Fragment listFragment = new MusicList();
-        musicListFragmentID = listFragment.getId();
+//        Fragment listFragment = new MusicList();
+//        musicListFragmentID = listFragment.getId();
+//        FragmentTransaction transactionTop = fragmentManager.beginTransaction();
+//        transactionTop.setCustomAnimations(R.anim.slidein_fromtop, R.anim.slideout_fromtop, R.anim.slidein_fromtop, R.anim.slideout_fromtop);
+//        transactionTop.add(R.id.fragment_container_top, listFragment);
+//        transactionTop.addToBackStack("MusicList");
+//        transactionTop.commit();
+
+        Fragment mapFragment = new MoveMapFragment();
+        musicListFragmentID = mapFragment.getId();
         FragmentTransaction transactionTop = fragmentManager.beginTransaction();
         transactionTop.setCustomAnimations(R.anim.slidein_fromtop, R.anim.slideout_fromtop, R.anim.slidein_fromtop, R.anim.slideout_fromtop);
-        transactionTop.add(R.id.fragment_container_top, listFragment);
+        transactionTop.add(R.id.fragment_container_top, mapFragment);
         transactionTop.addToBackStack("MusicList");
         transactionTop.commit();
 
 
         //底部进度条与控制栏隐藏
         musicControlMove.setVisibility(View.INVISIBLE);
-        mMusicProgress.setVisibility(View.INVISIBLE);
 
         aQuery_.id(R.id.list_corner_right).invisible();
 
@@ -729,11 +772,7 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
     public void onListClose() {
 
         //Header 按钮动画
-        mMenuAnimation = ObjectAnimator.ofFloat(listCornerIcon, ROTATION, mIsListClose ? 0 : 90, mIsListClose ? 90 : 0);
         mIsListClose = true;
-        mMenuAnimation.setDuration(300);
-        mMenuAnimation.setInterpolator(new DecelerateInterpolator());
-        mMenuAnimation.start();
 
         //关闭MusicList Fragment
         fragmentManager.popBackStack();
@@ -741,7 +780,6 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         //底部进度条与控制栏显示
 
         musicControlMove.setVisibility(View.VISIBLE);
-        mMusicProgress.setVisibility(View.VISIBLE);
 
         aQuery_.id(R.id.list_corner_right).visible();
 
@@ -806,7 +844,13 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
             Log.i(TAG, "" + v.getId());
         }
         switch (v.getId()) {
-            case R.id.list_corner_icon:
+            case R.id.music_like:
+                SharedPreferences sharedPreferences = Util.getUserPreferences();
+                if (sharedPreferences.contains("token")) {
+                    RunsicRestClientUsage.getInstance().getFavMusic(sharedPreferences.getString("token", "579096c3421aa90c9c3596c8"));
+                } else {
+                    RunsicRestClientUsage.getInstance().getFavMusic("579096c3421aa90c9c3596c8");
+                }            case R.id.list_corner_icon:
                 if (Util.DEBUG) {
                     Log.i(TAG, "click on list corner icon" + mIsListClose);
                 }
@@ -828,17 +872,13 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
                     aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.stop);
                     mRunTimer.setBase(SystemClock.elapsedRealtime() + lastRunPause);
                     mRunTimer.start();
-                    mMusicPlayTimer.setBase(SystemClock.elapsedRealtime() + lastMusicPause);
-                    mMusicPlayTimer.start();
                     aQuery_.id(R.id.stop_button).invisible();
                 } else {
                     Log.e(TAG, "music play status is " + mMoveMusicPlay + "lastPause is " + lastRunPause);
                     musicPlayCallback.onMusicPause();
                     aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.play);
                     lastRunPause = mRunTimer.getBase() - SystemClock.elapsedRealtime();
-                    lastMusicPause = mMusicPlayTimer.getBase() - SystemClock.elapsedRealtime();
                     mRunTimer.stop();
-                    mMusicPlayTimer.stop();
 
                     aQuery_.id(R.id.stop_button).visible();
 
@@ -852,7 +892,7 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
                 }
 
                 if (RunsicService.getInstance().musicCurrentList.getCurrentMusicList().size() == 0) {
-                    Log.e(TAG, "Music Current List size is 0!!!" );
+                    Log.e(TAG, "Music Current List size is 0!!!");
                     return;
                 }
                 if (mIsPlayStaticClose) {
@@ -901,7 +941,7 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
                         toast.show();
                         if (Util.mobileConnectivity == true) {
                             networkMode.onOnLineMode();
-                        } else if (Util.mobileConnectivity == false && Util.mobileConnectivity == false ){
+                        } else if (Util.mobileConnectivity == false && Util.mobileConnectivity == false) {
                             Toast toast1 = Toast.makeText(this, "网络无连接 离线模式", Toast.LENGTH_SHORT);
                             networkMode.onOffLineMode();
                             toast1.show();
@@ -998,10 +1038,8 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
     }
 
 
-
     public void showMovePanel() {
         musicControlMove.setVisibility(View.VISIBLE);
-        mMusicProgress.setVisibility(View.VISIBLE);
 
     }
 
@@ -1050,14 +1088,12 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
     @Override
     public void onDestroy() {
         super.onDestroy();
-        manualActivity_ = ActivityManagerWrapper.getCurrentManualActivity();
-        ActivityManagerWrapper.stopManualActivity();
-        ActivityManagerWrapper.removeActivity(manualActivity_);
+//        manualActivity_ = ActivityManagerWrapper.getCurrentManualActivity();
+//        ActivityManagerWrapper.stopManualActivity();
+//        ActivityManagerWrapper.removeActivity(manualActivity_);
         EventBus.getDefault().unregister(this);
         mRunTimer.stop();
-        mMusicPlayTimer.stop();
         mRunTimer = null;
-        mMusicPlayTimer = null;
     }
 
     public void stopRun() {
@@ -1067,26 +1103,30 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
             unbindService(serviceConnection);
             mBound = false;
         }
-        ActivityManagerWrapper.stopManualActivity();
-        manualActivity_ = ActivityManagerWrapper.getCurrentManualActivity();
-        ActivityManagerWrapper.storeActivity(manualActivity_);
+//        ActivityManagerWrapper.stopManualActivity();
+//        manualActivity_ = ActivityManagerWrapper.getCurrentManualActivity();
+//        ActivityManagerWrapper.storeActivity(manualActivity_);
 
 //                Record record = new Record();
 //                record.duration = manualActivity_.getWalkingDuration()
 //                StartActivity.updateDB()
-        Log.e(TAG, "duration is " + manualActivity_.getDuration());
-        Log.e(TAG, "Walking duration is " + manualActivity_.getWalkingDuration());
+//        Log.e(TAG, "duration is " + manualActivity_.getDuration());
+//        Log.e(TAG, "Walking duration is " + manualActivity_.getWalkingDuration());
 
         musicPlayCallback.onMusicStop();
 
         Record record = new Record();
-        record.duration = (int) manualActivity_.getDuration();
-        record.distance = manualActivity_.getStep();
+//        record.duration = (int) manualActivity_.getDuration();
+//        record.distance = manualActivity_.getStep();
         record.song = songSum;
-        StartActivity.updateRecordDB(record);
+
+        /**
+         * 更新数据库
+         */
+//        StartActivity.updateRecordDB(record);
 
 
-        StartActivity.updateRecordDB(record);
+//        StartActivity.updateRecordDB(record);
         Intent intent = new Intent();
         intent.setClass(this, ShareActivity.class);
         Bundle bundle = new Bundle();
@@ -1100,33 +1140,86 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
     }
 
 
-    @Subscribe
-    public void onBPMEvent(BPMEvent bpmEvent) {
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onBPMEvent(BPMEvent bpmEvent) {
+        Log.e(TAG, "GET MESSAGE STEP IS " + bpmEvent.step + " GET MESSAGE BPM IS " + bpmEvent.bpm);
+//        favMusicList = favMusicListEvent.musicFavList;
+//        gridAdapter = new GridAdapter(context, R.layout.horizontal_item_recycler, favMusicList);
+//        favRecyclerView.setAdapter(gridAdapter);
+    }
+
+    public void start() {
+        SportTracker.start(new Date().getTime());
+    }
+
+    public void setType() {
+    }
+
+    public void end() {
+        SportTracker.end(new Date().getTime());
+    }
+
+    public void pause() {
+        SportTracker.pause(new Date().getTime());
+    }
+
+    public void resume() {
+        SportTracker.resume(new Date().getTime());
+    }
+
+    public boolean checkBpm(int bpm) {
+        return SportTracker.checkBpm(bpm);
+    }
+
+
+    public Messages.Sport getData() {
+        try {
+            return Messages.Sport.parseFrom(SportTracker.getData());
+        } catch (InvalidProtocolBufferException e) {
+            return null;
+        }
+    }
+
+    private void initLocation() {
+        locationClient = new AMapLocationClient(getApplicationContext());
+        locationClient.setLocationListener(this);
+        locationClient.startLocation();
     }
 
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (runsic.sample(event)) {
-            Log.e(TAG, "SENSOR CHANGED");
-            int bpm = runsic.getBpm();
-            Log.i(TAG, "===============================================Qiuxiang BPM IS " + bpm);
-            pulse.setBpm(bpm);
-            pulse.pulse();
-            if (bpm != 0 && runsic.isReady(musicBpm)) {
-                musicBpm = bpm;
-                RunsicService.getInstance().motionMusicChange(bpm);
-
-                Toast.makeText(this, "Tempo change to " + bpm, Toast.LENGTH_SHORT);
+//        Log.e(TAG, "" + event);
+        if (SportTracker.pushAcceleration(
+                event.timestamp / 1000000, event.values[0], event.values[1], event.values[2])) {
+//            onStep(SportTracker.getStep(), SportTracker.getBpm());
+            int bpm = SportTracker.getBpm();
+//            Log.e(TAG, "step is "+SportTracker.getStep() + " bpm is " + SportTracker.getBpm());
+            aQuery_.id(R.id.pulse_number).text(""+bpm);
+            if (SportTracker.checkBpm(RunsicService.getInstance().currentMusicTempo)) {
+                RunsicService.getInstance().playOnTempo(bpm);
             }
+//            if (centerStatus==0) {
+//                aQuery_.id(R.id.pulse_number).text(SportTracker.getBpm());
+//            } else {
+//
+//            }
+
+            //传当前歌曲的BPM
+//            SportTracker.checkBpm()
         }
+
+//        if (Runsic.getInstance().sample(event)) {
+//            Log.e(TAG, "SENSOR CHANGED");
+//            int bpm = Runsic.getInstance().getBpm();
+//            Log.i(TAG, "===============================================Qiuxiang BPM IS " + bpm);
+//            if (bpm != 0 && Runsic.getInstance().isReady(currentMusicTempo)) {
+//                Log.i(TAG, "切换到 " + bpm + " BPM");
+//                Runsic.getInstance().getBpm();
+//                motionMusicChange(bpm);
+//                currentMusicTempo = bpm;
+//            }
+//        }
     }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy){
-
-    }
-
-
 }

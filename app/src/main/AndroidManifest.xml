@@ -3,8 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.runningmusic.runninspire">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -22,14 +25,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
-        <activity android:name=".WelcomeActivity"></activity>
         <activity
             android:name=".RunningMusicActivity"
             android:label="@string/title_activity_running_music"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".StartActivity"
-            android:launchMode="singleTask" />
 
         <service
             android:name="com.runningmusic.service.RunsicService"
@@ -47,6 +46,10 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL}" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="aace6065f4a28e1b5acccdab9d8c9472" />
 
         <activity android:name=".RunninspireMainActivity" />
         <activity android:name=".ShareActivity" />
@@ -94,6 +97,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.runningmusic.activity.WebViewActivity"></activity>
+        <service android:name="com.amap.api.location.APSService" />
+
     </application>
 
 </manifest>

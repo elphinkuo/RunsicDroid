@@ -1,15 +1,15 @@
 [
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_qq.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_qq.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/off_line.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/off_line.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_small_more.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_small_more.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/off_line.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/off_line.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_qq.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_qq.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/person_scan.png",
@@ -28,16 +28,16 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/gedanjiemian_play.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/panel_bg.9.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/panel_bg.9.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_collect.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_collect.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_return.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_return.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_collect.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_collect.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/panel_bg.9.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/panel_bg.9.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/shoufa360.png",
@@ -48,6 +48,10 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/placeholder_image.png"
     },
     {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/move_screen_lock.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/move_screen_lock.png"
+    },
+    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/play.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/play.png"
     },
@@ -56,16 +60,20 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/distance.png"
     },
     {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/move_plus.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/move_plus.png"
+    },
+    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_nav_bg.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_nav_bg.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_zone.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_zone.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/ad_start_logo.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/ad_start_logo.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_zone.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_zone.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/start_btn_1.png",
@@ -76,28 +84,28 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/gedanjiemian_pause.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_drop_down.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_drop_down.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/list_holder_music.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/list_holder_music.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_drop_down.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_drop_down.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_share.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_share.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_xinlang.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_xinlang.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_gradient.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_gradient.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/ad_start_enter.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/ad_start_enter.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_gradient.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_gradient.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_xinlang.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_xinlang.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/weather_bg.png",
@@ -108,16 +116,16 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/bg.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_xiala.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_xiala.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_running_music.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_running_music.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_date.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_date.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_running_music.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_running_music.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_xiala.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_xiala.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/login_logo.png",
@@ -128,36 +136,36 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/btn_bg.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_more.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_more.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/ring03.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/ring03.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_pause.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_pause.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_more.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_more.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/start_btn_2.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/start_btn_2.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/login_weixin.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/login_weixin.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_pause.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_pause.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_headset.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_headset.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_weixin.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_weixin.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/login_weixin.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/login_weixin.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/person_more.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/person_more.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_weixin.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_weixin.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/start_card.png",
@@ -168,12 +176,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/on_line.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/history_return.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/history_return.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_next.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_next.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/history_return.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/history_return.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_time.png",
@@ -188,12 +196,12 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_logo.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_btn.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_btn.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/musicpage_translucent_bg1.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/musicpage_translucent_bg1.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_btn.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_btn.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/static_bitmap_holder.png",
@@ -204,64 +212,48 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/baidu.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_jianbian.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_jianbian.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/time.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/time.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_stop.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_stop.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_jianbian.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_jianbian.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_down.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_down.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_play.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_play.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_stop.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_stop.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/go.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/go.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/move_pause.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/move_pause.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/musicpage_translucent_bg2.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/musicpage_translucent_bg2.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_decrease.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_decrease.png"
-    },
-    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_logo.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_logo.png"
-    },
-    {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/musicpage_translucent_bg.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/musicpage_translucent_bg.png"
-    },
-    {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/ic_launcher.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/stop.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/stop.png"
     },
     {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/ic_launcher.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_share.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_share.png"
     },
     {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_run.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_run.png"
-    },
-    {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_previous.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_previous.png"
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/move_minus.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/move_minus.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/gedanjiemian_liebiao.png",
@@ -270,14 +262,6 @@
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/ring01.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/ring01.png"
-    },
-    {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_play.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_play.png"
-    },
-    {
-        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_return.png",
-        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_return.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/static_bitmap_holder_small.png",
@@ -294,6 +278,38 @@
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/liebiao.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/liebiao.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_play.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_play.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/go.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/go.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_decrease.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_decrease.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/musicpage_translucent_bg.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/musicpage_translucent_bg.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_run.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_run.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/yinyuejiemian_previous.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/yinyuejiemian_previous.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/detailspage_play.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/detailspage_play.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/sharepage_return.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/mipmap-hdpi/sharepage_return.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/mipmap-hdpi-v4/login_bg.png",

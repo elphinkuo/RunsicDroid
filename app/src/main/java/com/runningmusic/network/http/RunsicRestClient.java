@@ -4,9 +4,20 @@ package com.runningmusic.network.http;
 import android.app.AlertDialog;
 import android.content.Context;
 
+import org.apache.http.client.CookieStore;
+import org.apache.http.client.protocol.ClientContext;
+
 public class RunsicRestClient {
 
     private static AndroidRestClient client = new AndroidRestClient();
+
+    /**
+     * Set Header
+     */
+    public static void setTokenHeader(String token) {
+
+        client.addHeader("token", token);
+    }
 
     /**
      * Get方法用于测试

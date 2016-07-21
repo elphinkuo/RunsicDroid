@@ -12,9 +12,11 @@ import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.runningmusic.event.UserInfoEvent;
+import com.runningmusic.network.http.RunsicRestClientUsage;
 import com.runningmusic.oauth.SucceedAndFailedHandler;
 import com.runningmusic.oauth.ThirdLoginOAuth;
 import com.runningmusic.runninspire.R;
+import com.runningmusic.utils.Constants;
 import com.runningmusic.utils.Log;
 
 import org.greenrobot.eventbus.EventBus;
@@ -44,7 +46,7 @@ public class LoginFragment extends Fragment {
         fragmentContext = this;
         context = this.getActivity();
         aQuery = new AQuery(view);
-        aQuery.id(R.id.login_logo).clickable(true).clicked(new View.OnClickListener() {
+        aQuery.id(R.id.login_button).clickable(true).clicked(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -55,7 +57,7 @@ public class LoginFragment extends Fragment {
                         Log.e(TAG, "onSuccess");
                         Bundle value = (Bundle) obj;
                         Log.e(TAG, ""+ value);
-
+                        Constants.access_token = value.getString("access_token");
 
                         ThirdLoginOAuth.getInstance().getWechatUserInfo(context, new SucceedAndFailedHandler() {
                             @Override
@@ -66,17 +68,21 @@ public class LoginFragment extends Fragment {
 
 
 //                                String unionid = userInfo.get("unionid").toString();
-//                                String country = userInfo.getString("country");
-//                                String nickName = userInfo.getString("nickname");
-//                                String city = userInfo.getString("province");
-//                                String language = userInfo.getString("language");
-//                                String headimageURL = userInfo.getString("headimageurl");
-//                                String sex = userInfo.getString("sex");
-//                                String openid = userInfo.getString("openid");
+//                                String country = userInfo.get("country").toString();
+//                                String nickName = userInfo.get("nickname").toString();
+//                                String city = userInfo.get("province").toString();
+//                                String language = userInfo.get("language").toString();
+//                                String headimageURL = userInfo.get("headimageurl").toString();
+//                                String sex = userInfo.get("sex").toString();
+//                                String openid = userInfo.get("openid").toString();
+
                                 Bundle bundle = new Bundle();
                                 bundle.putString("nickname", userInfo.get("nickname").toString());
                                 bundle.putString("headimgurl", userInfo.get("headimgurl").toString());
                                 bundle.putString("city", userInfo.get("province").toString() + userInfo.get("city").toString());
+
+
+                                RunsicRestClientUsage.getInstance().createUser(obj);
 
 
                                 FragmentManager fragmentManager = fragmentContext.getActivity().getSupportFragmentManager();

@@ -1,11 +1,13 @@
 package com.runningmusic.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.androidquery.AQuery;
 import com.runningmusic.runninspire.R;
+import com.runningmusic.runninspire.RunningMusicActivity;
 
 public class StartRun extends Activity {
 
@@ -37,6 +39,24 @@ public class StartRun extends Activity {
             @Override
             public void onClick(View v) {
                 context.finish();
+            }
+        });
+        aQuery.id(R.id.indoor_icon).clickable(true).clicked(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(context, RunningMusicActivity.class);
+                startActivity(intent);
+            }
+        });
+        aQuery.id(R.id.outdoor_icon).clickable(true).clicked(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent();
+                intent.setClass(context, RunningMusicActivity.class);
+                startActivity(intent);
+
             }
         });
     }

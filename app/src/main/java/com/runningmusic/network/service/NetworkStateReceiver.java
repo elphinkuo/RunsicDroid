@@ -22,7 +22,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
                 case WifiManager.WIFI_STATE_DISABLED:
                     msg = "WIFI is disabled";
                     Util.wifiConnectivity = false;
-                    TrafficStatsManager.getInstance().onWifiDisconnected();
+//                    TrafficStatsManager.getInstance().onWifiDisconnected();
                 break;
                 case WifiManager.WIFI_STATE_DISABLING:
                     msg = "WIFI is disabling ...";
@@ -31,8 +31,8 @@ public class NetworkStateReceiver extends BroadcastReceiver {
                 case WifiManager.WIFI_STATE_ENABLED:
                     msg = "WIFI is enabled";
                     Util.wifiConnectivity = true;
-                    TrafficStatsManager.getInstance().setNetworkType(ConnectivityManager.TYPE_WIFI);
-                    TrafficStatsManager.getInstance().onWifiConnected();
+//                    TrafficStatsManager.getInstance().setNetworkType(ConnectivityManager.TYPE_WIFI);
+//                    TrafficStatsManager.getInstance().onWifiConnected();
 
                 break;
                 case WifiManager.WIFI_STATE_ENABLING:
@@ -67,7 +67,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
                     case CONNECTED:
                         msg = "Mobile 2G/3G is enabled";
                         Util.mobileConnectivity = true;
-                        TrafficStatsManager.getInstance().setNetworkType(ConnectivityManager.TYPE_MOBILE);
+//                        TrafficStatsManager.getInstance().setNetworkType(ConnectivityManager.TYPE_MOBILE);
                     break;
                     case CONNECTING:
                         msg = "Mobile 2G/3G is enabling ...";

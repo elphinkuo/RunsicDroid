@@ -31,39 +31,125 @@
                 app:layout_collapseMode="parallax" />
 
             <TextView
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="30dp"
-                android:textSize="16dp"
-                android:text="LIVE TO THE BEAT AND RUN MORE!"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
+                android:layout_marginBottom="30dp"
+                android:gravity="bottom|center_horizontal"
+                android:text="LIVE TO THE BEAT AND RUN MORE!"
 
                 android:textColor="@color/white"
-                app:layout_collapseMode="parallax"
-                android:gravity="bottom|center_horizontal" />
+                android:textSize="16dp"
+                app:layout_collapseMode="parallax" />
 
             <!--<android.support.v7.widget.Toolbar-->
-                <!--android:id="@+id/toolbar"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_marginRight="8dp"-->
-                <!--android:fitsSystemWindows="true"-->
-                <!--android:gravity="center"-->
-                <!--android:foregroundGravity="center"-->
-                <!--android:layout_height="44dp"-->
-                <!--app:layout_collapseMode="pin" />-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:fitsSystemWindows="true"-->
+            <!--android:gravity="center"-->
+            <!--android:foregroundGravity="center"-->
+            <!--android:layout_height="44dp"-->
+            <!--app:layout_collapseMode="pin" />-->
 
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/pgc_list"
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/pgc_list_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/list_app_bar"
-        android:layout_marginTop="6dp"
-        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior" />
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/hot_music_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/hot_music_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="12dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="16dp"
+                    android:text="热门歌单"
+                    android:textSize="16dp"
+                    android:textColor="@color/text_bright_white"/>
+
+                <ImageView
+                    android:id="@+id/hot_music_split"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@id/hot_music_text"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="9dp"
+                    android:background="@color/content_foreground_color"/>
+
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/pgc_hot_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:id="@+id/run_music_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/run_music_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="12dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="16dp"
+                    android:text="跑步歌单"
+                    android:textSize="16dp"
+                    android:textColor="@color/text_bright_white"/>
+
+                <ImageView
+                    android:id="@+id/run_music_split"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@id/run_music_text"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="9dp"
+                    android:background="@color/content_foreground_color"/>
+
+
+            </RelativeLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/pgc_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="6dp" />
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
     <!--<android.support.v4.widget.NestedScrollView-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"-->

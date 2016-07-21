@@ -20,6 +20,8 @@ import com.runningmusic.event.EventRequestEvent;
 import com.runningmusic.music.Event;
 import com.runningmusic.network.http.RunsicRestClientUsage;
 import com.runningmusic.runninspire.R;
+import com.twotoasters.jazzylistview.JazzyHelper;
+import com.twotoasters.jazzylistview.recyclerview.JazzyRecyclerViewScrollListener;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -31,6 +33,10 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class EventListFrag extends Fragment implements EventItemClickListener{
+
+    private static final String KEY_TRANSITION_EFFECT = "transition_effect";
+    private int mCurrentTransitionEffect = JazzyHelper.TILT;
+    private JazzyRecyclerViewScrollListener jazzyScrollListener;
 
     private AQuery aQuery;
     private Activity context;
@@ -52,7 +58,8 @@ public class EventListFrag extends Fragment implements EventItemClickListener{
         aQuery = new AQuery(view);
         eventRecyclerView = (RecyclerView) view.findViewById(R.id.event_list);
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-
+        jazzyScrollListener = new JazzyRecyclerViewScrollListener();
+        eventRecyclerView.setOnScrollListener(jazzyScrollListener);
         RunsicRestClientUsage.getInstance().getEventList();
 
         //when the result comeBack
@@ -107,5 +114,17 @@ public class EventListFrag extends Fragment implements EventItemClickListener{
         intent.putExtra("title", event.title);
         intent.putExtra("url", event.linkURL);
         startActivity(intent);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_TRANSITION_EFFECT, mCurrentTransitionEffect);
+    }
+
+
+    private void setupJazziness(int effect) {
+        mCurrentTransitionEffect = effect;
+        jazzyScrollListener.setTransitionEffect(mCurrentTransitionEffect);
     }
 }

@@ -27,6 +27,11 @@ public class Constants {
      */
 //    public static String BASE_URL = "http://facelending.com:83";
     public static String BASE_URL = "http://api.runningmusic.cn";
+    /**
+     * qiuxiang test
+     */
+    public static String access_token;
+//    public static String BASE_URL = "http://10.15.26.25:5000";
     public static String PLAYLIST_URL = BASE_URL + "/api/playlist/";
     public static String MUSIC_IN_PLAYLIST_URL = BASE_URL + "/api/playlist";
     public static final String LOGIN_URL = BASE_URL + "/api/app_auth/";
@@ -39,10 +44,16 @@ public class Constants {
     public static final String PLAY_LIST_ON_TEMPO = BASE_URL + "/api/playlistontempo/";
     public static final String PLAY_ON_TEMPO = BASE_URL + "/api/playontempo/";
 
+    public static final String PLAYLIST_GROUP = BASE_URL + "/playlist_group/";
+
+    public static final String CREATE_USER = BASE_URL + "/user/auth";
+    public static final String GET_USER_INFO = BASE_URL + "/user/info";
+    public static final String USER_FAV_MUSIC = BASE_URL + "/user/favorites_music";
+
     public static final String START_PAGE_AD = BASE_URL + "/app/start_page";
     public static final String EVENT_LIST_URL = BASE_URL + "/app/activities";
 
-    public static final String PGC_MUSIC_LIST = "http://facelending.com:83/api/playlist/5625e85d0307b34b1d881857/";
+    public static final String PGC_MUSIC_LIST = BASE_URL + "/api/playlist/5625e85d0307b34b1d881857/";
 
     public static final String TENCENT_APP_URL_OLD = "http://qzs.qq.com/open/yyb/good_new_app/details.html?id=614570823670180785125&appid=42248887&from=timeline&isappinstalled=0&g_f=&srctype=&ticket=";
 

@@ -20,10 +20,11 @@ import com.runningmusic.oauth.ThirdShareService;
 import com.runningmusic.runninspire.R;
 import com.runningmusic.utils.ImageUtil;
 import com.runningmusic.utils.Util;
-import com.runningmusiclib.cppwrapper.utils.Date;
 import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
+import java.util.Date;
+import java.util.Random;
 
 @SuppressLint("HandlerLeak")
 public class BaseShareActivity extends BaseActivity{
@@ -269,8 +270,9 @@ public class BaseShareActivity extends BaseActivity{
     // 分享图片的路径
     public String getNewPath() {
 
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ledongli/img/" + Util.dateFormat(Date.now(), "yyyy/MM/dd/");// thisActivity_.getFilesDir().getAbsolutePath();
-        String fileName = Util.dateFormat(Date.now(), "yyyyMMddHHmmss") + "share_image.jpg";
+        String path = thisActivity_.getFilesDir().getAbsolutePath();
+        Random random = new Random();
+        String fileName = random.nextDouble() + "share_image.jpg";
 
         File out = new File(path);
         if (!out.exists()) {

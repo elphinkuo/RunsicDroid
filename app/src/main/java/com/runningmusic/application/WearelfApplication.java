@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.runningmusic.network.RequestManager;
-import com.runningmusic.network.service.TrafficStatsManager;
 import com.runningmusic.service.RunsicService;
 import com.runningmusic.utils.Log;
 import com.runningmusic.utils.RMCrashHandler;
@@ -80,14 +79,12 @@ public class WearelfApplication extends LifecycleApplication {
 	protected void onAppBackground() {
 		Log.i(TAG, "______________onAppBackground");
 		isBackground_ = true;
-		TrafficStatsManager.getInstance().onAppBackground();
 	}
 
 	@Override
 	protected void onAppForeground(LifecycleActivity activity) {
 		Log.i(TAG, "______________onAppForeground");
 		isBackground_ = false;
-		TrafficStatsManager.getInstance().onAppForeground();
 		RunsicService service = RunsicService.getInstance();
 		if (service != null) {
 			service.setActive();
@@ -104,19 +101,19 @@ public class WearelfApplication extends LifecycleApplication {
 	}
 
 
-	public static HttpProxyCacheServer getProxy(Context context) {
-		WearelfApplication app = (WearelfApplication) context.getApplicationContext();
-//		HttpProxyCacheServer.Builder builder = new HttpProxyCacheServer.Builder(context);
-//		builder.cacheDirectory(new File(MUSIC_CACHE_DIR));
-//		Log.e(TAG, "CACHE DIR IS ++++++++++++++++++++++" + MUSIC_CACHE_DIR);
-		return app.proxyCacheServer == null ? (app.proxyCacheServer = newProxy(context)) : app.proxyCacheServer;
-	}
-
-	private static HttpProxyCacheServer newProxy (Context context) {
-		WearelfApplication app = (WearelfApplication) context.getApplicationContext();
-
-		return new HttpProxyCacheServer.Builder(app).maxCacheSize(300 * 1024 * 1024).build();
-	}
+//	public static HttpProxyCacheServer getProxy(Context context) {
+////		WearelfApplication app = (WearelfApplication) context.getApplicationContext();
+//////		HttpProxyCacheServer.Builder builder = new HttpProxyCacheServer.Builder(context);
+//////		builder.cacheDirectory(new File(MUSIC_CACHE_DIR));
+//////		Log.e(TAG, "CACHE DIR IS ++++++++++++++++++++++" + MUSIC_CACHE_DIR);
+////		return app.proxyCacheServer == null ? (app.proxyCacheServer = newProxy(context)) : app.proxyCacheServer;
+//	}
+//
+//	private static HttpProxyCacheServer newProxy (Context context) {
+//		WearelfApplication app = (WearelfApplication) context.getApplicationContext();
+//
+//		return new HttpProxyCacheServer.Builder(app).maxCacheSize(300 * 1024 * 1024).build();
+//	}
 
 
 

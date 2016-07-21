@@ -23,9 +23,17 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.telephony.TelephonyManager;
+import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationListener;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.runningmusic.application.WearelfApplication;
 import com.runningmusic.db.MusicDB;
+import com.runningmusic.event.BPMEvent;
+import com.runningmusic.event.LocationChangedEvent;
+import com.runningmusic.jni.SportTracker;
 import com.runningmusic.music.CurrentMusic;
 import com.runningmusic.music.CurrentMusicList;
 import com.runningmusic.music.Music;
@@ -36,11 +44,9 @@ import com.runningmusic.network.NetworkMode;
 import com.runningmusic.network.http.RunsicRestClient;
 import com.runningmusic.network.http.RunsicRestClientUsage;
 import com.runningmusic.network.service.NetworkStateReceiver;
-import com.runningmusic.network.service.TrafficStatsManager;
-import com.runningmusic.network.service.TrafficStatsSetting;
 import com.runningmusic.runninspire.BeatsCache;
+import com.runningmusic.runninspire.Messages;
 import com.runningmusic.runninspire.RunningMusicActivity;
-import com.runningmusic.runninspire.jni.Runsic;
 import com.runningmusic.utils.Constants;
 import com.runningmusic.utils.Log;
 import com.runningmusic.utils.Util;
@@ -48,27 +54,33 @@ import com.runningmusic.videocache.HttpProxyCacheServer;
 import com.runningmusic.videocache.StorageUtils;
 import com.runningmusic.videocache.file.Files;
 import com.runningmusic.videocache.file.Md5FileNameGenerator;
-import com.runningmusiclib.cppwrapper.ActivityManagerWrapper;
-import com.runningmusiclib.cppwrapper.ServiceLauncher;
 import com.umeng.analytics.MobclickAgent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class RunsicService extends Service implements SensorEventListener, Observer, NetworkMode, MusicPlayCallback, MusicRequestCallback {
+public class RunsicService extends Service implements Observer, NetworkMode, MusicPlayCallback, MusicRequestCallback {
     private static String TAG = RunsicService.class.getName();
+
+
+
+    private Binder binder = new Binder();
+    private OnChangedListener onChangedListener;
 
     private static boolean stopMotion = false;
     private SensorManager sensorManager_;
     private Sensor sensor_;
-    private MotionTracker mm_;
-    private TrafficStatsManager trafficStatsManager_;
-    private TrafficStatsSetting trafficStatsSetting_;
+//    private MotionTracker mm_;
+//    private TrafficStatsManager trafficStatsManager_;
+//    private TrafficStatsSetting trafficStatsSetting_;
     private NetworkStateReceiver networkStateReceiver_;
 
     private MediaPlayer mediaPlayer;
@@ -128,6 +140,12 @@ public class RunsicService extends Service implements SensorEventListener, Obser
         }
     }
 
+
+    interface OnChangedListener {
+        void onStep(int stepCount, int bpm);
+
+        void onLocationChanged(double distance, double speed);
+    }
 
 
 
@@ -224,10 +242,11 @@ public class RunsicService extends Service implements SensorEventListener, Obser
             Log.e(TAG, "onCreate");
 
         // 启动流量监控
-        startTrafficStats();
+//        startTrafficStats();
         // 创建用户
 //		createUser();
         // 初始化c++服务
+
 
         /**
          * RSBG
@@ -258,9 +277,7 @@ public class RunsicService extends Service implements SensorEventListener, Obser
 
 
         //init the sensorManger
-        SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        Sensor accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
+
 
 
         //数据初始化
@@ -271,7 +288,7 @@ public class RunsicService extends Service implements SensorEventListener, Obser
         pgcMusicList = new PGCMusicList();
 
         Util.setContext(this);
-        proxy = WearelfApplication.getProxy(this);
+//        proxy = WearelfApplication.getProxy(this);
         addCurrentMusicObserver(this);
 
         downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
@@ -296,19 +313,19 @@ public class RunsicService extends Service implements SensorEventListener, Obser
         musicCurrent.deleteObserver(observer);
     }
 
-    private void startMotionTrack() {
-        initMotionTracker();
-        mm_ = MotionTracker.getInstance();
-        setActive();
-    }
+//    private void startMotionTrack() {
+//        initMotionTracker();
+//        mm_ = MotionTracker.getInstance();
+//        setActive();
+//    }
 
     /**
      * 开始记录位置
      */
-    private void startLocationTrack() {
-//		locationTracker_ = LocationTracker.getInstance();
-//		locationTracker_.startCoarseTrack();
-    }
+//    private void startLocationTrack() {
+////		locationTracker_ = LocationTracker.getInstance();
+////		locationTracker_.startCoarseTrack();
+//    }
 
     private void initMotionTracker() {
         sensorManager_ = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -332,46 +349,46 @@ public class RunsicService extends Service implements SensorEventListener, Obser
         RunsicRestClientUsage.getInstance().updateinfo();
     }
 
-    private void startTrafficStats() {
-        trafficStatsManager_ = TrafficStatsManager.getInstance();
-        trafficStatsSetting_ = TrafficStatsSetting.getInstance();
-        trafficStatsSetting_.setAlarm();
-        networkStateReceiver_ = new NetworkStateReceiver();
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
-        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkStateReceiver_, filter);
-    }
+//    private void startTrafficStats() {
+//        trafficStatsManager_ = TrafficStatsManager.getInstance();
+//        trafficStatsSetting_ = TrafficStatsSetting.getInstance();
+//        trafficStatsSetting_.setAlarm();
+//        networkStateReceiver_ = new NetworkStateReceiver();
+//        IntentFilter filter = new IntentFilter();
+//        filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
+//        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+//        registerReceiver(networkStateReceiver_, filter);
+//    }
+//
+//    private void stopTrafficStats() {
+//        unregisterReceiver(networkStateReceiver_);
+//        trafficStatsSetting_.cancelAlarm();
+//        trafficStatsManager_.onAppDestroy();
+//    }
 
-    private void stopTrafficStats() {
-        unregisterReceiver(networkStateReceiver_);
-        trafficStatsSetting_.cancelAlarm();
-        trafficStatsManager_.onAppDestroy();
-    }
+//    public void pauseMotionTracker() {
+//        sensorManager_.unregisterListener(mm_);
+//    }
+//
+//    public void resumeMotionTracker() {
+//        if (stopMotion) {
+//            PartialWakeLock.getInstance().releaseWakeLock();
+//            return;
+//        }
+//        registerAccListener();
+//    }
 
-    public void pauseMotionTracker() {
-        sensorManager_.unregisterListener(mm_);
-    }
-
-    public void resumeMotionTracker() {
-        if (stopMotion) {
-            PartialWakeLock.getInstance().releaseWakeLock();
-            return;
-        }
-        registerAccListener();
-    }
-
-    public void registerAccListener() {
-        if (sensorManager_ != null) {
-            sensorManager_.registerListener(mm_, sensor_, 10000);
-        }
-    }
-
-    public void unregisterAccListener() {
-        if (sensorManager_ != null) {
-            sensorManager_.unregisterListener(mm_);
-        }
-    }
+//    public void registerAccListener() {
+//        if (sensorManager_ != null) {
+//            sensorManager_.registerListener(mm_, sensor_, 10000);
+//        }
+//    }
+//
+//    public void unregisterAccListener() {
+//        if (sensorManager_ != null) {
+//            sensorManager_.unregisterListener(mm_);
+//        }
+//    }
 
     @Override
     public void onDestroy() {
@@ -380,29 +397,29 @@ public class RunsicService extends Service implements SensorEventListener, Obser
         if (Util.DEBUG)
             Log.e("RunsicService", "Service onDestroy");
 
-        if (sensorManager_ != null) {
-            pauseMotionTracker();
-            sensorManager_ = null;
-        }
+//        if (sensorManager_ != null) {
+//            pauseMotionTracker();
+//            sensorManager_ = null;
+//        }
 
 //		if (locationTracker_ != null) {
 ////			locationTracker_.stopTrack();
 //			locationTracker_ = null;
 //		}
 
-        if (heartBeatSetting_ != null) {
-            heartBeatSetting_.cancelAlarm();
-            heartBeatSetting_ = null;
-        }
+//        if (heartBeatSetting_ != null) {
+//            heartBeatSetting_.cancelAlarm();
+//            heartBeatSetting_ = null;
+//        }
 
-        stopTrafficStats();
+//        stopTrafficStats();
 
         PartialWakeLock.getInstance().releaseWakeLock();
 
         RunsicRestClient.cancel();
 
-        unregisterScreenActionBroadcastReceiver();
-        unregisterReceiver(runningReceiver);
+//        unregisterScreenActionBroadcastReceiver();
+//        unregisterReceiver(runningReceiver);
         musicCurrent.deleteObservers();
         // Debug.stopMethodTracing();
         // Log.i("wangyikang", "debug trace start");
@@ -437,7 +454,7 @@ public class RunsicService extends Service implements SensorEventListener, Obser
     public void setSleepy() {
         if (Util.DEBUG)
             Log.i("RunsicService", "setSleepy");
-        pauseMotionTracker();
+//        pauseMotionTracker();
         heartBeatSetting_.cancelAlarm();
         heartBeatSetting_.setAlarm();
 
@@ -451,7 +468,7 @@ public class RunsicService extends Service implements SensorEventListener, Obser
         if (Util.DEBUG)
             Log.i("RunsicService", "setActive");
         heartBeatSetting_.cancelAlarm();
-        this.resumeMotionTracker();
+//        this.resumeMotionTracker();
     }
 
     private BroadcastReceiver powerKeyReceiver_ = null;
@@ -468,8 +485,8 @@ public class RunsicService extends Service implements SensorEventListener, Obser
 
                 if (strAction.equals(Intent.ACTION_SCREEN_OFF)) {
                     // 用于防止某些机型关闭屏幕后关闭加速度计
-                    unregisterAccListener();
-                    registerAccListener();
+//                    unregisterAccListener();
+//                    registerAccListener();
                 }
 
                 if (strAction.equals(Intent.ACTION_SCREEN_ON)) {
@@ -773,24 +790,17 @@ public class RunsicService extends Service implements SensorEventListener, Obser
         return false;
     }
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-//        if (Runsic.getInstance().sample(event)) {
-//            Log.e(TAG, "SENSOR CHANGED");
-//            int bpm = Runsic.getInstance().getBpm();
-//            Log.i(TAG, "===============================================Qiuxiang BPM IS " + bpm);
-//            if (bpm != 0 && Runsic.getInstance().isReady(currentMusicTempo)) {
-//                Log.i(TAG, "切换到 " + bpm + " BPM");
-//                Runsic.getInstance().getBpm();
-//                motionMusicChange(bpm);
-//                currentMusicTempo = bpm;
-//            }
-//        }
+
+
+
+
+    public class Binder extends android.os.Binder {
+        public RunsicService getService() {
+            return RunsicService.this;
+        }
     }
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-    }
+
 
 }

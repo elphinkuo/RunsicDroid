@@ -2,39 +2,45 @@ package com.runningmusic.newfrag;
 
 
 import android.annotation.TargetApi;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.androidquery.AQuery;
 //import com.facebook.AppEventsConstants;
-import com.runningmusic.event.UserInfoEvent;
+import com.runningmusic.adapter.GridAdapter;
+import com.runningmusic.event.EventRequestEvent;
+import com.runningmusic.event.FavMusicListEvent;
+import com.runningmusic.music.Music;
+import com.runningmusic.network.http.RunsicRestClientUsage;
 import com.runningmusic.network.service.ImageSingleton;
-import com.runningmusic.network.service.NetworkChangeReceiver;
 import com.runningmusic.runninspire.R;
+import com.runningmusic.service.RunsicService;
 import com.runningmusic.utils.Log;
 import com.runningmusic.utils.Util;
+import com.twotoasters.jazzylistview.JazzyHelper;
+import com.twotoasters.jazzylistview.recyclerview.JazzyRecyclerViewScrollListener;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,17 +48,31 @@ import org.greenrobot.eventbus.ThreadMode;
 public class PersonPageFrag extends Fragment {
     private static String TAG = PersonPageFrag.class.getName();
 
+
+    private static final String KEY_TRANSITION_EFFECT = "transition_effect";
+    private int mCurrentTransitionEffect = JazzyHelper.TILT;
+    private JazzyRecyclerViewScrollListener jazzyScrollListener;
+
+
+
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
     private AppBarLayout appBarLayout;
+
     private CoordinatorLayout.LayoutParams appBarLayoutParams;
+
+    private RecyclerView favRecyclerView;
 
     private ImageLoader imageLoader;
     private NetworkImageView portraitImage;
 
+    private GridAdapter gridAdapter;
+
     private AQuery aQuery;
 
     private AppCompatActivity context;
+
+    private ArrayList<Music> favMusicList;
 
     public PersonPageFrag() {
 
@@ -73,11 +93,19 @@ public class PersonPageFrag extends Fragment {
         appBarLayout = (AppBarLayout) fragmentView.findViewById(R.id.ad_app_bar);
         imageLoader = ImageSingleton.getInstance(context).getImageLoader();
         portraitImage = (NetworkImageView) fragmentView.findViewById(R.id.portrait);
+        favRecyclerView = (RecyclerView) fragmentView.findViewById(R.id.person_fav_music);
+        favRecyclerView.setLayoutManager(new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false));
+
+
+        jazzyScrollListener = new JazzyRecyclerViewScrollListener();
+        favRecyclerView.setOnScrollListener(jazzyScrollListener);
 //        appBarLayoutParams = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
 //        int height = appBarLayoutParams.height;
 //        height += Util.getStatusBarHeight(context);
 //        appBarLayoutParams.height = height;
 //        appBarLayout.setLayoutParams(appBarLayoutParams);
+
+
 
         appBarLayout.setMinimumHeight(appBarLayout.getHeight() + Util.getStatusBarHeight(context));
         aQuery = new AQuery(fragmentView);
@@ -143,10 +171,45 @@ public class PersonPageFrag extends Fragment {
         return fragmentView;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.e(TAG, "onViewCreated");
+//        if (savedInstanceState == null) {
+            SharedPreferences sharedPreferences = Util.getUserPreferences();
+            if (sharedPreferences.contains("token")) {
+                RunsicRestClientUsage.getInstance().getFavMusic(sharedPreferences.getString("token", "579096c3421aa90c9c3596c8"));
+            } else {
+                RunsicRestClientUsage.getInstance().getFavMusic("579096c3421aa90c9c3596c8");
+            }
+//            RunsicRestClientUsage.getInstance().getFavMusic(){
+//
+//            }
+//        }
+
+    }
+
+//    @Override
+//    public void onStart() {
+//        super.onResume();
+//        EventBus.getDefault().register(this);
+//
+//    }
+//
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        EventBus.getDefault().unregister(this);
+//    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onUserInfoEvent(UserInfoEvent userInfoEvent) {
-
-
+    public void onFavMusicListEvent(FavMusicListEvent favMusicListEvent) {
+        favMusicList = favMusicListEvent.musicFavList;
+        if (favMusicList.size()==0) {
+            favMusicList = RunsicService.getInstance().musicPGCList;
+        }
+        gridAdapter = new GridAdapter(context, R.layout.horizontal_item_recycler, favMusicList);
+        favRecyclerView.setAdapter(gridAdapter);
     }
 
     @Override
@@ -159,5 +222,25 @@ public class PersonPageFrag extends Fragment {
     public void onPause() {
         super.onPause();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_TRANSITION_EFFECT, mCurrentTransitionEffect);
+    }
+
+
+    private void setupJazziness(int effect) {
+        mCurrentTransitionEffect = effect;
+        jazzyScrollListener.setTransitionEffect(mCurrentTransitionEffect);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventRequestEvent(EventRequestEvent event) {
+//        eventArrayList = event.eventList;
+//        eventAdapter = new EventAdapter(context, R.layout.event_list_item_layout, event.eventList);
+//        eventAdapter.setOnItemClickListener(this);
+//        eventRecyclerView.setAdapter(eventAdapter);
     }
 }

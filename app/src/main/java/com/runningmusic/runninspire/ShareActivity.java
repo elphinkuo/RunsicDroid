@@ -26,7 +26,7 @@ import com.runningmusic.service.RunsicService;
 import com.runningmusic.share.BaseShareActivity;
 import com.runningmusic.utils.Util;
 import com.runningmusic.view.Blur;
-import com.runningmusiclib.cppwrapper.ActivityManagerWrapper;
+//import com.runningmusiclib.cppwrapper.ActivityManagerWrapper;
 
 public class ShareActivity extends BaseShareActivity implements View.OnClickListener {
     private static String TAG = ShareActivity.class.getName();
@@ -83,7 +83,7 @@ public class ShareActivity extends BaseShareActivity implements View.OnClickList
         query_.id(R.id.share_distance_value).typeface(highNumberTypeface).text(Util.getTimeForShow(bundle.getInt("duration", 0)));
         query_.id(R.id.share_time_value).typeface(highNumberTypeface).text(String.format("%.02f", (float) bundle.getInt("distance", 0) * 0.6 / 1000));
         query_.id(R.id.share_song).text("本次运动您听了"+bundle.getInt("song", 0) + "首歌");
-        query_.id(R.id.share_date).text(Util.dateFormat(ActivityManagerWrapper.getLastRgmActivity().getStartTime(), "yyyy-MM-dd"));
+//        query_.id(R.id.share_date).text(Util.dateFormat(ActivityManagerWrapper.getLastRgmActivity().getStartTime(), "yyyy-MM-dd"));
 
 
         query_.id(R.id.share_button).clickable(true).clicked(this);

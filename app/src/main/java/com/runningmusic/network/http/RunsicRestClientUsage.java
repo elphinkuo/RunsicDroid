@@ -7,27 +7,32 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
 import android.telephony.TelephonyManager;
 
 import com.alibaba.fastjson.JSON;
 import com.runningmusic.event.EventRequestEvent;
+import com.runningmusic.event.FavMusicListEvent;
+import com.runningmusic.event.HotListGroupEvent;
+import com.runningmusic.event.RunListGroupEvent;
 import com.runningmusic.music.Event;
 import com.runningmusic.music.Music;
 import com.runningmusic.music.MusicRequestCallback;
+import com.runningmusic.music.PlayListEntity;
 import com.runningmusic.network.service.NetStatus;
 import com.runningmusic.service.RunsicService;
 import com.runningmusic.utils.Constants;
 import com.runningmusic.utils.Log;
 import com.runningmusic.utils.PackageInfoUtil;
 import com.runningmusic.utils.Util;
-import com.runningmusiclib.cppwrapper.ServiceLauncher;
-import com.runningmusiclib.cppwrapper.utils.Date;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -52,6 +57,86 @@ public class RunsicRestClientUsage {
         return singleton;
     }
 
+    public void setTokenHeader(String token) {
+        RunsicRestClient.setTokenHeader(token);
+    }
+    public void getFavMusic(String token) {
+        setTokenHeader(token);
+        Log.e(TAG, "getFavMusic token is " + token);
+        RunsicRestClient.get(Constants.USER_FAV_MUSIC, null, new HttpResponseHandler() {
+            @Override
+            public void onSuccess(byte[] responseBytes) {
+                String responseBody = null;
+                try {
+                    responseBody = new String (responseBytes, Constants.CHARSET);
+                    JSONArray jsonArray = new JSONArray(responseBody);
+
+                    Log.e(TAG, "response array is " + jsonArray);
+                    if (jsonArray!=null) {
+                        ArrayList<Music> musicArrayList = new ArrayList<Music>();
+                        for (int i=0; i < jsonArray.length(); i++) {
+                            Music music = new Music();
+                            music.initWithJSONObject(jsonArray.getJSONObject(i));
+                            musicArrayList.add(music);
+                        }
+                        Log.e(TAG, "FavMusicResult posted");
+                        EventBus.getDefault().post(new FavMusicListEvent(musicArrayList));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int errorCode) {
+
+            }
+        });
+    }
+
+    public void getPlayListGroup( final String codeOrPlayListID) {
+        RunsicRestClient.get(Constants.PLAYLIST_GROUP+codeOrPlayListID, null, new HttpResponseHandler() {
+            @Override
+            public void onSuccess(byte[] responseBytes) {
+                try {
+                    String responseBody = new String (responseBytes, Constants.CHARSET);
+                    JSONObject jsonObject = new JSONObject(responseBody);
+                    JSONArray jsonArray = jsonObject.getJSONArray("items");
+                    if (Util.DEBUG) {
+                        Log.e(TAG, "responseBody is " + responseBody);
+                        Log.e(TAG, "jsonArray is "+ jsonArray);
+                    }
+
+
+                    if (jsonArray != null) {
+
+                        ArrayList<PlayListEntity> listGroupResult = new ArrayList<PlayListEntity>();
+                        for (int i=0; i < jsonArray.length(); i++) {
+                            PlayListEntity playListEntity = new PlayListEntity();
+                            playListEntity.initWithJSONObject(jsonArray.getJSONObject(i));
+                            listGroupResult.add(playListEntity);
+//                            Play music = new Music();
+//                            music.initWithJSONObject(jsonArray.getJSONObject(i));
+                        }
+                        if (codeOrPlayListID.equals("featured")) {
+                            EventBus.getDefault().post(new HotListGroupEvent(listGroupResult));
+                        } else {
+                            EventBus.getDefault().post(new RunListGroupEvent(listGroupResult));
+                        }
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int errorCode) {
+                Log.e(TAG, "PLAYLISTONTEMPO ERROR CODE is " + errorCode);
+            }
+        });
+    }
 
     public void getTempoMusic(int tempo) {
         AndroidRequestParams params = new AndroidRequestParams();
@@ -276,7 +361,6 @@ public class RunsicRestClientUsage {
                         String responseBody = new String(responseBytes, Constants.CHARSET);
                         JSONObject obj = new JSONObject(responseBody);
                         uid = Integer.parseInt(obj.getString("uid"));
-                        ServiceLauncher.saveUidAndPCode(uid + "", Util.deviceId());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -297,6 +381,64 @@ public class RunsicRestClientUsage {
 
         }
 
+    }
+
+
+    public void createUser(Object obj) {
+        AndroidRequestParams params = new AndroidRequestParams();
+//        params.put("action", "adduser");
+        HashMap<String, Object> userInfo = (HashMap) obj;
+        Log.e(TAG, "post userInfo is " + userInfo);
+
+//        HashMap<String, String> userMap = new HashMap<String, String>();
+//        userMap.put("pc", pCode);
+//        String userString = JSON.toJSONString(userMap);
+
+        params.put("access_token", Constants.access_token);
+        params.put("openid", userInfo.get("openid").toString());
+        params.put("unionid", userInfo.get("unionid").toString());
+        params.put("type", "wechat");
+        params.put("nickname", userInfo.get("nickname").toString());
+        params.put("gender", userInfo.get("sex").toString());
+        params.put("avatar", userInfo.get("headimgurl").toString());
+        params.put("from", "android");
+
+        RunsicRestClient.post(Constants.CREATE_USER, params, new HttpResponseHandler() {
+
+            @Override
+            public void onSuccess(byte[] responseBytes) {
+                int uid = 0;
+                try {
+                    String responseBody = new String(responseBytes, Constants.CHARSET);
+                    Log.e(TAG, "createUser RESPONSE is " + responseBody );
+
+                    SharedPreferences sharedPreferences = Util.getUserPreferences();
+                    Editor editor = sharedPreferences.edit();
+                    editor.putString("token", responseBody);
+                    editor.commit();
+
+//                    String responseBody = new String(responseBytes, Constants.CHARSET);
+//                    JSONObject obj = new JSONObject(responseBody);
+//                    uid = Integer.parseInt(obj.getString("uid"));
+//                    ServiceLauncher.saveUidAndPCode(uid + "", Util.deviceId());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                // 保存uid
+//                SharedPreferences sPreferences = Util.getUserPreferences();
+//
+//                Editor editor = sPreferences.edit();
+//                editor.putInt(Constants.USER_INFO_USERID, uid);
+//                editor.commit();
+            }
+
+            @Override
+            public void onFailure(int errorCode) {
+                Log.e(TAG, "errorCode is " + errorCode);
+            }
+
+        });
     }
 
     /**
@@ -388,10 +530,10 @@ public class RunsicRestClientUsage {
                 source += "new@@@";
             }
 
-            source += Date.now().getTime() + "@@@" + channel + "@@@" + currentVersionNumber;
+//            source += Date.now().getTime() + "@@@" + channel + "@@@" + currentVersionNumber;
             // 本地保存source和更新本地版本号信息
             Editor editor = sPreferences.edit();
-            editor.putLong(Constants.INSTALL_TIME, Date.now().getTime());
+//            editor.putLong(Constants.INSTALL_TIME, Date.now().getTime());
             editor.putString(Constants.INSTALL_SOURCE, source);
             editor.putInt(Constants.LEDONGLI_VERSION_NUMBER, currentVersionNumber);
             editor.commit();

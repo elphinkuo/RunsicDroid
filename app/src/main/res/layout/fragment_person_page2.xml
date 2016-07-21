@@ -79,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/portrait"
                         android:fitsSystemWindows="true"
-                        android:text="ID:123456"
+                        android:text="Location"
                         android:textColor="@color/text_dark_white"
                         android:textSize="11dp" />
 
@@ -326,6 +326,14 @@
 
 
             </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/person_fav_music"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         </LinearLayout>
 

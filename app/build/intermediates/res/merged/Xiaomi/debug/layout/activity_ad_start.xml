@@ -59,6 +59,8 @@
 
     </RelativeLayout>
 
+
+
     <ImageView
         android:id="@+id/runninspire_ad"
         android:layout_width="match_parent"
@@ -67,4 +69,12 @@
         android:background="@mipmap/rsbg_background"
         android:scaleType="center" />
 
+    <RelativeLayout
+        android:id="@+id/shoufa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ad_start_bottom"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/shoufa_yingyongbao"
+        android:visibility="visible"/>
 </RelativeLayout>

@@ -18,6 +18,8 @@ public  class PGCMusicViewHolder extends RecyclerView.ViewHolder implements View
     public NetworkImageView songCover;
     private PGCItemClickListener itemClickListener;
 
+    private int type;
+
     PGCMusicViewHolder(View view, PGCItemClickListener itemClickListener) {
         super(view);
         songTitle = (TextView) view.findViewById(R.id.grid_title);
@@ -37,5 +39,9 @@ public  class PGCMusicViewHolder extends RecyclerView.ViewHolder implements View
         if (itemClickListener!=null) {
             itemClickListener.onItemClick(v, getPosition());
         }
+    }
+
+    public void setListType(int type) {
+        this.type = type;
     }
 }

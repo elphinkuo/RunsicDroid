@@ -16,6 +16,10 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable-xhdpi/start_run_outdoor.png"
     },
     {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/manual_icon_end.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable-xhdpi/manual_icon_end.png"
+    },
+    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png"
     },
@@ -42,6 +46,10 @@
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/abc_switch_track_mtrl_alpha.9.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/move_red.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable-xhdpi/move_red.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/abc_ic_star_black_16dp.png",
@@ -78,6 +86,10 @@
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/vpi__tab_selected_focused_holo.9.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/viewpagerindicator/unspecified/res/drawable-xhdpi-v4/vpi__tab_selected_focused_holo.9.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/manual_icon_start.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable-xhdpi/manual_icon_start.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/abc_list_longpressed_holo.9.png",
@@ -118,6 +130,10 @@
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/like.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable-xhdpi/like.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/start_run_green.png",
@@ -208,6 +224,10 @@
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/move_bpm_red.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable-xhdpi/move_bpm_red.png"
+    },
+    {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/abc_list_divider_mtrl_alpha.9.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_list_divider_mtrl_alpha.9.png"
     },
@@ -266,6 +286,10 @@
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/umeng_socialize_switchimage_unchoose.png",
         "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/exploded-aar/RunninSpire/social_sdk_library_project/unspecified/res/drawable-xhdpi-v4/umeng_socialize_switchimage_unchoose.png"
+    },
+    {
+        "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/like_red.png",
+        "source": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/res/drawable-xhdpi/like_red.png"
     },
     {
         "merged": "/Users/guofuming/Documents/Wearelf/RunninSpire/app/build/intermediates/res/merged/Xiaomi/debug/drawable-xhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png",

@@ -5,47 +5,125 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg"
-    android:orientation="vertical"
     android:clipChildren="false"
+    android:orientation="vertical"
     tools:context=".RunningMusicActivity">
-
-    <!--<ImageView-->
-        <!--android:id="@+id/animation_bubble_1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignBottom="@+id/data_container"-->
-        <!--android:layout_alignLeft="@+id/data_container"-->
-        <!--android:layout_alignRight="@+id/data_container"-->
-        <!--android:layout_alignTop="@+id/data_container"-->
-        <!--android:background="@mipmap/ring02"/>-->
-
-    <!--<include-->
-        <!--layout="@layout/pageview_header_row"-->
-        <!--android:id="@+id/data_container"-->
-        <!--android:layout_marginTop="30dp"-->
-        <!--android:layout_width="240dp"-->
-        <!--android:layout_height="240dp"-->
-        <!--android:layout_below="@+id/runninspire_header"-->
-        <!--android:layout_centerHorizontal="true"/>-->
-
-
-    <com.runningmusic.view.PulseView
-        android:id="@+id/pulse_view"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/runninspire_header"
-        android:layout_centerHorizontal="true"/>
-
 
 
     <include
+        android:id="@+id/runsic_data"
         layout="@layout/runsic_data_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/music_progress_move"
+        android:layout_below="@+id/runninspire_header"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp" />
+        android:layout_marginTop="32dp" />
+
+
+    <RelativeLayout
+        android:id="@+id/pulse_container"
+        android:layout_width="match_parent"
+        android:layout_height="176dp"
+        android:layout_below="@id/runsic_data"
+        android:layout_marginTop="42dp">
+
+        <com.runningmusic.view.PulseView
+            android:id="@+id/pulse_view"
+            android:layout_width="176dp"
+            android:layout_height="176dp"
+
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/pulse_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="135"
+                android:textColor="@color/text_bright_white"
+                android:textSize="60dp" />
+
+            <TextView
+                android:id="@+id/pulse_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/pulse_number"
+                android:layout_centerHorizontal="true"
+                android:text="STEPS/MIN"
+                android:textColor="@color/text_bright_white"
+                android:textSize="15dp" />
+
+        </com.runningmusic.view.PulseView>
+
+        <ImageView
+            android:id="@+id/move_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/pulse_view"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="36dp"
+            android:background="@mipmap/move_minus" />
+
+        <ImageView
+            android:id="@+id/move_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/pulse_view"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="36dp"
+            android:background="@mipmap/move_plus" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/music_control_panel_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pulse_container"
+        android:layout_marginTop="60dp">
+
+
+        <ImageView
+            android:id="@+id/music_move_play_or_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/move_pause" />
+
+        <RelativeLayout
+            android:id="@+id/bpm_lock_panel"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="36dp"
+            android:layout_toLeftOf="@id/music_move_play_or_pause">
+
+            <ImageView
+                android:id="@+id/bpm_lock_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/move_green" />
+
+            <ImageView
+                android:id="@+id/bpm_lock_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/move_bpm_green" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/move_screen_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="36dp"
+            android:layout_toRightOf="@id/music_move_play_or_pause"
+            android:background="@mipmap/move_screen_lock" />
+    </RelativeLayout>
 
 
     <RelativeLayout
@@ -55,70 +133,38 @@
         android:layout_alignParentBottom="true" />
 
 
-    <com.runningmusic.view.ArcProgress
-        android:id="@+id/music_progress_move"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_alignParentBottom="true"
-        custom:arc_angle="37"
-        custom:arc_stroke_width="2dp">
-
-    </com.runningmusic.view.ArcProgress>
-
     <RelativeLayout
         android:id="@+id/music_control_panel_move"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:background="#00FFFFFF"
         android:clickable="true"
         android:focusable="true">
 
-        <Chronometer
-            android:id="@+id/music_playing_duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp"
-            android:focusable="false"
-            android:text="00:00:00"
-            android:textColor="@color/white"
-            android:textSize="12dp" />
-
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/music_playing_cover_thumb"
-            android:layout_width="58dp"
-            android:layout_height="58dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="14dp"
-            android:background="@mipmap/placeholder_image" />
-
-
-        <ImageView
-            android:id="@+id/music_move_play_or_pause"
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="28dp"
-            android:layout_marginRight="16dp"
-            android:background="@mipmap/play" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:background="@mipmap/placeholder_image" />
+
 
         <TextView
             android:id="@+id/music_playing_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/music_playing_artist"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="6dp"
-            android:text="Song name"
-            android:textColor="@color/white"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/music_playing_cover_thumb"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             android:maxEms="18"
             android:maxLines="1"
+            android:text="Song name"
+            android:textColor="@color/white"
             android:textSize="18dp" />
 
         <TextView
@@ -126,8 +172,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="26dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/music_playing_cover_thumb"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             android:maxEms="20"
@@ -136,74 +183,25 @@
             android:textColor="@color/white"
             android:textSize="12dp" />
 
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/music_control_panel_static"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_alignParentBottom="true"
-        android:background="#00FFFFFF"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="invisible">
-
-        <TextView
-            android:id="@+id/music_control_steps_per_minute"
+        <ImageView
+            android:id="@+id/music_playing_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp"
-            android:text="STEPS/MIN"
-            android:textColor="@color/light_grey"
-            android:textSize="16dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="3dp"
+            android:background="@mipmap/music_playing_next" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginBottom="10dp"
-            android:layout_alignParentBottom="true">
-
-            <TextView
-                android:id="@+id/music_control_current_bpm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginBottom="12dp"
-                android:text="150"
-                android:textColor="@color/light_grey"
-                android:textSize="52dp" />
-
-
-            <ImageView
-                android:id="@+id/bpm_up"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="40dp"
-                android:layout_toRightOf="@id/music_control_current_bpm"
-                android:background="@mipmap/yinyuejiemian_increase" />
-
-            <ImageView
-                android:id="@+id/bpm_down"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="40dp"
-                android:layout_toLeftOf="@id/music_control_current_bpm"
-                android:background="@mipmap/yinyuejiemian_decrease" />
-
-        </RelativeLayout>
-
+        <ImageView
+            android:id="@+id/music_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="3dp"
+            android:layout_toLeftOf="@id/music_playing_next"
+            android:background="@drawable/music_like_selector" />
 
     </RelativeLayout>
-
-
 
 
     <RelativeLayout
@@ -214,32 +212,36 @@
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:id="@+id/list_corner_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:background="@mipmap/gedanjiemian_liebiao"
-            android:clickable="true" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:clickable="true"
+            android:text="地图"
+            android:textColor="@color/text_bright_white"
+            android:textSize="16dp"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/runninspire_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Running Music"
+            android:text="RUNNING"
             android:textColor="@color/white"
-            android:textSize="19dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:typeface="normal" />
 
         <ImageView
             android:id="@+id/list_corner_right"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginRight="2dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@mipmap/on_line"/>
+            android:layout_marginRight="2dp"
+            android:background="@mipmap/detailspage_share" />
     </RelativeLayout>
 
 </RelativeLayout>

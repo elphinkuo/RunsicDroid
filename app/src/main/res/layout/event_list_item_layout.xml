@@ -71,5 +71,10 @@
         android:layout_toLeftOf="@id/event_going"
         android:layout_alignBaseline="@id/event_going"/>
 
+    <ImageView
+        android:id="@+id/event_item_image_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="#33000000"/>
 
 </RelativeLayout>

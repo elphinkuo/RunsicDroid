@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,9 +17,17 @@ import android.view.ViewGroup;
 
 import com.runningmusic.activity.MusicListDetailActivity;
 import com.runningmusic.adapter.GridAdapter;
+import com.runningmusic.adapter.GridListGroupAdapter;
 import com.runningmusic.adapter.PGCItemClickListener;
+import com.runningmusic.adapter.RunningMusicAdapter;
+import com.runningmusic.event.EventRequestEvent;
+import com.runningmusic.event.HotListGroupEvent;
+import com.runningmusic.event.RunListGroupEvent;
 import com.runningmusic.music.Music;
 import com.runningmusic.music.PGCMusicList;
+import com.runningmusic.music.PlayListEntity;
+import com.runningmusic.network.http.RunsicRestClient;
+import com.runningmusic.network.http.RunsicRestClientUsage;
 import com.runningmusic.runninspire.R;
 import com.runningmusic.service.RunsicService;
 import com.runningmusic.utils.Util;
@@ -26,6 +35,11 @@ import com.twotoasters.jazzylistview.JazzyGridView;
 import com.twotoasters.jazzylistview.JazzyHelper;
 import com.twotoasters.jazzylistview.recyclerview.JazzyRecyclerViewScrollListener;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -40,15 +54,17 @@ public class MusicList extends Fragment implements PGCItemClickListener, Observe
     private String TAG = MusicList.class.getName();
     private onMusicListCloseListener mCallBack;
 
-    private int mCurrentTransitionEffect = JazzyHelper.HELIX;
+    private int mCurrentTransitionEffect = JazzyHelper.TILT;
     private JazzyRecyclerViewScrollListener jazzyScrollListener;
 
     private ArrayList<Music> pgcList;
     private JazzyGridView gridView;
+    private RecyclerView hotRecyclerView;
     private RecyclerView recyclerView;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Context context;
-    private GridAdapter gridAdapter;
+    private GridListGroupAdapter gridAdapter;
+    private GridListGroupAdapter hGridAdapter;
     public MusicList() {
     }
 
@@ -56,15 +72,21 @@ public class MusicList extends Fragment implements PGCItemClickListener, Observe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        context = this.getActivity();
         if (Util.DEBUG)
             Log.e(TAG, "onCreateView");
         View view = inflater.inflate(R.layout.fragment_music_list, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.pgc_list);
+        hotRecyclerView = (RecyclerView) view.findViewById(R.id.pgc_hot_list);
+
+//        recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(), 2));
-        gridAdapter = new GridAdapter(this.getActivity(), R.layout.grid_item, RunsicService.getInstance().musicPGCList);
-        gridAdapter.setOnItemClickListener(this);
-        recyclerView.setAdapter(gridAdapter);
+        hotRecyclerView.setLayoutManager(new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false));
+
+
+
+
 
         jazzyScrollListener = new JazzyRecyclerViewScrollListener();
         recyclerView.setOnScrollListener(jazzyScrollListener);
@@ -76,19 +98,21 @@ public class MusicList extends Fragment implements PGCItemClickListener, Observe
 
 
 
+
     @Override
     public void onResume() {
         super.onResume();
-        if (Util.DEBUG)
-            Log.e(TAG, "" + pgcList);
-        context = this.getActivity();
-        if (RunsicService.getInstance().musicPGCList != null && RunsicService.getInstance().musicPGCList.size()!=0) {
-            pgcList = RunsicService.getInstance().musicPGCList;
-            recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(), 2));
-            recyclerView.setAdapter(new GridAdapter(context, R.layout.grid_item, pgcList));
-            return;
-        }
-        RunsicService.getInstance().getPGCList();
+        EventBus.getDefault().register(this);
+        RunsicRestClientUsage.getInstance().getPlayListGroup("featured");
+        RunsicRestClientUsage.getInstance().getPlayListGroup("running");
+//        context = this.getActivity();
+//        if (RunsicService.getInstance().musicPGCList != null && RunsicService.getInstance().musicPGCList.size()!=0) {
+//            pgcList = RunsicService.getInstance().musicPGCList;
+//            recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(), 2));
+//            recyclerView.setAdapter(new GridAdapter(context, R.layout.grid_item, pgcList));
+//            return;
+//        }
+//        RunsicService.getInstance().getPGCList();
 
 
     }
@@ -131,7 +155,6 @@ public class MusicList extends Fragment implements PGCItemClickListener, Observe
 //        Intent intent = new Intent();
 //        intent.setClass(this.getActivity(), MusicListDetailActivity.class);
 //        this.getActivity().startActivity(intent);
-        mCallBack.onMusicListClose(position);
 
     }
 
@@ -139,23 +162,50 @@ public class MusicList extends Fragment implements PGCItemClickListener, Observe
     public void onBackPressed() {
         if (Util.DEBUG)
             Log.e(TAG, "back");
-        mCallBack.onMusicListClose(-1);
     }
 
     public interface onMusicListCloseListener {
         void onMusicListClose(int position);
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//
 //        try {
 //            mCallBack = (onMusicListCloseListener) activity;
 //        } catch (ClassCastException e) {
 //            throw new ClassCastException(activity.toString() + " must implement onMusicListCloseListener");
 //        }
+//    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onHotListGroup(HotListGroupEvent event) {
+        ArrayList<PlayListEntity> listGroup = event.listGroup;
+        hGridAdapter = new GridListGroupAdapter(context, R.layout.horizontal_item_recycler, listGroup);
+        hGridAdapter.setOnItemClickListener(this);
+        hotRecyclerView.setAdapter(hGridAdapter);
+
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onRunListGroup(RunListGroupEvent event) {
+
+        ArrayList<PlayListEntity> listGroup = event.listGroup;
+        gridAdapter = new GridListGroupAdapter(this.getActivity(), R.layout.grid_item, listGroup);
+        gridAdapter.setOnItemClickListener(this);
+        recyclerView.setAdapter(gridAdapter);
+
+
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
 
 }
