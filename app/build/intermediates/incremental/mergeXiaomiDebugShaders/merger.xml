@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/main/shaders"/></dataSet><dataSet config="Xiaomi"><source path="/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/Xiaomi/shaders"/></dataSet><dataSet config="debug"><source path="/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/debug/shaders"/></dataSet><dataSet config="XiaomiDebug"><source path="/Users/guofuming/Documents/Wearelf/RunninSpire/app/src/XiaomiDebug/shaders"/></dataSet></merger>

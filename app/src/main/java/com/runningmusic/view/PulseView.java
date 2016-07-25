@@ -33,7 +33,7 @@ public class PulseView extends RelativeLayout {
     }
 
     public void pulse() {
-        pulse(1.8f, 6);
+        pulse(1.3f, 5);
     }
 
     private void pulse(float scale, int num) {

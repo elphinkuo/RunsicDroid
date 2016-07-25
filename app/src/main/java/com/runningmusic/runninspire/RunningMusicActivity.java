@@ -14,7 +14,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,10 +31,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,9 +45,6 @@ import com.amap.api.maps.LocationSource;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.androidquery.AQuery;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.runningmusic.adapter.GridAdapter;
 import com.runningmusic.db.Record;
@@ -286,7 +280,7 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
 
 
 
-        aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.stop);
+        aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.move_pause);
 
 
     }
@@ -540,16 +534,6 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         bindService(new Intent(this, RunsicService.class), serviceConnection, Context.BIND_AUTO_CREATE);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "RunningMusic Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.runningmusic.runninspire/http/host/path")
-        );
     }
 
     @Override
@@ -603,7 +587,7 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         RunsicService.getInstance().addCurrentMusicObserver(this);
 
         if (RunsicService.getInstance().getPlayerStatus()) {
-            aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.stop);
+            aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.move_pause);
         } else {
             aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.play);
         }
@@ -627,18 +611,7 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
         if (Util.DEBUG) {
             Log.e(TAG, "onStop");
         }
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "RunningMusic Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.runningmusic.runninspire/http/host/path")
-        );
+
         if (Util.DEBUG) {
             Log.i(TAG, "ON STOP");
         }
@@ -652,58 +625,9 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
             Log.e(TAG, "lastRunPause is " + lastRunPause);
         }
         RunsicService.getInstance().deleteCurrentMusicObserver(this);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
+
     }
 
-//    public void updateStepNotification(StepMessage sm) {
-//
-////        distance.setText(""+ActivityManagerWrapper.getCurrentManualActivity().getStep());
-//        switch (sm.notificationType) {
-//
-//            case StepMessage.NOTIFICATION_NONE:
-//                step();
-//                break;
-//            case StepMessage.NOTIFICATION_FAKE_STEP:
-//                step();
-//                int fakeBpm = currentTempo - 3 + (new Random().nextInt()) % 6;
-//                aQuery_.id(R.id.pageview_circle_big_tv).text("" + fakeBpm);
-//                if (Util.DEBUG) {
-//                    Log.i(TAG, "step status" + sm.notificationType);
-//                }
-//                break;
-//            case StepMessage.NOTIFICATION_FAKE_STOP:
-//                step();
-//                if (Util.DEBUG) {
-//                    Log.i(TAG, "step status" + sm.notificationType);
-//                }
-//                break;
-//            case StepMessage.NOTIFICATION_REAL_STEP:
-//                if (Util.DEBUG) {
-//                    Log.i(TAG, "step status" + sm.notificationType);
-//                }
-//                int bpm = Util.getFixedBpm(sm.bpm);
-//                aQuery_.id(R.id.pageview_circle_big_tv).text("" + bpm);
-//                step();
-//                break;
-//            case StepMessage.NOTIFICATION_REAL_STOP:
-//                stop();
-//                if (Util.DEBUG) {
-//
-//                }
-//                aQuery_.id(R.id.pageview_circle_big_tv).text("" + currentTempo);
-//                break;
-//            case StepMessage.NOTIFICATION_START_REAL_STEP:
-//                if (Util.DEBUG) {
-//                    Log.i(TAG, "step status" + sm.notificationType);
-//                }
-//                step();
-//                break;
-//            default:
-//                break;
-//        }
-//
-//    }
 
     private void playOnTempo(int tempo) {
         if (Util.DEBUG) {
@@ -1144,9 +1068,6 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onBPMEvent(BPMEvent bpmEvent) {
         Log.e(TAG, "GET MESSAGE STEP IS " + bpmEvent.step + " GET MESSAGE BPM IS " + bpmEvent.bpm);
-//        favMusicList = favMusicListEvent.musicFavList;
-//        gridAdapter = new GridAdapter(context, R.layout.horizontal_item_recycler, favMusicList);
-//        favRecyclerView.setAdapter(gridAdapter);
     }
 
     public void start() {
@@ -1197,29 +1118,11 @@ public class RunningMusicActivity extends FragmentActivity implements SensorEven
             int bpm = SportTracker.getBpm();
 //            Log.e(TAG, "step is "+SportTracker.getStep() + " bpm is " + SportTracker.getBpm());
             aQuery_.id(R.id.pulse_number).text(""+bpm);
+            pulse.pulse();
             if (SportTracker.checkBpm(RunsicService.getInstance().currentMusicTempo)) {
                 RunsicService.getInstance().playOnTempo(bpm);
             }
-//            if (centerStatus==0) {
-//                aQuery_.id(R.id.pulse_number).text(SportTracker.getBpm());
-//            } else {
-//
-//            }
-
-            //传当前歌曲的BPM
-//            SportTracker.checkBpm()
         }
 
-//        if (Runsic.getInstance().sample(event)) {
-//            Log.e(TAG, "SENSOR CHANGED");
-//            int bpm = Runsic.getInstance().getBpm();
-//            Log.i(TAG, "===============================================Qiuxiang BPM IS " + bpm);
-//            if (bpm != 0 && Runsic.getInstance().isReady(currentMusicTempo)) {
-//                Log.i(TAG, "切换到 " + bpm + " BPM");
-//                Runsic.getInstance().getBpm();
-//                motionMusicChange(bpm);
-//                currentMusicTempo = bpm;
-//            }
-//        }
     }
 }

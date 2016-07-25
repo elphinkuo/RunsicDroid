@@ -28,6 +28,11 @@
 -keep public class * extends android.support.v4.app.Fragment
 -keep public class * extends android.support.v4.app.FragmentActivity
 
+-keep class !android.support.v7.internal.view.menu.**,** {*;}
+-dontwarn
+-ignorewarnings
+-dontshrink
+
 -keepattributes **
 -keep class !android.support.v7.internal.view.menu.**,** {*;}
 -dontpreverify

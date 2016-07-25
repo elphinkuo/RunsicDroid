@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -65,6 +66,8 @@ public class MusicList extends Fragment implements PGCItemClickListener, Observe
     private Context context;
     private GridListGroupAdapter gridAdapter;
     private GridListGroupAdapter hGridAdapter;
+
+    private NestedScrollView nestedScrollView;
     public MusicList() {
     }
 
@@ -79,13 +82,12 @@ public class MusicList extends Fragment implements PGCItemClickListener, Observe
 
         recyclerView = (RecyclerView) view.findViewById(R.id.pgc_list);
         hotRecyclerView = (RecyclerView) view.findViewById(R.id.pgc_hot_list);
+        nestedScrollView = (NestedScrollView) view.findViewById(R.id.pgc_list_container);
 
-//        recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(), 2));
         hotRecyclerView.setLayoutManager(new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false));
-
-
-
+        hotRecyclerView.setNestedScrollingEnabled(false);
+        nestedScrollView.setNestedScrollingEnabled(true);
 
 
         jazzyScrollListener = new JazzyRecyclerViewScrollListener();
