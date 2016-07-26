@@ -21,6 +21,7 @@ public class Music implements JSONParceble{
     public String coverURL;
     public String audioURL;
     public String fileName;
+    public boolean favourite;
     public int tempo;
     public int duration;
 
@@ -37,6 +38,7 @@ public class Music implements JSONParceble{
             audioURL = obj.getString("audio_url");
             kbps = obj.getString("kbps");
             tempo = obj.getInt("tempo");
+            favourite = obj.getBoolean("favorite");
             fileName = Util.generateFileName(audioURL);
         } catch (JSONException e) {
             e.printStackTrace();

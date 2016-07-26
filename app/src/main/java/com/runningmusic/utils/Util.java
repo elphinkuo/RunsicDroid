@@ -8,6 +8,7 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.Environment;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -683,6 +684,14 @@ public class Util {
         return fileNameGenerator.generate(url);
     }
 
+    public static String getPaceValue( double speed ) {
+        String paceResult;
+        int min = (int)(1000/speed);
+        int seconds = (int)(1000%speed);
+        paceResult= "" + min + "\'" + seconds + "\"";
+        return paceResult;
+    }
+
     public static final class TempoComparator implements Comparator<Music> {
 
         @Override
@@ -694,9 +703,6 @@ public class Util {
             return (first < second) ? -1 : ((first == second) ? 0 : 1);
         }
     }
-
-
-
 
 
 }

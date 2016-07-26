@@ -50,8 +50,7 @@ public class WearelfApplication extends LifecycleApplication {
 		}
 
 		//启动Runsic Service
-		Intent motionIntent = new Intent(this, RunsicService.class);
-		startService(motionIntent);
+
 
 
 		//暂时不存Log

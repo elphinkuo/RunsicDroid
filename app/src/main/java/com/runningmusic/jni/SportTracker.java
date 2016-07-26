@@ -10,10 +10,11 @@ public class SportTracker {
     }
 
     public static native boolean pushAcceleration(long timestamp, float x, float y, float z);
-    public static native boolean pushLocation(long timestamp, double latitude, double longitude, float speed);
+    public static native boolean pushLocation(long timestamp, double latitude, double longitude, float acc, float speed);
     public static native double getSpeed();
     public static native double getDistance();
     public static native byte[] getData();
+    public static native byte[] getExtra();
     public static native int getBpm();
     public static native int getStep();
     public static native void start(long timestamp);

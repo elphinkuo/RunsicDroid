@@ -8,6 +8,7 @@ android {
         applicationId "com.runningmusic.runninspire"
         minSdkVersion 16
         targetSdkVersion 23
+        multiDexEnabled true
 
 
         versionCode 7
@@ -18,12 +19,21 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            storeFile file("/Users/guofuming/Documents/Dev_tools/keystore/runningmusicAndroid.jks")
+            storePassword "460801389Gfm"
+            keyAlias "runningmusicAndroid"
+            keyPassword "460801389Gfm"
+        }
+    }
+
 //    aaptOptions {
 //        cruncherEnabled = false
 //    }
 
     lintOptions {
-        checkReleaseBuilds false
+        checkReleaseBuilds true
         abortOnError false
     }
 
@@ -39,11 +49,14 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles.add(file('proguard-rules.pro'))
 
         }
 
         debug {
+            signingConfig signingConfigs.release
+
         }
     }
 
@@ -89,21 +102,6 @@ android {
 
 }
 
-//android.sources {
-//    main {
-//        jniLibs {
-//            dependencies {
-//                library file("libs/armeabi/libleveldb.so") abi "armeabi"
-//                library file("libs/armeabi/libRunsicCPP.so") abi "armeabi"
-//                library file("libs/armeabi-v7a/libleveldb.so") abi "armeabi-v7a"
-//                library file("libs/armeabi-v7a/libRunsicCPP.so") abi "armeabi-v7a"
-//                library file("libs/x86/libleveldb.so") abi "x86"
-//                library file("libs/x86/libRunsicCPP.so") abi "x86"
-//
-//            }
-//        }
-//    }
-//}
 
 
 dependencies {
@@ -114,7 +112,6 @@ dependencies {
     compile files('libs/fastjson-1.1.26.jar')
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.jakewharton:disklrucache:2.0.2'
-    compile 'com.makeramen:roundedimageview:2.2.1'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
     compile 'com.android.support:recyclerview-v7:23.4.0'

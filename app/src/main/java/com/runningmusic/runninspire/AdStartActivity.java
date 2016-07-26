@@ -10,6 +10,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.androidquery.AQuery;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.analytics.MobclickAgentJSInterface;
 
 public class AdStartActivity extends AppCompatActivity {
 
@@ -47,6 +49,7 @@ public class AdStartActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        MobclickAgent.onResume(this);
         if (handler != null) {
             handler.postDelayed(new Runnable() {
 
@@ -72,6 +75,13 @@ public class AdStartActivity extends AppCompatActivity {
 
             }, 2500);
         }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
 }

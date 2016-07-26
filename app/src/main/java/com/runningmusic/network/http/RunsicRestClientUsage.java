@@ -11,10 +11,12 @@ import android.os.Bundle;
 import android.telephony.TelephonyManager;
 
 import com.alibaba.fastjson.JSON;
+import com.runningmusic.event.CurrentMusicEvent;
 import com.runningmusic.event.EventRequestEvent;
 import com.runningmusic.event.FavMusicListEvent;
 import com.runningmusic.event.HotListGroupEvent;
 import com.runningmusic.event.RunListGroupEvent;
+import com.runningmusic.event.TempoListResult;
 import com.runningmusic.music.Event;
 import com.runningmusic.music.Music;
 import com.runningmusic.music.MusicRequestCallback;
@@ -89,6 +91,66 @@ public class RunsicRestClientUsage {
 
             @Override
             public void onFailure(int errorCode) {
+
+            }
+        });
+    }
+
+    public void setLikeMusic(String token, String musicID) {
+        setTokenHeader(token);
+        AndroidRequestParams params = new AndroidRequestParams();
+        Log.e(TAG, "setFavMusic token is " + token + "MUSIC_ID is " + musicID);
+        RunsicRestClient.post(Constants.USER_LIKE_MUSIC + "/" + musicID + "/like", params, new HttpResponseHandler() {
+            @Override
+            public void onSuccess(byte[] responseBytes) {
+                String responseBody = null;
+                try {
+                    responseBody = new String(responseBytes);
+                    JSONObject jsonObject = new JSONObject(responseBody);
+
+                    if (Util.DEBUG) {
+                        Log.e(TAG, "responseBody is " + jsonObject);
+                        Log.e(TAG, "jsonArray is " + jsonObject);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int errorCode) {
+                Log.e(TAG, ""+ errorCode);
+
+            }
+        });
+    }
+
+    public void setUnLikeMusic(String token, String musicID) {
+        setTokenHeader(token);
+        AndroidRequestParams params = new AndroidRequestParams();
+        Log.e(TAG, "setFavMusic token is " + token + "MUSIC_ID is " + musicID);
+        RunsicRestClient.post(Constants.USER_LIKE_MUSIC + "/" + musicID + "/unlike", params, new HttpResponseHandler() {
+            @Override
+            public void onSuccess(byte[] responseBytes) {
+                String responseBody = null;
+                try {
+                    responseBody = new String(responseBytes);
+                    JSONObject jsonObject = new JSONObject(responseBody);
+
+                    if (Util.DEBUG) {
+                        Log.e(TAG, "responseBody is " + jsonObject);
+                        Log.e(TAG, "jsonArray is " + jsonObject);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int errorCode) {
+                Log.e(TAG, ""+ errorCode);
 
             }
         });
@@ -177,45 +239,46 @@ public class RunsicRestClientUsage {
     }
 
 
-    public void getPGCList() {
-
-
-        RunsicRestClient.get(Constants.PGC_MUSIC_LIST, null, new HttpResponseHandler() {
-            @Override
-            public void onSuccess(byte[] responseBytes) {
-                try {
-                    String responseBody = new String (responseBytes, Constants.CHARSET);
-                    JSONArray jsonArray = new JSONArray(responseBody);
-                    if (Util.DEBUG) {
-                        Log.e(TAG, "responseBody is " + responseBody);
-                        Log.e(TAG, "jsonArray is "+ jsonArray);
-                    }
-
-
-
-                    if (jsonArray!=null) {
-                        for (int i=0; i < jsonArray.length(); i++) {
-                            Music music = new Music();
-                            music.initWithJSONObject(jsonArray.getJSONObject(i));
-                            RunsicService.getInstance().addPGCList(music);
-                        }
-                    }
-
-                    RunsicService.getInstance().setPGCListChange();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-
-                }
-            }
-
-            @Override
-            public void onFailure(int errorCode) {
-                Log.e(TAG, "GET PGCLIST FAILURE");
-                Log.e(TAG, "ERROR CODE " + errorCode);
-            }
-        });
-    }
+//    public void getPGCList() {
+//
+//
+//        RunsicRestClient.get(Constants.PGC_MUSIC_LIST, null, new HttpResponseHandler() {
+//            @Override
+//            public void onSuccess(byte[] responseBytes) {
+//                try {
+//                    String responseBody = new String (responseBytes, Constants.CHARSET);
+//                    JSONArray jsonArray = new JSONArray(responseBody);
+//                    if (Util.DEBUG) {
+//                        Log.e(TAG, "responseBody is " + responseBody);
+//                        Log.e(TAG, "jsonArray is "+ jsonArray);
+//                    }
+//
+//
+//
+//                    if (jsonArray!=null) {
+//
+//                        for (int i=0; i < jsonArray.length(); i++) {
+//                            Music music = new Music();
+//                            music.initWithJSONObject(jsonArray.getJSONObject(i));
+//                            RunsicService.getInstance().addPGCList(music);
+//                        }
+//                    }
+//
+//                    RunsicService.getInstance().setPGCListChange();
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(int errorCode) {
+//                Log.e(TAG, "GET PGCLIST FAILURE");
+//                Log.e(TAG, "ERROR CODE " + errorCode);
+//            }
+//        });
+//    }
 
 
     public void getTempoList(int tempo) {
@@ -233,16 +296,19 @@ public class RunsicRestClientUsage {
                         Log.e(TAG, "jsonArray is "+ jsonArray);
                     }
 
-
                     if (jsonArray != null) {
+                        ArrayList<Music> musicArrayList = new ArrayList<Music>();
                         for (int i=0; i < jsonArray.length(); i++) {
                             Music music = new Music();
                             music.initWithJSONObject(jsonArray.getJSONObject(i));
-                            RunsicService.getInstance().addCurrentList(music);
+                            if (i == 0) {
+                                EventBus.getDefault().post(new CurrentMusicEvent(music));
+                            }
+                            musicArrayList.add(music);
                         }
-                    }
+                        EventBus.getDefault().post(new TempoListResult(musicArrayList));
 
-                    musicRequestCallback.onPlayonTempoListCallback();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -383,7 +449,10 @@ public class RunsicRestClientUsage {
 
     }
 
-
+    /**
+     *
+     * @param obj
+     */
     public void createUser(Object obj) {
         AndroidRequestParams params = new AndroidRequestParams();
 //        params.put("action", "adduser");
@@ -410,11 +479,12 @@ public class RunsicRestClientUsage {
                 int uid = 0;
                 try {
                     String responseBody = new String(responseBytes, Constants.CHARSET);
-                    Log.e(TAG, "createUser RESPONSE is " + responseBody );
+                    JSONObject jsonObject = new JSONObject(responseBody);
+                    String token = jsonObject.getString("token");
 
                     SharedPreferences sharedPreferences = Util.getUserPreferences();
                     Editor editor = sharedPreferences.edit();
-                    editor.putString("token", responseBody);
+                    editor.putString("token", token);
                     editor.commit();
 
 //                    String responseBody = new String(responseBytes, Constants.CHARSET);
@@ -438,6 +508,38 @@ public class RunsicRestClientUsage {
                 Log.e(TAG, "errorCode is " + errorCode);
             }
 
+        });
+    }
+
+
+    public void saveSportToServer(String token, String base64String ) {
+        setTokenHeader(token);
+        AndroidRequestParams params = new AndroidRequestParams();
+        params.put("data", base64String);
+        Log.e(TAG, "saveSportToServer token is " + token);
+        RunsicRestClient.post(Constants.USER_SPORT_SAVE, params, new HttpResponseHandler() {
+            @Override
+            public void onSuccess(byte[] responseBytes) {
+                String responseBody = null;
+                try {
+                    responseBody = new String(responseBytes);
+                    JSONObject jsonObject = new JSONObject(responseBody);
+
+                    if (Util.DEBUG) {
+                        Log.e(TAG, "responseBody is " + jsonObject);
+                        Log.e(TAG, "jsonArray is " + jsonObject);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int errorCode) {
+                Log.e(TAG, ""+ errorCode);
+
+            }
         });
     }
 
@@ -479,6 +581,8 @@ public class RunsicRestClientUsage {
 
         return userMap;
     }
+
+
 
     private enum TypeInfo {
         Tencent, Sinaweibo, Wandoujia

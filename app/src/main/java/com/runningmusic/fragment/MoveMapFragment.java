@@ -2,30 +2,39 @@ package com.runningmusic.fragment;
 
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.amap.api.maps.AMap;
-import com.amap.api.maps.LocationSource;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.CameraPosition;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.MarkerOptions;
-import com.runningmusic.event.LocationChangedEvent;
+import com.amap.api.maps.model.PolylineOptions;
+import com.androidquery.AQuery;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.runningmusic.jni.SportTracker;
+import com.runningmusic.runninspire.Messages;
 import com.runningmusic.runninspire.R;
+import com.runningmusic.runninspire.RunsicActivity;
 import com.runningmusic.utils.Log;
+import com.runningmusic.utils.Util;
 
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListener, AMap.OnCameraChangeListener {
+public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListener, AMap.OnCameraChangeListener, AMap.CancelableCallback {
     private static String TAG = MoveMapFragment.class.getName();
 
     private AMap aMap;
@@ -33,7 +42,18 @@ public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListene
     private UiSettings uiSettings;
     private MarkerOptions startMarkerOptions;
     private MarkerOptions endMarkerOptions;
+    private AQuery aQuery;
+    private List<Messages.Location> locations;
+    private Typeface highNumberTypeface;
+    private float mCameraZoom = 17;
+    private PolylineOptions polylineOptions;
+    private boolean isFirstRefresh = true;
+    private Handler loopHandler;
+    private Runnable runnable;
 
+    private double distanceValue;
+    private String paceValue;
+    private double speed;
 
 
 
@@ -51,7 +71,9 @@ public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListene
 
         View view = inflater.inflate(R.layout.fragment_move_map, container, false);
         mapView = (MapView) view.findViewById(R.id.map);
-
+        mapView.onCreate(savedInstanceState);
+        aQuery = new AQuery(view);
+        loopHandler = new Handler();
 
         if (aMap == null) {
             aMap = mapView.getMap();
@@ -65,26 +87,113 @@ public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListene
     @Override
     public void onMapLoaded() {
 
+        Log.e(TAG, "onMapLoaded()");
+
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        builder.include(new LatLng(39.992645, 116.337548));
+        builder.build();
+        mCameraZoom = 17;
+
+        aMap.setOnCameraChangeListener(this);
+
+        refreshMap();
+    }
+
+    public void refreshMap() {
+
+        distanceValue = SportTracker.getDistance();
+        speed = SportTracker.getSpeed();
+        paceValue = Util.getPaceValue(speed);
+
+
+
+        try {
+            locations = Messages.Sport.Extra.parseFrom(SportTracker.getExtra()).getLocationList();
+//            locations = Messages.Sport.parseFrom(SportTracker.getData()).getExtra().getLocationList();
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
+
+
+
+        aQuery.id(R.id.distance_data).text(""+distanceValue).typeface(RunsicActivity.highNumberTypeface);
+        aQuery.id(R.id.pace_data).text(paceValue).typeface(RunsicActivity.highNumberTypeface);
+
+
+
+        int i = 0;
+        Log.e(TAG, "" + i++);
+        Log.e(TAG, "locations size" + locations.size());
+//        boolean ret = checkGPS();
+//        if (!ret && openGPSDialog != null) {
+//            if (!openGPSDialog.isShowing()) {
+//                try {
+//                    showDialog(ID_OPEN_GPS_DIALOG);
+//                } catch (Exception e) {
+//
+//                }
+//            }
+//
+//        } else if (ret && (openGPSDialog != null)) {
+//            dismissDialog(ID_OPEN_GPS_DIALOG);
+//        }
+        if (locations.size() != 0) {
+            Messages.Location startLocation = locations.get(0);
+            Messages.Location leLocation = locations.get(locations.size() - 1);
+
+            LatLng startLatLng = new LatLng(startLocation.getLatitude(), startLocation.getLongitude());
+            LatLng locationLatLng = new LatLng(leLocation.getLatitude(), leLocation.getLongitude());
+            if (isFirstRefresh) {
+                aMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locationLatLng, 17), 2000, this);
+                isFirstRefresh = false;
+            } else {
+                aMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locationLatLng, mCameraZoom), 2000, this);
+            }
+            aMap.clear();
+            polylineOptions.add(locationLatLng);
+            aMap.addPolyline(polylineOptions);
+            startMarkerOptions.position(startLatLng);
+            endMarkerOptions.position(locationLatLng);
+            aMap.addMarker(startMarkerOptions);
+            aMap.addMarker(endMarkerOptions);
+        }
+
     }
 
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
-
+        mCameraZoom = cameraPosition.zoom;
     }
 
     @Override
     public void onCameraChangeFinish(CameraPosition cameraPosition) {
+    }
+
+
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
+        runnable = new Runnable() {
+
+            @Override
+            public void run() {
+                refreshMap();
+                loopHandler.postDelayed(this, 3000);
+                Log.e("", "loop timer test");
+            }
+        };
+        loopHandler.postDelayed(runnable, 3000);
 
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onLocationChangedEvent(LocationChangedEvent locationChangedEvent) {
-        Log.e(TAG, "GET MESSAGE DISTANCE IS " + locationChangedEvent.distance + " GET MESSAGE SPEED IS " + locationChangedEvent.speed);
-//        favMusicList = favMusicListEvent.musicFavList;
-//        gridAdapter = new GridAdapter(context, R.layout.horizontal_item_recycler, favMusicList);
-//        favRecyclerView.setAdapter(gridAdapter);
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
     }
-
     /*
      * 设置地图底图风格
      */
@@ -98,11 +207,12 @@ public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListene
         endMarkerOptions.anchor((float) 0.5, (float) 0.5);
         aMap.setMyLocationEnabled(true);
         aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
-        aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
         uiSettings.setZoomControlsEnabled(false);
         uiSettings.setMyLocationButtonEnabled(false);
         uiSettings.setRotateGesturesEnabled(false);
         uiSettings.setTiltGesturesEnabled(false);
+
+        polylineOptions = new PolylineOptions();
 
 //        LocationProvider
 //
@@ -127,6 +237,23 @@ public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListene
     }
 
 
+    @Override
+    public void onFinish() {
 
+    }
+
+    @Override
+    public void onCancel() {
+
+    }
+
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void onLocationChangedEvent(LocationChangedEvent event) {
+//        Location location
+////        eventArrayList = event.eventList;
+////        eventAdapter = new EventAdapter(context, R.layout.event_list_item_layout, event.eventList);
+////        eventAdapter.setOnItemClickListener(this);
+////        eventRecyclerView.setAdapter(eventAdapter);
+//    }
 
 }

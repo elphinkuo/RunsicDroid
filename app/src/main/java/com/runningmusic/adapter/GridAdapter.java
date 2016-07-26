@@ -48,7 +48,7 @@ public class GridAdapter extends RecyclerView.Adapter<PGCMusicViewHolder> {
 
     @Override
     public void onBindViewHolder(PGCMusicViewHolder holder, int position) {
-        Music music = RunsicService.getInstance().musicPGCList.get(position);
+        Music music = musicPGCList.get(position);
         holder.songTitle.setText(music.title);
         holder.songArtist.setText(music.artist);
 

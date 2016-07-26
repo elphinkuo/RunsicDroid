@@ -16,22 +16,24 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.amap.api.maps.model.Circle;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.makeramen.roundedimageview.RoundedImageView;
 import com.runningmusic.network.service.ImageSingleton;
 import com.runningmusic.service.RunsicService;
 import com.runningmusic.share.BaseShareActivity;
 import com.runningmusic.utils.Util;
 import com.runningmusic.view.Blur;
+import com.runningmusic.view.CircleImageView;
+import com.runningmusic.view.CircleNetworkImageView;
 
 public class ShareActivity extends BaseShareActivity implements View.OnClickListener {
     private static String TAG = ShareActivity.class.getName();
 
     private Typeface highNumberTypeface;
-    private RoundedImageView roundImageView;
-    private RoundedImageView roundImageView2;
-    private RoundedImageView roundImageView3;
+    private CircleImageView roundImageView;
+    private CircleImageView roundImageView2;
+    private CircleImageView roundImageView3;
     private ImageLoader imageLoader;
     private RelativeLayout wholeRelativeLayout;
     private RelativeLayout shareBottom;
@@ -100,24 +102,18 @@ public class ShareActivity extends BaseShareActivity implements View.OnClickList
     }
 
     private void initImage() {
-        roundImageView = (RoundedImageView) findViewById(R.id.share_image1);
+        roundImageView = (CircleImageView) findViewById(R.id.share_image1);
         roundImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        roundImageView.setCornerRadius(Util.dp2px(this.getResources(), 10));
-        roundImageView.mutateBackground(false);
+        roundImageView.setBorderWidth((int)Util.dp2px(this.getResources(), 10));
         roundImageView.setBackgroundColor(Color.argb(0,255,255,255));
-        roundImageView2 = (RoundedImageView) findViewById(R.id.share_image2);
+        roundImageView2 = (CircleImageView) findViewById(R.id.share_image2);
         roundImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        roundImageView.setCornerRadius(Util.dp2px(this.getResources(), 10));
-        roundImageView.mutateBackground(false);
+        roundImageView.setBorderWidth((int)Util.dp2px(this.getResources(), 10));
         roundImageView.setBackgroundColor(Color.argb(0,255,255,255));
-        roundImageView3 = (RoundedImageView) findViewById(R.id.share_image3);
+        roundImageView3 = (CircleImageView) findViewById(R.id.share_image3);
         roundImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        roundImageView.setCornerRadius(Util.dp2px(this.getResources(), 10));
-        roundImageView.mutateBackground(false);
+        roundImageView.setBorderWidth((int)Util.dp2px(this.getResources(), 10));
         roundImageView.setBackgroundColor(Color.argb(0, 255, 255, 255));
-
-
-
 
         if (RunsicService.getInstance().musicCurrentList!=null ) {
             if (Util.DEBUG)

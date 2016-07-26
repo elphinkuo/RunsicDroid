@@ -5,35 +5,28 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
-import android.net.ConnectivityManager;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
-import android.net.wifi.WifiManager;
-import android.os.Handler;
+import android.os.AsyncTask;
 import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
+import android.support.annotation.Nullable;
 import android.telephony.TelephonyManager;
-import android.widget.Toast;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationListener;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.runningmusic.application.WearelfApplication;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.runningmusic.db.MusicDB;
-import com.runningmusic.event.BPMEvent;
-import com.runningmusic.event.LocationChangedEvent;
-import com.runningmusic.jni.SportTracker;
+import com.runningmusic.event.CurrentListEvent;
+import com.runningmusic.event.CurrentMusicEvent;
+import com.runningmusic.event.TempoListResult;
 import com.runningmusic.music.CurrentMusic;
 import com.runningmusic.music.CurrentMusicList;
 import com.runningmusic.music.Music;
@@ -44,9 +37,9 @@ import com.runningmusic.network.NetworkMode;
 import com.runningmusic.network.http.RunsicRestClient;
 import com.runningmusic.network.http.RunsicRestClientUsage;
 import com.runningmusic.network.service.NetworkStateReceiver;
+import com.runningmusic.player.AudioPlayer;
 import com.runningmusic.runninspire.BeatsCache;
-import com.runningmusic.runninspire.Messages;
-import com.runningmusic.runninspire.RunningMusicActivity;
+import com.runningmusic.runninspire.RunsicActivity;
 import com.runningmusic.utils.Constants;
 import com.runningmusic.utils.Log;
 import com.runningmusic.utils.Util;
@@ -54,340 +47,64 @@ import com.runningmusic.videocache.HttpProxyCacheServer;
 import com.runningmusic.videocache.StorageUtils;
 import com.runningmusic.videocache.file.Files;
 import com.runningmusic.videocache.file.Md5FileNameGenerator;
+import com.runningmusic.view.Blur;
 import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class RunsicService extends Service implements Observer, NetworkMode, MusicPlayCallback, MusicRequestCallback {
+public class RunsicService extends Service implements MusicPlayCallback, MusicRequestCallback {
     private static String TAG = RunsicService.class.getName();
-
-
-
-    private Binder binder = new Binder();
-    private OnChangedListener onChangedListener;
 
     private static boolean stopMotion = false;
     private SensorManager sensorManager_;
     private Sensor sensor_;
-//    private MotionTracker mm_;
-//    private TrafficStatsManager trafficStatsManager_;
-//    private TrafficStatsSetting trafficStatsSetting_;
     private NetworkStateReceiver networkStateReceiver_;
 
     private MediaPlayer mediaPlayer;
-    private SoundPool soundPool;
 
+    private AudioPlayer mediaPlayerNew;
 
-    public ArrayList<Music> musicPGCList;
-    public PGCMusicList pgcMusicList;
     public CurrentMusicList musicCurrentList;
     public CurrentMusic musicCurrent;
     public int currentMusicTempo = 0;
 
-    private HttpProxyCacheServer proxy;
-
-    private DownloadManager downloadManager;
     private static MusicDB musicDB;
     private Md5FileNameGenerator fileNameGenerator;
-
-    public static final int MSG_PLAY_ONTEMPO = 1;
-    public static final int MSG_PLAYLIST_ONTEMPO = 2;
-    public static final int MSG_PGC_LIST = 3;
-    public static final int MSG_PLAYLIST_ONTEMPO_NEXT = 4;
-    public static final int MSG_DOWNLOAD = 5;
-
-    private static final int MESSAGE_UPDATE = 1;
-    private static final int MESSAGE_NOTIFICATION = 2;
-
-
-    public static BeatsCache beatsCache = new BeatsCache();
-
-    @Override
-    public void update(Observable observable, Object data) {
-
-        if (Util.DEBUG)
-            Log.e(TAG, "current music change======Runsic Service Receive");
-        currentMusicTempo = musicCurrent.getCurrentMusic().tempo;
-        String musicURL = musicCurrent.getCurrentMusic().audioURL;
-        try {
-            mediaPlayer.reset();
-//            String musicURLCache = proxy.getProxyUrl(musicURL);
-//            Log.e(TAG, "clientsCount is " + proxy.getClientsMap());
-            if (Util.DEBUG)
-                Log.e(TAG, "just set URL");
-            mediaPlayer.setDataSource(this, Uri.parse(musicURL));
-            if (Util.DEBUG)
-                Log.e(TAG, "just");
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-            musicDB.updateDB(musicCurrent.getCurrentMusic());
-//            if (Util.DEBUG)
-//                Log.e(TAG, "Music Duration is " + mediaPlayer.getDuration());
-//            musicCurrent.getCurrentMusic().duration = mediaPlayer.getDuration();
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    interface OnChangedListener {
-        void onStep(int stepCount, int bpm);
-
-        void onLocationChanged(double distance, double speed);
-    }
-
-
-
-    public class ServiceHandler extends Handler {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_PLAY_ONTEMPO:
-                    int tempo = (int) msg.obj;
-//                    playOnTempo(tempo);
-                    getTempoList(tempo);
-                    break;
-
-                case MSG_PLAYLIST_ONTEMPO:
-                    int bpm = (int) msg.obj;
-                    currentMusicTempo = bpm;
-                    musicCurrentList.clear();
-                    getTempoList(bpm);
-                    break;
-
-                case MSG_DOWNLOAD:
-                    if (Util.DEBUG)
-                        Log.e(TAG, "Download received");
-                    startDownload();
-                    break;
-
-            }
-
-        }
-    }
-
-    private final BroadcastReceiver runningReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (Util.DEBUG)
-                Log.i(TAG, "" + intent.getAction());
-            if (Constants.STEPSTATE.equals(intent.getAction())) {
-                // 处理走路提醒
-//				Log.i(TAG, "get the broadcast, step	message");
-
-                StepMessage stepMessage = intent.getParcelableExtra(Constants.MESSAGE_STEPSTATE);
-                if (stepMessage != null) {
-                    // send update message
-//                    Message msg = mHandler.obtainMessage();
-//                    msg.what = MESSAGE_NOTIFICATION;
-//                    msg.obj = stepMessage;
-//                    msg.sendToTarget();
-                }
-
-            }
-
-        }
-    };
-
-//    public class MyHandler extends Handler {
-//        public MyHandler() {
-//            super();
-//        }
-//
-//        // 子类必须重写此方法,接受数据
-//        @Override
-//        public void handleMessage(Message msg) {
-//            super.handleMessage(msg);
-//            switch (msg.what) {
-//                case MESSAGE_UPDATE:
-//                    // 此处可以更新UI
-//                    // updateTodayStats();
-//                    break;
-//                case MESSAGE_NOTIFICATION:
-//                    // updateTodayNotification((StepMessage) msg.obj);
-//                    updateStepNotification((StepMessage) msg.obj);
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
-//    }
-
-    final Messenger mMessenger = new Messenger(new ServiceHandler());
-
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(Constants.STEPSTATE);
-        registerReceiver(runningReceiver, intentFilter);
-        return mMessenger.getBinder();
-    }
 
 
     @Override
     public void onCreate() {
         if (Util.DEBUG)
             Log.e(TAG, "onCreate");
-
-        // 启动流量监控
-//        startTrafficStats();
-        // 创建用户
-//		createUser();
-        // 初始化c++服务
-
-
-        /**
-         * RSBG
-         */
-//        ServiceLauncher.launch(Util.context());
-//        ActivityManagerWrapper.checkStatsOnStart();
-//        MobclickAgent.openActivityDurationTrack(false);
-
-
-//        MobclickAgent.updateOnlineConfig(Util.context());
-        // 开启运动跟踪
-//        startMotionTrack();
-        // 开启位置跟踪
-//		startLocationTrack();
-//		int userid = Util.userId();
-//		Log.i("QQ_HEALTH", "" + userid);
-        // 开始上传DailyStats
-//		DailyStatsUploader.getInstance().start();
-        // 开始检测屏幕关闭开启
-        registerScreenActionBroadcastReceiver();
-        // 开始更新pm2.5值
-//        PM2d5Manager.getInstance().start();
-        // 开始上传达标天数
+        EventBus.getDefault().register(this);
         instance_ = this;
-
-
         initMusicPlayer();
-
-
         //init the sensorManger
 
-
-
         //数据初始化
-        musicPGCList = new ArrayList<>();
 
         musicCurrent = new CurrentMusic();
         musicCurrentList = new CurrentMusicList();
-        pgcMusicList = new PGCMusicList();
 
         Util.setContext(this);
-//        proxy = WearelfApplication.getProxy(this);
-        addCurrentMusicObserver(this);
 
-        downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
         musicDB = new MusicDB();
         fileNameGenerator = new Md5FileNameGenerator();
 
+
+
     }
 
-    public void addCurrentMusicObserver(Observer observer) {
-        musicCurrent.addObserver(observer);
-    }
 
-    public void addCurrentListObserver(Observer observer) {
-        musicCurrentList.addObserver(observer);
-    }
-
-    public void addPGCListObserver(Observer observer) {
-        pgcMusicList.addObserver(observer);
-    }
-
-    public void deleteCurrentMusicObserver(Observer observer) {
-        musicCurrent.deleteObserver(observer);
-    }
-
-//    private void startMotionTrack() {
-//        initMotionTracker();
-//        mm_ = MotionTracker.getInstance();
-//        setActive();
-//    }
-
-    /**
-     * 开始记录位置
-     */
-//    private void startLocationTrack() {
-////		locationTracker_ = LocationTracker.getInstance();
-////		locationTracker_.startCoarseTrack();
-//    }
-
-    private void initMotionTracker() {
-        sensorManager_ = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        sensor_ = sensorManager_.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-    }
-
-    private void createUser() {
-        SharedPreferences sPreferences = Util.getUserPreferences();
-        String pCodeString = sPreferences.getString(Constants.DEVICE_ID, null);
-
-        if (pCodeString == null) {
-            TelephonyManager tm = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
-
-            Editor editor = sPreferences.edit();
-            String pc = tm.getDeviceId();
-            editor.putString(Constants.DEVICE_ID, pc);
-            editor.commit();
-        }
-
-        RunsicRestClientUsage.getInstance().addUser();
-        RunsicRestClientUsage.getInstance().updateinfo();
-    }
-
-//    private void startTrafficStats() {
-//        trafficStatsManager_ = TrafficStatsManager.getInstance();
-//        trafficStatsSetting_ = TrafficStatsSetting.getInstance();
-//        trafficStatsSetting_.setAlarm();
-//        networkStateReceiver_ = new NetworkStateReceiver();
-//        IntentFilter filter = new IntentFilter();
-//        filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
-//        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-//        registerReceiver(networkStateReceiver_, filter);
-//    }
-//
-//    private void stopTrafficStats() {
-//        unregisterReceiver(networkStateReceiver_);
-//        trafficStatsSetting_.cancelAlarm();
-//        trafficStatsManager_.onAppDestroy();
-//    }
-
-//    public void pauseMotionTracker() {
-//        sensorManager_.unregisterListener(mm_);
-//    }
-//
-//    public void resumeMotionTracker() {
-//        if (stopMotion) {
-//            PartialWakeLock.getInstance().releaseWakeLock();
-//            return;
-//        }
-//        registerAccListener();
-//    }
-
-//    public void registerAccListener() {
-//        if (sensorManager_ != null) {
-//            sensorManager_.registerListener(mm_, sensor_, 10000);
-//        }
-//    }
-//
-//    public void unregisterAccListener() {
-//        if (sensorManager_ != null) {
-//            sensorManager_.unregisterListener(mm_);
-//        }
 //    }
 
     @Override
@@ -396,34 +113,18 @@ public class RunsicService extends Service implements Observer, NetworkMode, Mus
         MobclickAgent.onEvent(this, "MOTION_SERVICE_DESTORY");
         if (Util.DEBUG)
             Log.e("RunsicService", "Service onDestroy");
-
-//        if (sensorManager_ != null) {
-//            pauseMotionTracker();
-//            sensorManager_ = null;
-//        }
-
-//		if (locationTracker_ != null) {
-////			locationTracker_.stopTrack();
-//			locationTracker_ = null;
-//		}
-
-//        if (heartBeatSetting_ != null) {
-//            heartBeatSetting_.cancelAlarm();
-//            heartBeatSetting_ = null;
-//        }
-
-//        stopTrafficStats();
-
         PartialWakeLock.getInstance().releaseWakeLock();
 
+        EventBus.getDefault().unregister(this);
         RunsicRestClient.cancel();
 
-//        unregisterScreenActionBroadcastReceiver();
-//        unregisterReceiver(runningReceiver);
-        musicCurrent.deleteObservers();
-        // Debug.stopMethodTracing();
-        // Log.i("wangyikang", "debug trace start");
 
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind( Intent intent ) {
+        return null;
     }
 
     @Override
@@ -434,7 +135,6 @@ public class RunsicService extends Service implements Observer, NetworkMode, Mus
         if (instance_ == null) {
             instance_ = this;
         }
-
         //一种Native Debug方法
         // Debug.startMethodTracing("load", 64*1024*1024);
         // Log.i("wangyikang", "debug trace start");
@@ -471,41 +171,10 @@ public class RunsicService extends Service implements Observer, NetworkMode, Mus
 //        this.resumeMotionTracker();
     }
 
-    private BroadcastReceiver powerKeyReceiver_ = null;
 
-    private void registerScreenActionBroadcastReceiver() {
-        final IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(Intent.ACTION_SCREEN_ON);
-        intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
-
-        powerKeyReceiver_ = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String strAction = intent.getAction();
-
-                if (strAction.equals(Intent.ACTION_SCREEN_OFF)) {
-                    // 用于防止某些机型关闭屏幕后关闭加速度计
-//                    unregisterAccListener();
-//                    registerAccListener();
-                }
-
-                if (strAction.equals(Intent.ACTION_SCREEN_ON)) {
-                }
-            }
-        };
-
-        Util.context().registerReceiver(powerKeyReceiver_, intentFilter);
-    }
-
-    private void unregisterScreenActionBroadcastReceiver() {
-        try {
-            Util.context().unregisterReceiver(powerKeyReceiver_);
-        } catch (IllegalArgumentException e) {
-            powerKeyReceiver_ = null;
-        }
-    }
 
     public void initMusicPlayer() {
+
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -532,6 +201,20 @@ public class RunsicService extends Service implements Observer, NetworkMode, Mus
             @Override
             public void onPrepared(MediaPlayer mp) {
 
+            }
+        });
+
+
+        mediaPlayerNew = new AudioPlayer();
+        mediaPlayerNew.setOnCompletionListener(new AudioPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion() {
+                int index = musicCurrentList.getCurrentMusicList().indexOf(musicCurrent.getCurrentMusic());
+                if (index < musicCurrentList.getCurrentMusicList().size()) {
+                    musicCurrent.setCurrentMusic(musicCurrentList.getCurrentMusicList().get(index + 1));
+                } else {
+                    getTempoList(musicCurrent.getCurrentMusic().tempo);
+                }
             }
         });
 
@@ -566,9 +249,7 @@ public class RunsicService extends Service implements Observer, NetworkMode, Mus
 
     }
 
-    public void onLineMusicChange(int tempo) {
-        getTempoListNoChangeCuurent(tempo);
-    }
+
 
 
 
@@ -576,34 +257,18 @@ public class RunsicService extends Service implements Observer, NetworkMode, Mus
         musicCurrent.setCurrentMusic(music);
     }
 
-    public void getPGCList() {
-        musicPGCList.clear();
-        musicPGCList = new ArrayList<>();
-        RunsicRestClientUsage.getInstance().getPGCList();
-    }
-
-    public void addPGCList(Music music) {
-        musicPGCList.add(music);
-    }
-
-    public void setPGCListChange() {
-        if (Util.DEBUG)
-            Log.e(TAG, "set PGC CHANGE " + musicPGCList);
-        pgcMusicList.setPGCMusicList(musicPGCList);
-    }
-
     public void getTempoList(int tempo) {
         if (Util.DEBUG)
             Log.e(TAG, "GET TEMPO LIST");
         currentMusicTempo = tempo;
-        RunningMusicActivity.setCurrentTempo(tempo);
+        RunsicActivity.setCurrentTempo(tempo);
         RunsicRestClientUsage.getInstance().getTempoList(tempo);
     }
 
-    public void getTempoListNoChangeCuurent(int tempo) {
-        tempo = currentMusicTempo;
-        RunsicRestClientUsage.getInstance().getMoreTempoList(tempo);
-    }
+//    public void getTempoListNoChangeCuurent(int tempo) {
+//        tempo = currentMusicTempo;
+//        RunsicRestClientUsage.getInstance().getMoreTempoList(tempo);
+//    }
 
     @Override
     public boolean onPlayonTempoListCallback() {
@@ -647,68 +312,6 @@ public class RunsicService extends Service implements Observer, NetworkMode, Mus
         }
     }
 
-    public void startDownload() {
-        if (Util.DEBUG)
-            Log.e(TAG, "musicPGCList size is================" + musicPGCList.size());
-        for (int i = 0; i < musicPGCList.size(); i++) {
-            String url = proxy.getProxyUrl(musicPGCList.get(i).audioURL);
-//            musicDB.updateDB(music);
-        }
-
-    }
-
-
-
-//    public void updateStepNotification(StepMessage sm) {
-//        switch (sm.notificationType) {
-//
-//            case StepMessage.NOTIFICATION_NONE:
-//
-//                break;
-//            case StepMessage.NOTIFICATION_FAKE_STEP:
-//                if (Util.DEBUG)
-//                    Log.i(TAG, "step status" + sm.notificationType);
-//                break;
-//            case StepMessage.NOTIFICATION_FAKE_STOP:
-//                if (Util.DEBUG)
-//                    Log.i(TAG, "step status" + sm.notificationType);
-//                break;
-//            case StepMessage.NOTIFICATION_REAL_STEP:
-//                if (Util.DEBUG)
-//                    Log.i(TAG, "step status" + sm.notificationType);
-//                if (sm.bpm > 250) {
-//                    return;
-//                }
-//                int bpm = Util.getFixedBpm(sm.bpm);
-//                beatsCache.add(bpm);
-//                if (Util.DEBUG)
-//                    Log.i(TAG, "===============================================SO BPM IS " + bpm);
-//                float variance = beatsCache.getVariance();
-//                if (Util.DEBUG)
-//                    Log.i(TAG, "bpm="+bpm+" variance="+variance);
-////                如果符合切歌逻辑 则更换播放音乐
-//                if (beatsCache.getSwitchable(bpm)) {
-//                    if (Util.DEBUG)
-//                        Log.i(TAG, "========================================SWITCH");
-//                    motionMusicChange(bpm);
-//                } else {
-//                    if (Util.DEBUG)
-//                        Log.i(TAG, "=========================================NO SWITCH");
-//                }
-//                break;
-//            case StepMessage.NOTIFICATION_REAL_STOP:
-////                Log.i(TAG, "step status" + sm.notificationType);
-//                break;
-//            case StepMessage.NOTIFICATION_START_REAL_STEP:
-////                Log.i(TAG, "step status" + sm.notificationType);
-//                break;
-//            default:
-//
-//                break;
-//        }
-//
-//    }
-
     public ArrayList<Music> queryCachedMusic(List<String> fileNames) {
         ArrayList<Music> musics = musicDB.queryCachedMusic(fileNames);
         for (Music music: musics) {
@@ -718,22 +321,22 @@ public class RunsicService extends Service implements Observer, NetworkMode, Mus
         return musics;
     }
 
-    @Override
-    public void onOffLineMode() {
-        Util.OFFLINE = true;
-        File file = StorageUtils.getIndividualCacheDirectory(this.getApplicationContext());
-        List<String> files = Files.getListFilesName(file);
-        ArrayList<Music> musics = queryCachedMusic(files);
-        Log.e(TAG, "Cached Music Size is " + musics.size());
-        Log.e(TAG, "musics are " + musics);
-        this.musicCurrentList.setCurrentMusicList(musics);
-    }
-
-    @Override
-    public void onOnLineMode() {
-        Util.OFFLINE = false;
-            onLineMusicChange(musicCurrent.getCurrentMusic().tempo);
-    }
+//    @Override
+//    public void onOffLineMode() {
+//        Util.OFFLINE = true;
+//        File file = StorageUtils.getIndividualCacheDirectory(this.getApplicationContext());
+//        List<String> files = Files.getListFilesName(file);
+//        ArrayList<Music> musics = queryCachedMusic(files);
+//        Log.e(TAG, "Cached Music Size is " + musics.size());
+//        Log.e(TAG, "musics are " + musics);
+//        this.musicCurrentList.setCurrentMusicList(musics);
+//    }
+//
+//    @Override
+//    public void onOnLineMode() {
+//        Util.OFFLINE = false;
+//            onLineMusicChange(musicCurrent.getCurrentMusic().tempo);
+//    }
 
     @Override
     public boolean onPrevious() {
@@ -755,7 +358,8 @@ public class RunsicService extends Service implements Observer, NetworkMode, Mus
         if (position < 0 || position >=(musicCurrentList.getCurrentMusicList().size()-1)) {
             return false;
         } else {
-            musicCurrent.setCurrentMusic(musicCurrentList.getCurrentMusicList().get(position + 1));
+//            musicCurrent.setCurrentMusic(musicCurrentList.getCurrentMusicList().get(position + 1));
+            EventBus.getDefault().post(new CurrentMusicEvent(musicCurrentList.getCurrentMusicList().get(position + 1)));
             return true;
         }
 
@@ -791,12 +395,41 @@ public class RunsicService extends Service implements Observer, NetworkMode, Mus
     }
 
 
+    @Subscribe
+    public void onTempoListResult(TempoListResult result){
+        this.musicCurrentList.setCurrentMusicList(result.musicArrayList);
+        EventBus.getDefault().post(new CurrentListEvent(result.musicArrayList));
+    }
+
+    @Subscribe
+    public void onCurrentMusicEvent(CurrentMusicEvent musicEvent) {
+        this.musicCurrent.setCurrentMusic(musicEvent.currentMusic);
+        this.currentMusicTempo = musicEvent.currentMusic.tempo;
+        playMusic(musicEvent.currentMusic);
+    }
 
 
+    public void playMusic(Music music) {
+        if (Util.DEBUG)
+            Log.e(TAG, "current music change======Runsic Service Receive");
+        currentMusicTempo = music.tempo;
+        String musicURL = music.audioURL;
 
-    public class Binder extends android.os.Binder {
-        public RunsicService getService() {
-            return RunsicService.this;
+        try {
+            mediaPlayer.reset();
+            if (Util.DEBUG)
+                Log.e(TAG, "just set URL "+ musicURL);
+            mediaPlayer.setDataSource(this, Uri.parse(musicURL));
+            if (Util.DEBUG)
+                Log.e(TAG, "just");
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+
+            //数据库相关
+            musicDB.updateDB(music);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

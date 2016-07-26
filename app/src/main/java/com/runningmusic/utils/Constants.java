@@ -26,12 +26,12 @@ public class Constants {
      * this is for Running Music
      */
 //    public static String BASE_URL = "http://facelending.com:83";
-    public static String BASE_URL = "http://api.runningmusic.cn";
+//    public static String BASE_URL = "http://api.runningmusic.cn";
     /**
      * qiuxiang test
      */
     public static String access_token;
-//    public static String BASE_URL = "http://10.15.26.25:5000";
+    public static String BASE_URL = "http://10.15.27.212:5000";
     public static String PLAYLIST_URL = BASE_URL + "/api/playlist/";
     public static String MUSIC_IN_PLAYLIST_URL = BASE_URL + "/api/playlist";
     public static final String LOGIN_URL = BASE_URL + "/api/app_auth/";
@@ -49,6 +49,10 @@ public class Constants {
     public static final String CREATE_USER = BASE_URL + "/user/auth";
     public static final String GET_USER_INFO = BASE_URL + "/user/info";
     public static final String USER_FAV_MUSIC = BASE_URL + "/user/favorites_music";
+
+    public static final String USER_LIKE_MUSIC = BASE_URL + "/music";
+
+    public static final String USER_SPORT_SAVE = BASE_URL + "/user/sport";
 
     public static final String START_PAGE_AD = BASE_URL + "/app/start_page";
     public static final String EVENT_LIST_URL = BASE_URL + "/app/activities";

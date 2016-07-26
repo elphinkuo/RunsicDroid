@@ -88,7 +88,7 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp">
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <com.runningmusic.view.CircleImageView
             android:id="@+id/share_image3"
             android:layout_width="194dp"
             android:layout_height="194dp"
@@ -96,7 +96,7 @@
             android:layout_centerHorizontal="true"
             android:background="@color/grey_1" />
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <com.runningmusic.view.CircleImageView
             android:id="@+id/share_image2"
             android:layout_width="222dp"
             android:layout_height="222dp"
@@ -105,7 +105,7 @@
             android:layout_marginBottom="6dp"
             android:background="@color/green_normal_logo" />
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <com.runningmusic.view.CircleImageView
             android:id="@+id/share_image1"
             android:layout_width="250dp"
             android:layout_height="250dp"

@@ -6,7 +6,7 @@ import java.util.Observable;
 /**
  * Created by guofuming on 30/1/16.
  */
-public class CurrentMusicList extends Observable {
+public class CurrentMusicList {
     private ArrayList<Music> musicCurrentList;
 
     public CurrentMusicList() {
@@ -16,22 +16,11 @@ public class CurrentMusicList extends Observable {
         return musicCurrentList;
     }
 
-    public void addCurrentMusic(Music music) {
-        if (!musicCurrentList.contains(music)) {
-            musicCurrentList.clear();
-            this.musicCurrentList.add(music);
-            setChanged();
-        }
-        notifyObservers();
-    }
-
     public void setCurrentMusicList(ArrayList<Music> musicList) {
         if (musicCurrentList!=musicList) {
             musicCurrentList.clear();
             this.musicCurrentList = musicList;
-            setChanged();
         }
-        notifyObservers();
     }
 
     public void clear() {
@@ -41,9 +30,7 @@ public class CurrentMusicList extends Observable {
     public void addMusic(Music music) {
         if (!musicCurrentList.contains(music)) {
             musicCurrentList.add(music);
-            setChanged();
         }
-        notifyObservers();
     }
 
 }

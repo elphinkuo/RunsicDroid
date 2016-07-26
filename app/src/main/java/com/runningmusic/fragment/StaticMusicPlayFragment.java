@@ -23,6 +23,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.androidquery.AQuery;
 import com.runningmusic.adapter.HorizontalAdapter;
+import com.runningmusic.event.CurrentListEvent;
+import com.runningmusic.event.CurrentMusicEvent;
+import com.runningmusic.event.TempoListResult;
 import com.runningmusic.music.CurrentMusic;
 import com.runningmusic.music.CurrentMusicList;
 import com.runningmusic.music.Music;
@@ -34,6 +37,9 @@ import com.runningmusic.utils.Util;
 import com.runningmusic.view.Blur;
 import com.runningmusic.view.RecyclerViewPager;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -41,7 +47,7 @@ import java.util.Observer;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StaticMusicPlayFragment extends Fragment implements Observer, View.OnClickListener, OnBackPressedListener{
+public class StaticMusicPlayFragment extends Fragment implements View.OnClickListener, OnBackPressedListener{
     private static String TAG = StaticMusicPlayFragment.class.getName();
 
     private RelativeLayout wholeRelativeLayout;
@@ -103,9 +109,7 @@ public class StaticMusicPlayFragment extends Fragment implements Observer, View.
             );
         }
 
-        RunsicService.getInstance().addCurrentMusicObserver(this);
-        RunsicService.getInstance().addCurrentListObserver(this);
-
+        EventBus.getDefault().register(this);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -201,64 +205,61 @@ public class StaticMusicPlayFragment extends Fragment implements Observer, View.
         super.onActivityCreated(savedInstanceState);
     }
 
-    @Override
-    public void update(Observable observable, Object data) {
-
-        if (observable instanceof CurrentMusic) {
-
-            CurrentMusic currentMusic = (CurrentMusic) observable;
-            Music music = currentMusic.getCurrentMusic();
-            this.currentMusic = music;
-            recyclerView.scrollToPosition(musicCurrentStaticList.indexOf(music));
-            songName.setText(music.title);
-            artistName.setText(music.artist);
-            imageLoader.get(music.coverURL, new ImageLoader.ImageListener() {
-                @Override
-                public void onResponse(final ImageLoader.ImageContainer imageContainer, boolean isImmediate) {
-                    if (Util.DEBUG)
-                        Log.e(TAG, "onResponse");
-                    if (isImmediate && imageContainer.getBitmap() == null) return;
+    @Subscribe
+    public void onCurrentMusicEvent( CurrentMusicEvent event) {
+        Music music = event.currentMusic;
+        this.currentMusic = music;
+        recyclerView.scrollToPosition(musicCurrentStaticList.indexOf(music));
+        songName.setText(music.title);
+        artistName.setText(music.artist);
+        imageLoader.get(music.coverURL, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(final ImageLoader.ImageContainer imageContainer, boolean isImmediate) {
+                if (Util.DEBUG)
+                    Log.e(TAG, "onResponse");
+                if (isImmediate && imageContainer.getBitmap() == null) return;
 //                    wholeRelativeLayout.setBackground(new BitmapDrawable(imageContainer.getBitmap()));
 
-                    new AsyncTask<String, Integer, Bitmap>() {
+                new AsyncTask<String, Integer, Bitmap>() {
 
-                        @Override
-                        protected Bitmap doInBackground(String... params) {
+                    @Override
+                    protected Bitmap doInBackground(String... params) {
 
 //                            imageContainer.getBitmap().compress(0, 20, )
-                            return Blur.fastblur(context, ThumbnailUtils.extractThumbnail(imageContainer.getBitmap(), 150, 250), 80);
+                        return Blur.fastblur(context, ThumbnailUtils.extractThumbnail(imageContainer.getBitmap(), 150, 250), 80);
+                    }
+
+                    @Override
+                    protected void onPostExecute(Bitmap result) {
+                        if (result != null) {
+                            wholeRelativeLayout.setBackground(new BitmapDrawable(result));
                         }
+                    }
 
-                        @Override
-                        protected void onPostExecute(Bitmap result) {
-                            if (result != null) {
-                                wholeRelativeLayout.setBackground(new BitmapDrawable(result));
-                            }
-                        }
+                }.execute();
+            }
 
-                    }.execute();
-                }
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                if (Util.DEBUG)
+                    Log.e(TAG, "onErrorResponse");
+            }
+        });
 
-                @Override
-                public void onErrorResponse(VolleyError volleyError) {
-                    if (Util.DEBUG)
-                        Log.e(TAG, "onErrorResponse");
-                }
-            });
-        } else if (observable instanceof CurrentMusicList) {
-            if (Util.DEBUG)
-                Log.e(TAG, "onReceive List Change");
-            CurrentMusicList musicList = (CurrentMusicList) observable;
-            musicCurrentStaticList = musicList.getCurrentMusicList();
-            recyclerView.setAdapter(new HorizontalAdapter(context, R.layout.horizontal_item, musicCurrentStaticList));
-        }
+    }
 
+    @Subscribe
+    public void onCurrentListEvent(CurrentListEvent result){
+        if (Util.DEBUG)
+            Log.e(TAG, "onReceive List Change");
+        musicCurrentStaticList = result.currentMusicList;
+        recyclerView.setAdapter(new HorizontalAdapter(context, R.layout.horizontal_item, musicCurrentStaticList));
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        RunsicService.getInstance().deleteCurrentMusicObserver(this);
+        EventBus.getDefault().unregister(this);
     }
 
     @Override

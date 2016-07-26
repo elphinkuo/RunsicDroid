@@ -50,7 +50,7 @@ import java.util.Observer;
  * 编辑推荐音乐界面
  * A simple {@link Fragment} subclass.
  */
-public class MusicList extends Fragment implements PGCItemClickListener, Observer, OnBackPressedListener {
+public class MusicList extends Fragment implements PGCItemClickListener, OnBackPressedListener {
     private static final String KEY_TRANSITION_EFFECT = "transition_effect";
     private String TAG = MusicList.class.getName();
     private onMusicListCloseListener mCallBack;
@@ -91,9 +91,7 @@ public class MusicList extends Fragment implements PGCItemClickListener, Observe
 
 
         jazzyScrollListener = new JazzyRecyclerViewScrollListener();
-        recyclerView.setOnScrollListener(jazzyScrollListener);
 
-        RunsicService.getInstance().addPGCListObserver(this);
         return view;
 
     }
@@ -129,24 +127,6 @@ public class MusicList extends Fragment implements PGCItemClickListener, Observe
     private void setupJazziness(int effect) {
         mCurrentTransitionEffect = effect;
         jazzyScrollListener.setTransitionEffect(mCurrentTransitionEffect);
-    }
-
-
-
-
-    @Override
-    public void update(Observable observable, Object data) {
-        if (Util.DEBUG)
-            Log.e("Music List", "onReceive PGC List Change");
-
-        if (observable instanceof PGCMusicList) {
-            PGCMusicList musicList = (PGCMusicList) observable;
-            pgcList = musicList.getPGCMusic();
-            recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(), 2));
-            if (Util.DEBUG)
-                Log.e(TAG, "this is 0000" + this + "     this act is 0000 " + this.getActivity());
-            recyclerView.setAdapter(new GridAdapter(context, R.layout.grid_item, pgcList));
-        }
     }
 
 
@@ -199,6 +179,8 @@ public class MusicList extends Fragment implements PGCItemClickListener, Observe
         gridAdapter = new GridListGroupAdapter(this.getActivity(), R.layout.grid_item, listGroup);
         gridAdapter.setOnItemClickListener(this);
         recyclerView.setAdapter(gridAdapter);
+        recyclerView.setOnScrollListener(jazzyScrollListener);
+
 
 
     }

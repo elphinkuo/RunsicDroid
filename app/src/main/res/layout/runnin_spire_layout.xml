@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/bg"
-    android:clipChildren="false"
-    android:orientation="vertical"
-    tools:context=".RunningMusicActivity">
+                xmlns:custom="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/bg"
+                android:clipChildren="false"
+                android:fitsSystemWindows="false"
+                android:orientation="vertical"
+                tools:context=".RunsicActivity">
 
 
     <include
@@ -17,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/runninspire_header"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="32dp"/>
 
 
     <RelativeLayout
@@ -26,8 +27,6 @@
         android:layout_height="176dp"
         android:layout_below="@id/runsic_data"
         android:layout_marginTop="42dp">
-
-
 
 
     </RelativeLayout>
@@ -46,31 +45,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:background="@mipmap/move_pause" />
+            android:background="@mipmap/move_pause"/>
 
-        <RelativeLayout
+        <ImageView
             android:id="@+id/bpm_lock_panel"
-            android:layout_width="72dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="36dp"
-            android:layout_toLeftOf="@id/music_move_play_or_pause">
-
-            <ImageView
-                android:id="@+id/bpm_lock_left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:background="@drawable/move_green" />
-
-            <ImageView
-                android:id="@+id/bpm_lock_right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/move_bpm_green" />
-
-        </RelativeLayout>
+            android:layout_toLeftOf="@id/music_move_play_or_pause"
+            android:background="@mipmap/bpm_on"/>
 
         <ImageView
             android:id="@+id/move_screen_lock"
@@ -79,7 +63,17 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="36dp"
             android:layout_toRightOf="@id/music_move_play_or_pause"
-            android:background="@mipmap/move_screen_lock" />
+            android:background="@mipmap/move_screen_lock"/>
+
+        <ImageView
+            android:id="@+id/move_stop_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="36dp"
+            android:layout_toRightOf="@id/music_move_play_or_pause"
+            android:background="@drawable/move_stop"
+            android:visibility="invisible"/>
     </RelativeLayout>
 
     <com.runningmusic.view.PulseView
@@ -94,18 +88,18 @@
             android:layout_centerInParent="true"
             android:text="135"
             android:textColor="@color/text_bright_white"
-            android:textSize="60dp" />
+            android:textSize="60dp"/>
 
         <TextView
             android:id="@+id/pulse_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/pulse_number"
-            android:gravity="bottom"
             android:layout_centerHorizontal="true"
+            android:gravity="bottom"
             android:text="STEPS/MIN"
             android:textColor="@color/text_bright_white"
-            android:textSize="15dp" />
+            android:textSize="15dp"/>
 
     </com.runningmusic.view.PulseView>
 
@@ -113,25 +107,27 @@
         android:id="@+id/move_minus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="24dp"
-        android:background="@mipmap/move_minus" />
+        android:background="@mipmap/move_minus"
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/move_plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="24dp"
-        android:layout_alignParentRight="true"
-        android:background="@mipmap/move_plus" />
+        android:background="@mipmap/move_plus"
+        android:visibility="invisible"/>
 
     <RelativeLayout
         android:id="@+id/fragment_container_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"/>
 
 
     <RelativeLayout
@@ -143,46 +139,14 @@
         android:clickable="true"
         android:focusable="true">
 
-        <com.android.volley.toolbox.NetworkImageView
+        <com.runningmusic.view.CircleNetworkImageView
             android:id="@+id/music_playing_cover_thumb"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:background="@mipmap/placeholder_image" />
+            android:background="@mipmap/placeholder_image"/>
 
-
-        <TextView
-            android:id="@+id/music_playing_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="8dp"
-            android:layout_toRightOf="@id/music_playing_cover_thumb"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:maxEms="18"
-            android:maxLines="1"
-            android:text="Song name"
-            android:textColor="@color/white"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/music_playing_artist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="6dp"
-            android:layout_toRightOf="@id/music_playing_cover_thumb"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:maxEms="20"
-            android:maxLines="1"
-            android:text="Artist"
-            android:textColor="@color/white"
-            android:textSize="12dp" />
 
         <ImageView
             android:id="@+id/music_playing_next"
@@ -191,7 +155,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="3dp"
-            android:background="@mipmap/music_playing_next" />
+            android:background="@mipmap/music_playing_next"/>
 
         <ImageView
             android:id="@+id/music_like"
@@ -200,7 +164,41 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="3dp"
             android:layout_toLeftOf="@id/music_playing_next"
-            android:background="@drawable/music_like_selector" />
+            android:background="@drawable/music_like_selector"/>
+
+        <TextView
+            android:id="@+id/music_playing_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="8dp"
+            android:layout_toLeftOf="@id/music_like"
+            android:layout_toRightOf="@id/music_playing_cover_thumb"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxEms="18"
+            android:maxLines="1"
+            android:text="Song name"
+            android:textColor="@color/white"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/music_playing_artist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="6dp"
+            android:layout_toLeftOf="@id/music_like"
+            android:layout_toRightOf="@id/music_playing_cover_thumb"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxEms="20"
+            android:maxLines="1"
+            android:text="Artist"
+            android:textColor="@color/white"
+            android:textSize="12dp"/>
 
     </RelativeLayout>
 
@@ -211,19 +209,17 @@
         android:layout_height="44dp"
         android:layout_alignParentTop="true"
         android:layout_gravity="center_horizontal"
+        android:fitsSystemWindows="true"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/list_corner_icon"
+        <ImageView
+            android:id="@+id/map_corner_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
-            android:clickable="true"
-            android:text="地图"
-            android:textColor="@color/text_bright_white"
-            android:textSize="16dp"
-            android:visibility="invisible" />
+            android:background="@mipmap/icon_map_bright"
+            android:clickable="true"/>
 
         <TextView
             android:id="@+id/runninspire_title"
@@ -234,7 +230,7 @@
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:typeface="normal" />
+            android:typeface="normal"/>
 
         <ImageView
             android:id="@+id/list_corner_right"
@@ -242,7 +238,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="2dp"
-            android:background="@mipmap/detailspage_share" />
+            android:background="@mipmap/detailspage_share"/>
     </RelativeLayout>
 
 </RelativeLayout>

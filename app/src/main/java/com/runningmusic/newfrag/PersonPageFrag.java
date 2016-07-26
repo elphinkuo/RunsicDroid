@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
 import com.androidquery.AQuery;
 //import com.facebook.AppEventsConstants;
 import com.runningmusic.adapter.GridAdapter;
@@ -33,6 +32,7 @@ import com.runningmusic.runninspire.R;
 import com.runningmusic.service.RunsicService;
 import com.runningmusic.utils.Log;
 import com.runningmusic.utils.Util;
+import com.runningmusic.view.CircleNetworkImageView;
 import com.twotoasters.jazzylistview.JazzyHelper;
 import com.twotoasters.jazzylistview.recyclerview.JazzyRecyclerViewScrollListener;
 
@@ -64,7 +64,7 @@ public class PersonPageFrag extends Fragment {
     private RecyclerView favRecyclerView;
 
     private ImageLoader imageLoader;
-    private NetworkImageView portraitImage;
+    private CircleNetworkImageView portraitImage;
 
     private GridAdapter gridAdapter;
 
@@ -92,7 +92,7 @@ public class PersonPageFrag extends Fragment {
         toolbar = (Toolbar) fragmentView.findViewById(R.id.ad_tool_bar);
         appBarLayout = (AppBarLayout) fragmentView.findViewById(R.id.ad_app_bar);
         imageLoader = ImageSingleton.getInstance(context).getImageLoader();
-        portraitImage = (NetworkImageView) fragmentView.findViewById(R.id.portrait);
+        portraitImage = (CircleNetworkImageView) fragmentView.findViewById(R.id.portrait);
         favRecyclerView = (RecyclerView) fragmentView.findViewById(R.id.person_fav_music);
         favRecyclerView.setLayoutManager(new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false));
 
@@ -206,7 +206,7 @@ public class PersonPageFrag extends Fragment {
     public void onFavMusicListEvent(FavMusicListEvent favMusicListEvent) {
         favMusicList = favMusicListEvent.musicFavList;
         if (favMusicList.size()==0) {
-            favMusicList = RunsicService.getInstance().musicPGCList;
+            favMusicList = RunsicService.getInstance().musicCurrentList.getCurrentMusicList();
         }
         gridAdapter = new GridAdapter(context, R.layout.horizontal_item_recycler, favMusicList);
         favRecyclerView.setAdapter(gridAdapter);
