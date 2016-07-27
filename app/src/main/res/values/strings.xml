@@ -18,5 +18,9 @@
     <string name="outdoor_run">室外跑步</string>
     <string name="online_music">在线音乐</string>
     <string name="offline_music">离线音乐</string>
+    <string name="title_activity_run_result">RunResultActivity</string>
+    <string name="run_result_title">跑步结果</string>
+    <string name="total_distance">总计路程</string>
+    <string name="total_time">总计时间</string>
 
 </resources>

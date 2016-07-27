@@ -685,11 +685,16 @@ public class Util {
     }
 
     public static String getPaceValue( double speed ) {
-        String paceResult;
-        int min = (int)(1000/speed);
-        int seconds = (int)(1000%speed);
-        paceResult= "" + min + "\'" + seconds + "\"";
-        return paceResult;
+        if (speed== 0) {
+            return "" + "0" + "\'" + "00" + "\"";
+        } else {
+            String paceResult;
+            int min = (int)(1000/speed/60);
+            int seconds = (int)(1000/speed%60);
+            paceResult= "" + min + "\'" + String.format("%02d", seconds) + "\"";
+            return paceResult;
+        }
+
     }
 
     public static final class TempoComparator implements Comparator<Music> {

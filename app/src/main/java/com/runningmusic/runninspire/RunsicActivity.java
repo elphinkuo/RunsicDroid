@@ -1,22 +1,30 @@
 package com.runningmusic.runninspire;
 
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Xml;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.FrameLayout;
@@ -30,7 +38,6 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.android.volley.toolbox.ImageLoader;
 import com.androidquery.AQuery;
-import com.autonavi.amap.mapcore.Convert;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.runningmusic.db.Record;
 import com.runningmusic.db.RecordDB;
@@ -57,7 +64,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.nio.ByteBuffer;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
@@ -73,7 +79,7 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
     private AMapLocationClientOption mLocationOption;
     private AMapLocation lastLocation;
     private static final String ROTATION = "rotation";
-    private boolean mIsListClose = true;
+    private boolean mIsMapClose = true;
     private boolean mIsPlayStaticClose = true;
     private boolean mMoveMusicPlay = true;
     private static int currentTempo = 0;
@@ -81,6 +87,21 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
     private static boolean pausedBool;
     private static boolean bpmAutoBool;
     private static Music currentMusic;
+
+
+    private static final int ID_OPEN_GPS_DIALOG = 1;
+    private static final int ID_WEAK_GPS_DIALOG = 2;
+    private static final int ID_COMPLETE_GPS_SHORTDISTANCE_DIALOG = 3;
+    private static final int ID_COMPLETE_GPS_LONGDISTANCE_DIALOG = 4;
+    private boolean isGPSOpen_ = false;
+
+
+    private Dialog enterGPSDialog;
+    private AlertDialog.Builder enterGPSDialogBuilder;
+    private Dialog openGPSDialog;
+    private Dialog weakGPSDialog;
+    private Dialog completeGPSShortDistanceDialog;
+    private Dialog completeGPSLongDistanceDialog;
 
     private NetworkMode networkMode;
     private MusicPlayCallback musicPlayCallback;
@@ -96,7 +117,6 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
     private ImageLoader imageLoader;
     private RelativeLayout musicControlMove;
     private RelativeLayout musicControlStatic;
-    private RelativeLayout musicHeader;
     private Chronometer mRunTimer;
 
     private static long lastRunPause;
@@ -174,9 +194,205 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         mRunTimer.start();
         musicPlayCallback = RunsicService.getInstance();
 
+    }
+
+    @Override
+    protected Dialog onCreateDialog( int id ) {
+        Log.e(TAG, "on Create Dialog");
+        Dialog dialog = null;
+
+        switch (id) {
+            case ID_OPEN_GPS_DIALOG:
+                dialog = openGPSDialog(this);
+                break;
+            case ID_WEAK_GPS_DIALOG:
+                dialog = weakGPSDialog(this);
+                break;
+            case ID_COMPLETE_GPS_SHORTDISTANCE_DIALOG:
+                dialog = completeGPSShortDistanceDialog(this);
+                break;
+            case ID_COMPLETE_GPS_LONGDISTANCE_DIALOG:
+                dialog = completeGPSLongDistanceDialog(this);
+                break;
+
+        }
+
+        if (dialog != null) {
+            Log.i(TAG, dialog.toString());
+        } else {
+            Log.i(TAG, "dialog = null");
+        }
+
+        return dialog;
 
     }
 
+
+    /*
+     * GPS运动中 检查是否打开了GPS 如果未打开 提示用户打开
+     */
+    private Dialog openGPSDialog( Context mContext ) {
+        openGPSDialog = new Dialog(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.manual_custom_dialog, null);
+        AQuery queryDialog = new AQuery(view);
+        queryDialog.id(R.id.title_text).text("未开启GPS").typeface(highNumberTypeface);
+        queryDialog.id(R.id.content_text).text("此功能需要打开GPS").typeface(highNumberTypeface).visibility(View.VISIBLE);
+        queryDialog.id(R.id.ok_button).text("去打开").typeface(highNumberTypeface).clicked(new View.OnClickListener() {
+
+            @Override
+            public void onClick( View v ) {
+                Intent gpsIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                gpsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(gpsIntent);
+            }
+
+        });
+        queryDialog.id(R.id.middle_button).visibility(View.GONE);
+        queryDialog.id(R.id.cancel_button).text("退出").typeface(highNumberTypeface).clicked(new View.OnClickListener() {
+
+            @Override
+            public void onClick( View v ) {
+                try {
+
+                    // TODO: 27/7/16 不保存运动 退出
+//                    loopHandler.removeCallbacks(runnable, null);
+//                    manualActivity_ = ActivityManagerWrapper.getCurrentManualActivity();
+//                    ActivityManagerWrapper.stopManualActivity();
+//                    ActivityManagerWrapper.removeActivity(manualActivity_);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                finish();
+            }
+
+        });
+        openGPSDialog.setContentView(view);
+        openGPSDialog.setCancelable(true);
+        return openGPSDialog;
+
+    }
+
+    /*
+     * GPS运动中 检查GPS信号是否很弱，如果信号弱 提示用户更换位置
+     */
+    private Dialog weakGPSDialog( Context mContext ) {
+        // AlertDialog.Builder dialogBuilder = new
+        // AlertDialog.Builder(mContext);
+        // dialogBuilder.setTitle("GPS信号弱").setMessage("您的GPS信号较弱，请在室外使用，避开高楼大厦").setPositiveButton("知道了",
+        // new DialogInterface.OnClickListener() {
+        //
+        // @Override
+        // public void onClick(DialogInterface dialog, int which) {
+        // dialog.dismiss();
+        // }
+        // });
+
+        weakGPSDialog = new Dialog(this, R.style.Dialog_NoBackground);
+        View view = LayoutInflater.from(this).inflate(R.layout.manual_custom_dialog, null);
+        AQuery queryDialog = new AQuery(view);
+        queryDialog.id(R.id.title_text).text("请在室外使用，并尽量避开高大建筑。或确认设备是否可用GPS功能。").typeface(highNumberTypeface);
+        queryDialog.id(R.id.content_text).visibility(View.GONE);
+        queryDialog.id(R.id.ok_button).text("知道了").typeface(highNumberTypeface).clicked(new View.OnClickListener() {
+
+            @Override
+            public void onClick( View v ) {
+                weakGPSDialog.dismiss();
+            }
+
+        });
+        queryDialog.id(R.id.middle_button).visibility(View.GONE);
+        queryDialog.id(R.id.cancel_button).visibility(View.GONE);
+
+        weakGPSDialog.setContentView(view);
+        weakGPSDialog.setCancelable(true);
+        return weakGPSDialog;
+    }
+
+    /*
+     * GPS运动 结束时 距离小于200m的提示或者100步时的提示
+     */
+    private Dialog completeGPSShortDistanceDialog( Context mContext ) {
+
+        completeGPSShortDistanceDialog = new Dialog(this, R.style.Dialog_NoBackground);
+        View view = LayoutInflater.from(this).inflate(R.layout.manual_custom_dialog, null);
+        AQuery queryDialog = new AQuery(view);
+        queryDialog.id(R.id.title_text).text("运动数据过少, 不再坚持下吗 ?").typeface(highNumberTypeface);
+        queryDialog.id(R.id.content_text).visibility(View.GONE);
+        queryDialog.id(R.id.ok_button).text("退出").typeface(highNumberTypeface).clicked(new View.OnClickListener() {
+
+            @Override
+            public void onClick( View v ) {
+                try {
+                    // TODO: 27/7/16 不保存运动 退出
+                    stopPlayAndRunNotSave();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+
+                completeGPSShortDistanceDialog.dismiss();
+
+            }
+
+        });
+        queryDialog.id(R.id.middle_button).gone();
+        queryDialog.id(R.id.cancel_button).text("继续").typeface(highNumberTypeface).clicked(new View.OnClickListener() {
+
+            @Override
+            public void onClick( View v ) {
+                completeGPSShortDistanceDialog.dismiss();
+            }
+
+        });
+
+        completeGPSShortDistanceDialog.setContentView(view);
+        completeGPSShortDistanceDialog.setCancelable(true);
+
+        return completeGPSShortDistanceDialog;
+    }
+
+    /*
+     * GPS运动 结束时 距离大于200M的提示
+     */
+    private Dialog completeGPSLongDistanceDialog( Context mContext ) {
+        completeGPSLongDistanceDialog = new Dialog(this, R.style.Dialog_NoBackground);
+        View view = LayoutInflater.from(this).inflate(R.layout.manual_custom_dialog, null);
+        AQuery queryDialog = new AQuery(view);
+        queryDialog.id(R.id.title_text).text("是否结束本次运动").typeface(highNumberTypeface);
+        queryDialog.id(R.id.content_text).visibility(View.GONE);
+        queryDialog.id(R.id.ok_button).text("结束").typeface(highNumberTypeface).clicked(new View.OnClickListener() {
+
+            @Override
+            public void onClick( View v ) {
+                MobclickAgent.onEvent(context, "event_save_manual_activity");
+                try {
+                    stopPlayAndRunSave();
+                    // TODO: 27/7/16 保存运动 退出
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+
+                completeGPSLongDistanceDialog.dismiss();
+
+            }
+
+        });
+        queryDialog.id(R.id.middle_button).visibility(View.GONE);
+        queryDialog.id(R.id.cancel_button).text("取消").typeface(highNumberTypeface).clicked(new View.OnClickListener() {
+
+            @Override
+            public void onClick( View v ) {
+                completeGPSLongDistanceDialog.dismiss();
+            }
+
+        });
+
+        completeGPSLongDistanceDialog.setContentView(view);
+        completeGPSLongDistanceDialog.setCancelable(true);
+        return completeGPSLongDistanceDialog;
+    }
 
     synchronized private void startRunAndPlay() {
         mRunTimer = (Chronometer) findViewById(R.id.time_data);
@@ -221,7 +437,6 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         if (Util.DEBUG) {
             Log.e(TAG, "onStart");
         }
-
     }
 
     @Override
@@ -236,6 +451,16 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         } else {
             aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.move_play);
         }
+
+        boolean ret = checkGPS();
+        Log.e(TAG, "ret is " + ret);
+
+        if (!ret) {
+            showDialog(ID_OPEN_GPS_DIALOG);
+        } else if (ret && (openGPSDialog != null)) {
+            dismissDialog(ID_OPEN_GPS_DIALOG);
+        }
+        checkGPSPermission();
 
 //        mMoveMusicPlay = RunsicService.getInstance().getPlayerStatus();
 //        if (!mMoveMusicPlay) {
@@ -263,6 +488,31 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
 //            Log.i(TAG, "acttivity start time is " + manualActivity_.getStartTime() + "----------" + manualActivity_.getStartLong());
 //            Log.e(TAG, "distance is " + manualActivity_.getDistance());
         Log.e(TAG, "on Resume lastRunPause is " + lastRunPause);
+    }
+
+    private boolean checkGPS() {
+        LocationManager locationManager = (LocationManager) this.getApplicationContext().getSystemService(LOCATION_SERVICE);
+        if (null != locationManager && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+
+            isGPSOpen_ = true;
+            Log.i(TAG, "GPSOPEN" + isGPSOpen_);
+
+        } else {
+            isGPSOpen_ = false;
+            Log.i(TAG, "GPSOPEN" + isGPSOpen_);
+        }
+
+        return isGPSOpen_;
+    }
+
+    private void checkGPSPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
+                        0);
+            }
+        }
     }
 
 
@@ -313,16 +563,18 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
      */
     @Override
     public void onStaticMusicPlayFragmentClose() {
-        onMapOpen();
-        aQuery_.id(R.id.music_control_panel_static).visibility(View.INVISIBLE);
-        aQuery_.id(R.id.music_control_panel_move).visibility(View.VISIBLE);
+        onPlayStaticClose();
+        aQuery_.id(R.id.runninspire_header).visible();
+
+//        aQuery_.id(R.id.music_control_panel_static).visibility(View.INVISIBLE);
+//        aQuery_.id(R.id.music_control_panel_move).visibility(View.VISIBLE);
     }
 
 
     public void onMapOpen() {
 
         //Header 按钮动画
-        mIsListClose = false;
+        mIsMapClose = false;
 
         Fragment mapFragment = new MoveMapFragment();
         musicListFragmentID = mapFragment.getId();
@@ -332,7 +584,7 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         transactionTop.addToBackStack("MusicList");
         transactionTop.commit();
 
-
+        aQuery_.id(R.id.runninspire_header).backgroundColor(Color.argb(79, 0, 0, 0));
         //底部进度条与控制栏隐藏
         musicControlMove.setVisibility(View.INVISIBLE);
 
@@ -342,10 +594,12 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
     public void onMapClose() {
 
         //Header 按钮动画
-        mIsListClose = true;
+        mIsMapClose = true;
         //关闭MusicList Fragment
         fragmentManager.popBackStack();
         //底部进度条与控制栏显示
+        aQuery_.id(R.id.runninspire_header).backgroundColor(Color.TRANSPARENT);
+
 
         musicControlMove.setVisibility(View.VISIBLE);
 
@@ -357,6 +611,7 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         musicStaticListFragmentID = musicPlayFragment.getId();
         FragmentTransaction transactionBottom = fragmentManager.beginTransaction();
         transactionBottom.setCustomAnimations(R.anim.slidein_frombottom_for_activity, R.anim.slideout_frombottom, R.anim.slidein_frombottom_for_activity, R.anim.slideout_frombottom);
+//        transactionBottom.add(musicPlayFragment, "StaticMusicPlay");
         transactionBottom.add(R.id.fragment_container_top, musicPlayFragment);
         transactionBottom.addToBackStack("StaticMusicPlay");
         transactionBottom.commit();
@@ -368,11 +623,11 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
     public void onPlayStaticClose() {
         //关闭 StaticMusicPlayFragment
 
-        mIsPlayStaticClose = true;
+//        mIsPlayStaticClose = true;
         fragmentManager.popBackStack();
 
         //显示HeaderView
-        musicHeader.setVisibility(View.VISIBLE);
+        aQuery_.id(R.id.runninspire_header).gone();
     }
 
     @Override
@@ -417,9 +672,9 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
                 break;
             case R.id.map_corner_icon:
                 if (Util.DEBUG) {
-                    Log.i(TAG, "click on list corner icon" + mIsListClose);
+                    Log.i(TAG, "click on list corner icon" + mIsMapClose);
                 }
-                if (mIsListClose) {
+                if (mIsMapClose) {
                     onMapOpen();
                 } else {
                     onMapClose();
@@ -476,53 +731,14 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
                 // TODO: 25/7/16   Share Component Add here
                 break;
 
-            case R.id.bpm_up:
-                if (Util.DEBUG) {
-                    Log.i(TAG, "BPM UP CLICKED ");
-                }
-                if (!Util.OFFLINE) {
-                    currentTempo = RunsicService.getInstance().currentMusicTempo;
-                    currentTempo += 5;
-                    if (currentTempo > 190) {
-                        currentTempo = 190;
-                    }
-                    aQuery_.id(R.id.music_control_current_bpm).text("" + currentTempo);
-                    playOnTempo(currentTempo);
-                } else {
-                    boolean ret = musicPlayCallback.onNext();
-                    if (!ret) {
-                        Toast toast = Toast.makeText(this, "离线歌曲中已经没有更高的节奏", Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                }
-
-
-                break;
-
-            case R.id.bpm_down:
-                if (Util.DEBUG) {
-                    Log.i(TAG, "BPM DOWN CLICKED");
-                }
-                if (!Util.OFFLINE) {
-                    currentTempo = RunsicService.getInstance().currentMusicTempo;
-                    currentTempo -= 5;
-                    if (currentTempo < 60) {
-                        currentTempo = 60;
-                    }
-                    aQuery_.id(R.id.music_control_current_bpm).text("" + currentTempo);
-                    playOnTempo(currentTempo);
-                } else {
-                    boolean ret = musicPlayCallback.onPrevious();
-                    if (!ret) {
-                        Toast toast = Toast.makeText(this, "离线歌曲中已经没有更低的节奏", Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                }
-
-                break;
 
             case R.id.move_stop_button:
-                stopPlayAndRun();
+                boolean checkShortDistance = checkShortDistance();
+                if (checkShortDistance) {
+                    showDialog(ID_COMPLETE_GPS_SHORTDISTANCE_DIALOG);
+                } else {
+                    showDialog(ID_COMPLETE_GPS_LONGDISTANCE_DIALOG);
+                }
                 break;
 
             case R.id.music_playing_next:
@@ -631,7 +847,16 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         RunsicService.getInstance().onDestroy();
     }
 
-    public void stopPlayAndRun() {
+    synchronized public void stopPlayAndRunNotSave() {
+        end();
+        lastRunPause = 0;
+        currentTempo = 0;
+        musicPlayCallback.onMusicStop();
+        SportTracker.reset();
+        this.finish();
+    }
+
+    synchronized public void stopPlayAndRunSave() {
         end();
         lastRunPause = 0;
         currentTempo = 0;
@@ -643,6 +868,29 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         RunsicRestClientUsage.getInstance().saveSportToServer(sharedPreferences.getString("token", "579096c3421aa90c9c3596c8"), base64String);
 
         Record record = new Record();
+        try {
+            Messages.Sport sport = Messages.Sport.parseFrom(SportTracker.getData());
+
+            Intent intent = new Intent();
+            intent.setClass(this, RunResultActivity.class);
+            if (sport.getExtra().getLocationCount()>20) {
+                intent.putExtra("showmap", true);
+            } else {
+                intent.putExtra("showmap", false);
+            }
+
+            startActivity(intent);
+
+            this.finish();
+
+
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+            this.finish();
+        }
+
+
+//        Messages.Sport.parseFrom(SportTracker.getData()).getType() == Messages.Sport.Type.CYCLING;
 //        record.duration = (int) manualActivity_.getDuration();
 //        record.distance = manualActivity_.getStep();
 //        record.song = songSum;
@@ -692,10 +940,6 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         if (Util.DEBUG) {
             Log.i(TAG, "MUSIC DURATION IS " + duration + "========" + "Timer Period is " + 10000 / duration);
         }
-        if (timer != null) {
-            timer.cancel();
-            timer = new Timer();
-        }
 
         aQuery_.id(R.id.music_move_play_or_pause).background(R.mipmap.move_pause);
     }
@@ -708,7 +952,11 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
     }
 
     public void end() {
-        SportTracker.end(new Date().getTime());
+        try {
+            SportTracker.end(new Date().getTime());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void pause() {
@@ -812,5 +1060,18 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         } catch (IllegalArgumentException e) {
             powerKeyReceiver_ = null;
         }
+    }
+
+    private boolean checkShortDistance() {
+        try {
+            if (SportTracker.getDistance() == 0 || SportTracker.getStep() == 0) {
+                return true;
+            } else return SportTracker.getStep() < 5;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+
     }
 }

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="254dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    android:background="@drawable/lock_bg_blur"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <LinearLayout
+        android:id="@+id/title_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="224dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="建议备份后再退出"
+            android:textColor="@color/grey_1"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/split_line"
+        android:layout_width="224dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/title_layout"
+        android:layout_centerHorizontal="true"
+        android:background="@color/dark"
+        android:contentDescription="@null" />
+
+    <LinearLayout
+        android:id="@+id/content_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/split_line"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/content_text"
+            android:layout_width="224dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:gravity="center"
+            android:text="建议备份后再退出"
+            android:textColor="@color/grey_1"
+            android:textSize="18dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/content_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" 
+        android:layout_marginBottom="20dp">
+
+        <Button
+            android:id="@+id/ok_button"
+            android:layout_width="204dp"
+            android:layout_height="48dp"
+            android:background="@mipmap/detailspage_btn"
+            android:text="立即备份"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/middle_button"
+            android:layout_width="204dp"
+            android:layout_height="48dp"
+            android:layout_below="@id/ok_button"
+            android:layout_marginTop="20dp"
+            android:background="@mipmap/detailspage_btn"
+            android:text="删除数据并退出"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="204dp"
+            android:layout_height="48dp"
+            android:layout_below="@id/middle_button"
+            android:layout_marginTop="20dp"
+            android:background="@mipmap/detailspage_btn"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

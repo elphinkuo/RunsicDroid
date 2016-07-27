@@ -19,6 +19,8 @@
 
     <color name="orange_red">#ffff5B4A</color>
 
+    <color name="map_header_background">#7fffffff</color>
+    <color name="test">#7f252525</color>
 
 
     <color name="black_overlay">#ff000000</color>

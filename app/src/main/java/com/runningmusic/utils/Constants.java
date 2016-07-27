@@ -26,12 +26,12 @@ public class Constants {
      * this is for Running Music
      */
 //    public static String BASE_URL = "http://facelending.com:83";
-//    public static String BASE_URL = "http://api.runningmusic.cn";
+    public static String BASE_URL = "http://api.runningmusic.cn";
     /**
      * qiuxiang test
      */
     public static String access_token;
-    public static String BASE_URL = "http://10.15.27.212:5000";
+//    public static String BASE_URL = "http://10.15.27.212:5000";
     public static String PLAYLIST_URL = BASE_URL + "/api/playlist/";
     public static String MUSIC_IN_PLAYLIST_URL = BASE_URL + "/api/playlist";
     public static final String LOGIN_URL = BASE_URL + "/api/app_auth/";

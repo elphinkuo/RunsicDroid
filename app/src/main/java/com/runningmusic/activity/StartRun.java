@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.androidquery.AQuery;
 import com.runningmusic.runninspire.R;
+import com.runningmusic.runninspire.RunResultActivity;
 import com.runningmusic.runninspire.RunsicActivity;
 import com.runningmusic.service.RunsicService;
 
@@ -40,6 +41,9 @@ public class StartRun extends Activity {
             @Override
             public void onClick(View v) {
                 context.finish();
+                if (RunsicService.getInstance()!=null) {
+                    RunsicService.getInstance().onDestroy();
+                }
             }
         });
         aQuery.id(R.id.indoor_icon).clickable(true).clicked(new View.OnClickListener() {
@@ -51,6 +55,8 @@ public class StartRun extends Activity {
                 Intent motionIntent = new Intent(context, RunsicService.class);
                 startService(motionIntent);
 
+                context.finish();
+
             }
         });
         aQuery.id(R.id.outdoor_icon).clickable(true).clicked(new View.OnClickListener() {
@@ -58,11 +64,11 @@ public class StartRun extends Activity {
             public void onClick(View v) {
 
                 Intent intent = new Intent();
-                intent.setClass(context, RunsicActivity.class);
+                intent.setClass(context, RunResultActivity.class);
                 startActivity(intent);
 
-                Intent motionIntent = new Intent(context, RunsicService.class);
-                startService(motionIntent);
+
+                context.finish();
 
             }
         });

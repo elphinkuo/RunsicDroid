@@ -9,6 +9,7 @@ import android.media.ThumbnailUtils;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -30,6 +32,7 @@ import com.runningmusic.music.CurrentMusic;
 import com.runningmusic.music.CurrentMusicList;
 import com.runningmusic.music.Music;
 import com.runningmusic.music.MusicPlayCallback;
+import com.runningmusic.network.http.RunsicRestClientUsage;
 import com.runningmusic.network.service.ImageSingleton;
 import com.runningmusic.runninspire.R;
 import com.runningmusic.service.RunsicService;
@@ -59,6 +62,11 @@ public class StaticMusicPlayFragment extends Fragment implements View.OnClickLis
     private TextView artistName;
     private AQuery aQuery_;
     private Context context;
+    private int DebugOnPageChangedTime = 0;
+
+    private boolean hasOnResumed = false;
+
+    private static int currentTempo = 0;
 
     private Music currentMusic;
     private ArrayList<Music> musicCurrentStaticList;
@@ -94,6 +102,8 @@ public class StaticMusicPlayFragment extends Fragment implements View.OnClickLis
         aQuery_.id(R.id.static_music_previous).clickable(true).clicked(this);
         aQuery_.id(R.id.static_music_back).clickable(true).clicked(this);
         aQuery_.id(R.id.static_music_play_or_pause).clickable(true).clicked(this);
+        aQuery_.id(R.id.bpm_down).clickable(true).clicked(this);
+        aQuery_.id(R.id.bpm_up).clickable(true).clicked(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
         recyclerView = (RecyclerViewPager) view.findViewById(R.id.static_list);
@@ -101,13 +111,13 @@ public class StaticMusicPlayFragment extends Fragment implements View.OnClickLis
         if (Util.DEBUG)
             Log.e(TAG, "" + runsicService.musicCurrentList);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            wholeRelativeLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-            );
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            wholeRelativeLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
+//                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+//            );
+//        }
 
         EventBus.getDefault().register(this);
 
@@ -160,8 +170,12 @@ public class StaticMusicPlayFragment extends Fragment implements View.OnClickLis
                 if (Util.DEBUG) {
                     Log.d("test", "oldPosition:" + oldPosition + " newPosition:" + newPosition);
                 }
-                Music music = musicCurrentStaticList.get(newPosition);
-                RunsicService.getInstance().musicCurrent.setCurrentMusic(music);
+                if ( hasOnResumed) {
+                    DebugOnPageChangedTime += 1;
+                    Log.e(TAG, "ON_PAGE_CHANGED_TIME IS " + DebugOnPageChangedTime);
+                    Music music = musicCurrentStaticList.get(newPosition);
+                    EventBus.getDefault().post(new CurrentMusicEvent(music));
+                }
             }
         });
 
@@ -321,6 +335,13 @@ public class StaticMusicPlayFragment extends Fragment implements View.OnClickLis
         } else {
             aQuery_.id(R.id.static_music_play_or_pause).background(R.mipmap.yinyuejiemian_play);
         }
+        hasOnResumed = true;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        hasOnResumed = false;
     }
 
     @Override
@@ -369,8 +390,9 @@ public class StaticMusicPlayFragment extends Fragment implements View.OnClickLis
                     Music music = musicCurrentStaticList.get(positionPrevious);
                     songName.setText(music.title);
                     artistName.setText(music.artist);
-                    aQuery_.id(R.id.music_control_current_bpm).text(music.tempo);
-                    RunsicService.getInstance().musicCurrent.setCurrentMusic(music);
+                    aQuery_.id(R.id.music_control_current_bpm).text(""+music.tempo);
+                    EventBus.getDefault().post(new CurrentMusicEvent(music));
+//                    RunsicService.getInstance().musicCurrent.setCurrentMusic(music);
                 }
                 break;
             case R.id.static_music_next:
@@ -389,9 +411,54 @@ public class StaticMusicPlayFragment extends Fragment implements View.OnClickLis
                     Music music = musicCurrentStaticList.get(positionNext);
                     songName.setText(music.title);
                     artistName.setText(music.artist);
-                    aQuery_.id(R.id.music_control_current_bpm).text(music.tempo);
-                    RunsicService.getInstance().musicCurrent.setCurrentMusic(music);
+                    aQuery_.id(R.id.music_control_current_bpm).text(""+music.tempo);
+                    EventBus.getDefault().post(new CurrentMusicEvent(music));
                 }
+                break;
+
+            case R.id.bpm_up:
+                if (Util.DEBUG) {
+                    com.runningmusic.utils.Log.i(TAG, "BPM UP CLICKED ");
+                }
+                if (!Util.OFFLINE) {
+                    currentTempo = RunsicService.getInstance().currentMusicTempo;
+                    currentTempo += 5;
+                    if (currentTempo > 190) {
+                        currentTempo = 190;
+                    }
+                    aQuery_.id(R.id.music_control_current_bpm).text("" + currentTempo);
+                    RunsicRestClientUsage.getInstance().getTempoList(currentTempo);
+                } else {
+                    boolean ret = musicPlayCallback.onNext();
+                    if (!ret) {
+                        Toast toast = Toast.makeText(this.getActivity(), "离线歌曲中已经没有更高的节奏", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                }
+
+
+                break;
+
+            case R.id.bpm_down:
+                if (Util.DEBUG) {
+                    com.runningmusic.utils.Log.i(TAG, "BPM DOWN CLICKED");
+                }
+                if (!Util.OFFLINE) {
+                    currentTempo = RunsicService.getInstance().currentMusicTempo;
+                    currentTempo -= 5;
+                    if (currentTempo < 60) {
+                        currentTempo = 60;
+                    }
+                    aQuery_.id(R.id.music_control_current_bpm).text("" + currentTempo);
+                    RunsicRestClientUsage.getInstance().getTempoList(currentTempo);
+                } else {
+                    boolean ret = musicPlayCallback.onPrevious();
+                    if (!ret) {
+                        Toast toast = Toast.makeText(this.getActivity(), "离线歌曲中已经没有更低的节奏", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                }
+
                 break;
             default:
 

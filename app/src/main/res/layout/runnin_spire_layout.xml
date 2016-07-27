@@ -123,11 +123,7 @@
         android:background="@mipmap/move_plus"
         android:visibility="invisible"/>
 
-    <RelativeLayout
-        android:id="@+id/fragment_container_top"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"/>
+
 
 
     <RelativeLayout
@@ -202,6 +198,11 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/fragment_container_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"/>
 
     <RelativeLayout
         android:id="@+id/runninspire_header"

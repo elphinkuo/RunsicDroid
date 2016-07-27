@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/dark"
+    tools:context="com.runningmusic.runninspire.RunResultActivity"
+    tools:showIn="@layout/activity_run_result">
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/result_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:id="@+id/result_data_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/result_small_panel"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/result_steps"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="235步"
+                android:textSize="18dp"
+                android:textColor="@color/text_bright_white"/>
+
+            <TextView
+                android:id="@+id/result_bpm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:text="235步"
+                android:textSize="18dp"
+                android:textColor="@color/text_bright_white"/>
+
+            <TextView
+                android:id="@+id/result_pace"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="235步"
+                android:gravity="center"
+
+                android:textSize="18dp"
+                android:textColor="@color/text_bright_white"/>
+
+            <TextView
+                android:id="@+id/calory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:text="235步"
+                android:textSize="18dp"
+                android:textColor="@color/text_bright_white"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/result_horizontal_split"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#d8d8d8"
+            android:layout_above="@id/result_small_panel"/>
+
+        <LinearLayout
+            android:id="@+id/result_big_panel"
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:layout_above="@id/result_horizontal_split"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/time_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/time_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="0:00:00"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="40dp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/result_time_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/result_time"/>
+                    <TextView
+                        android:id="@+id/result_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_time"
+                        android:layout_toRightOf="@id/result_time_icon"
+                        android:layout_marginLeft="6dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/text_bright_white"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_height="81dp"
+                android:background="#d8d8d8"/>
+
+            <LinearLayout
+                android:id="@+id/distance_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/distance_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="0.00km"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="40dp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/result_distance_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/result_distance"/>
+                    <TextView
+                        android:id="@+id/result_distance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_distance"
+                        android:layout_toRightOf="@id/result_distance_icon"
+                        android:layout_marginLeft="6dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/text_bright_white"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/result_color_line"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_above="@id/result_big_panel"
+            android:background="@drawable/result_linear_color"/>
+    </RelativeLayout>
+</RelativeLayout>
