@@ -659,6 +659,9 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
                 break;
             case R.id.music_like:
                 Log.e(TAG, "music like onclicked");
+                if (currentMusic==null) {
+                    return;
+                }
                 SharedPreferences sharedPreferences = Util.getUserPreferences();
                 if (!currentMusic.favourite) {
                     RunsicRestClientUsage.getInstance().setLikeMusic(sharedPreferences.getString("token", "579096c3421aa90c9c3596c8"), currentMusic.key);

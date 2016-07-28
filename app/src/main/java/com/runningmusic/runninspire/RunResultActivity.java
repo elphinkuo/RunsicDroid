@@ -8,8 +8,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
@@ -21,9 +23,11 @@ import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.PolylineOptions;
 import com.androidquery.AQuery;
+import com.androidquery.util.AQUtility;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.runningmusic.jni.SportTracker;
 import com.runningmusic.utils.ManualRGMColorPick;
+import com.runningmusic.view.LineChart;
 import com.umeng.socialize.net.utils.Base64;
 
 import java.util.ArrayList;
@@ -38,6 +42,8 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
     private AQuery aQuery;
     private AMap aMap;
 
+    private LineChart lineChart;
+
     private Messages.Sport sport;
     private MarkerOptions startMarkerOptions;
     private MarkerOptions endMarkerOptions;
@@ -46,36 +52,18 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
     private LatLng startLatLng;
     private LatLng endLatLng;
     private List<Messages.Step> speedArray;
+    private DisplayMetrics metrics_;
+    private RelativeLayout colorPanelLayout;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_run_result);
+        setContentView(R.layout.content_run_result);
         aQuery = new AQuery(this);
         Intent intent = this.getIntent();
 
-        showMap = intent.getBooleanExtra("showmap", false);
-        if (showMap) {
-        }
-        mapView = (MapView)findViewById(R.id.result_map);
-        mapView.onCreate(savedInstanceState);
-        if (aMap == null) {
-            aMap = mapView.getMap();
-        }
 
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View view ) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+        //初始化sport
         byte[] data = Base64.decodeBase64("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");
         try {
             sport = Messages.Sport.parseFrom(data);
@@ -86,9 +74,27 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
 
         } catch (InvalidProtocolBufferException e) {
             e.printStackTrace();
+            this.finish();
         }
-        uiSettings = aMap.getUiSettings();
-        setMap();
+
+        //显示地图还是图表
+        showMap = intent.getBooleanExtra("showmap", false);
+
+        if (showMap) {
+            mapView = (MapView) findViewById(R.id.result_map);
+            mapView.onCreate(savedInstanceState);
+            if (aMap == null) {
+                aMap = mapView.getMap();
+            }
+            uiSettings = aMap.getUiSettings();
+            setMap();
+        } else {
+
+            setLineChat();
+
+        }
+
+
     }
 
     @Override
@@ -130,6 +136,9 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
 
     }
 
+    /**
+     * 初始化地图
+     */
     private void setMap() {
         startMarkerOptions = new MarkerOptions();
         startMarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.manual_icon_start));
@@ -156,43 +165,42 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
             endLatLng = new LatLng(leLocation.getLatitude(), leLocation.getLongitude());
             speedArray = new ArrayList<>();
             speedArray = sport.getExtra().getStepList();
-//            for (int i = 0; i < speedArray.size(); i++) {
-//                if (i > 4 && i < (speedArray.size() - 5)) {
-//                    speedArray.set(i, (speedArray.get(i - 1) + speedArray.get(i + 1) + speedArray.get(i - 2) + speedArray.get(i + 2) + speedArray.get(i + 3)
-//                            + speedArray.get(i - 3) + speedArray.get(i + 4) + speedArray.get(i + 4) + speedArray.get(i + 5) + speedArray.get(i - 5)) / 10);
-//                }
-//
-//            }
-//
-//            min = speedArray.get(0);
-//            max = speedArray.get(0);
-//
-//            for (int i = 0; i < speedArray.size(); i++) {
-//
-//                if (speedArray.get(i) < min) {
-//                    min = speedArray.get(i);
-//                }
-//                if (speedArray.get(i) > max) {
-//                    max = speedArray.get(i);
-//                }
-//            }
-//            if (iFastEnd != 0) {
-//                adjustLocations.add(locations_.get(iFastEnd + 1));
-//                adjustLocations.add(locations_.get(iFastEnd + 2));
-//            }
             new ManualRGMColorPick();
 
             startMarkerOptions.position(startLatLng);
             endMarkerOptions.position(endLatLng);
             aMap.addMarker(startMarkerOptions);
             aMap.addMarker(endMarkerOptions);
-//            if (sport.getDistance() < 1500) {
-                aMap.animateCamera(CameraUpdateFactory.newLatLngZoom(endLatLng, 18));
-//            }
-//            aMap.runOnDrawFrame();
-
+            aMap.animateCamera(CameraUpdateFactory.newLatLngZoom(endLatLng, 18));
         }
 
+    }
+
+    /**
+     * 初始化图表
+     */
+    private void setLineChat() {
+
+        metrics_ = new DisplayMetrics();
+        colorPanelLayout = (RelativeLayout) this.findViewById(R.id.manual_rgm_colorpanel);
+        getWindowManager().getDefaultDisplay().getMetrics(metrics_);
+        lineChart = new LineChart(this, sport, metrics_, 300);
+
+
+        RelativeLayout lineChartLayout = new RelativeLayout(this);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(metrics_.widthPixels, AQUtility.dip2pixel(this, 300));
+
+        params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+
+        lineChartLayout.setLayoutParams(params);
+        // lineChart_.setBackgroundResource(R.drawable.sport_icon_start);
+
+        lineChart.setBackgroundColor(Color.TRANSPARENT);
+        lineChartLayout.addView(lineChart);
+        lineChartLayout.setBackgroundColor(Color.GRAY);
+
+        colorPanelLayout.addView(lineChartLayout);
     }
 
     @Override
@@ -204,4 +212,6 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
     public void onMapScreenShot( Bitmap bitmap, int i ) {
 
     }
+
+
 }

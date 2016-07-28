@@ -61,20 +61,20 @@ public class Util {
 //        return string;
 //    }
 //
-//    @SuppressLint("SimpleDateFormat")
-//    public static String dateFormat(java.util.Date date, String format) {
-//        if (format == null) {
-//            format = "yyyy-MM-dd HH:mm:ss";
-//        }
-//
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTime(date);
-//
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
-//        String string = simpleDateFormat.format(calendar.getTime());
-//
-//        return string;
-//    }
+    @SuppressLint("SimpleDateFormat")
+    public static String dateFormat(java.util.Date date, String format) {
+        if (format == null) {
+            format = "yyyy-MM-dd HH:mm:ss";
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+        String string = simpleDateFormat.format(calendar.getTime());
+
+        return string;
+    }
 
     // public static Date SecondToDate(double second) {
     // return new Date((long) (second * 1000));

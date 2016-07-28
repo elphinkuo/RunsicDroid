@@ -1,3 +1,4 @@
+//apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.android.application'
 
 android {
@@ -97,10 +98,12 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ["libs"]
+            java.srcDirs = ['src/main/java', 'src/main/java-gen']
         }
     }
 
 }
+
 
 
 
@@ -121,4 +124,5 @@ dependencies {
     compile 'com.twotoasters.jazzylistview:library-recyclerview:1.2.1'
     compile 'com.tencent.bugly:crashreport:1.2.9'
     compile 'com.android.support:support-v4:23.4.0'
+//    compile 'org.greenrobot:greendao:3.0.1'
 }
