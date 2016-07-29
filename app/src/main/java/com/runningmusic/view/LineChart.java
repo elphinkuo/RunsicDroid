@@ -85,6 +85,7 @@ public class LineChart extends View implements AnimatorUpdateListener {
     private static int mIntervalNum;
     public static int INTERVAL = 1;
     public static double mMax;
+    public static double mMin;
 
     private final int mPhase1;
     private final int mPhase2;
@@ -186,6 +187,10 @@ public class LineChart extends View implements AnimatorUpdateListener {
                 if (mMax < mSpeedArray[i]) {
                     mMax = mSpeedArray[i];
                 }
+                if (mMin > mSpeedArray[i]) {
+                    mMin = mSpeedArray[i];
+                }
+
             } else {
                 mSpeedArray[i] = 0;
             }
@@ -195,11 +200,11 @@ public class LineChart extends View implements AnimatorUpdateListener {
 
 
 //        mMax = (mMax * 1.55);
-        double diff = mMax / mMaxHeight;
+        double diff = (mMax-mMin) / mMaxHeight;
         for (int i = 0; i < mSpeedArray.length; i++) {
-            mSpeedArray[i] = (mMaxHeight - mSpeedArray[i] / diff)
-                    - startBitmap.getHeight() / 3;
+            mSpeedArray[i] = (mMax-mSpeedArray[i])/diff + mMaxHeight;
         }
+        Log.e(TAG, "Diff is "+ diff);
 
     }
 
@@ -270,9 +275,6 @@ public class LineChart extends View implements AnimatorUpdateListener {
         mPathHorLine.reset();
         mPathPhash.reset();
 
-
-
-
         float gap = INTERVAL;
 
         canvas.drawColor(Color.TRANSPARENT);
@@ -294,16 +296,17 @@ public class LineChart extends View implements AnimatorUpdateListener {
         }
         double max = mSpeedArray[0];
         double min = 0;
-        for (int i = 0; i < (minuteNum-1); i++) {
-            mPathLine.quadTo(mPadding + i * gap, (float) mSpeedArray[i], (mPadding + i * gap + gap), (float) mSpeedArray[i+1]);
+        for (int i = 0; i < (minuteNum); i++) {
+            mPathLine.lineTo(mPadding + i * gap, (float) mSpeedArray[i]);
             if (mSpeedArray[i] > max) {
                 max = mSpeedArray[i];
+                Log.e(TAG, "ONDRAW SPEED IS " + mSpeedArray[i] + "ONDRAW I IS " + i);
             }
         }
 
         colorPaint.reset();
-        LinearGradient lgGradient = new LinearGradient(mPadding, (float) min,
-                mPadding, (float) max, colors, null, TileMode.CLAMP);
+        LinearGradient lgGradient = new LinearGradient(mPadding, (float) 0,
+                mWidth, (float) max, colors, null, TileMode.CLAMP);
 
         colorPaint.setShader(lgGradient);
         colorPaint.setStrokeWidth(6);

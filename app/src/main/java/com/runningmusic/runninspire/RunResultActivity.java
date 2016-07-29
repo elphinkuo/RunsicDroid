@@ -1,17 +1,27 @@
 package com.runningmusic.runninspire;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.AbsoluteSizeSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
@@ -27,20 +37,22 @@ import com.androidquery.util.AQUtility;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.runningmusic.jni.SportTracker;
 import com.runningmusic.utils.ManualRGMColorPick;
+import com.runningmusic.utils.Util;
 import com.runningmusic.view.LineChart;
 import com.umeng.socialize.net.utils.Base64;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLoadedListener, AMap.OnMapScreenShotListener {
+public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLoadedListener, AMap.OnMapScreenShotListener, View.OnClickListener {
     private MapView mapView;
-    private boolean showMap = false;
+    private boolean showMap = true;
     private static String TAG = RunResultActivity.class.getName();
 
     private List<Messages.Location> locations_;
     private AQuery aQuery;
     private AMap aMap;
+    private Activity context;
 
     private LineChart lineChart;
 
@@ -54,12 +66,14 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
     private List<Messages.Step> speedArray;
     private DisplayMetrics metrics_;
     private RelativeLayout colorPanelLayout;
+    private Typeface condTypeface_;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_run_result);
         aQuery = new AQuery(this);
+        context = this;
         Intent intent = this.getIntent();
 
 
@@ -76,6 +90,7 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
             e.printStackTrace();
             this.finish();
         }
+        condTypeface_ = Typeface.createFromAsset(this.getAssets(), "fonts/akzidenzgrotesklightcond.ttf");
 
         //显示地图还是图表
         showMap = intent.getBooleanExtra("showmap", false);
@@ -94,6 +109,16 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
 
         }
 
+        aQuery.id(R.id.result_back).clickable(true).clicked(this);
+        aQuery.id(R.id.result_delete).clickable(true).clicked(this);
+
+        aQuery.id(R.id.distance_data).text(String.format("%.2f", sport.getDistance()/1000)).typeface(condTypeface_);
+        aQuery.id(R.id.time_data).text(Util.getClockShowTime(sport.getDuration())).typeface(condTypeface_);
+        aQuery.id(R.id.result_steps).text(""+sport.getStep()+"步").typeface(condTypeface_);
+        aQuery.id(R.id.result_bpm).text(""+ sport.getBpm()+"bpm").typeface(condTypeface_);
+        aQuery.id(R.id.result_pace).text(Util.getPaceValue(sport.getSpeed())).typeface(condTypeface_);
+        aQuery.id(R.id.result_calory).text(""+Util.getCalorie(sport.getStep())+"kCal").typeface(condTypeface_);
+
 
     }
 
@@ -103,9 +128,9 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
         Log.e(TAG, "size is " + size);
         PolylineOptions optline = new PolylineOptions();
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.argb(255, 180, 236, 81));
-        colors.add(Color.argb(255, 42, 164, 223));
-        colors.add(Color.argb(255, 111, 200, 152));
+        colors.add(Color.argb(255, 243, 51, 25));
+        colors.add(Color.argb(255, 250, 197, 44));
+        colors.add(Color.argb(255, 130, 219, 12));
 
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         if (size == 0) {
@@ -198,7 +223,8 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
 
         lineChart.setBackgroundColor(Color.TRANSPARENT);
         lineChartLayout.addView(lineChart);
-        lineChartLayout.setBackgroundColor(Color.GRAY);
+
+        lineChartLayout.setBackgroundResource(R.mipmap.result_bg);
 
         colorPanelLayout.addView(lineChartLayout);
     }
@@ -213,5 +239,50 @@ public class RunResultActivity extends AppCompatActivity implements AMap.OnMapLo
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (lineChart!=null) {
+            lineChart.destroyDrawingCache();
+        }
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (lineChart!=null) {
+            lineChart.destroyDrawingCache();
+        }
+    }
+
+
+    @Override
+    public void onClick( View v ) {
+        switch(v.getId()) {
+            case R.id.result_back:
+                context.finish();
+                break;
+            case R.id.result_delete:
+                SportTracker.reset();
+                this.finish();
+                break;
+            case R.id.result_share:
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void setCustomTextView(int id, String tempContentString, String unit, int sizeSpan) {
+        SpannableString contentString = null;
+
+        contentString = new SpannableString(tempContentString + unit);
+
+        contentString.setSpan(new AbsoluteSizeSpan(sizeSpan, true), 0, tempContentString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        contentString.setSpan(new AbsoluteSizeSpan(20, true), tempContentString.length(), contentString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        aQuery.id(id).text(contentString).typeface(condTypeface_);
+
+    }
 }

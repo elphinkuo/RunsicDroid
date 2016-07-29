@@ -1,6 +1,7 @@
 package com.runningmusic.fragment;
 
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Chronometer;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
@@ -56,6 +58,14 @@ public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListene
     private Runnable runnable;
     private FragmentActivity contextActivity;
 
+    private Chronometer mRunTimer;
+
+
+    public static long mRunTimerBase;
+
+    private OnMapFragmentClose mCallBack;
+
+
     private boolean isDottedLine;
 
     private double distanceValue;
@@ -73,6 +83,8 @@ public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListene
                               Bundle savedInstanceState ) {
         // Inflate the layout for this fragment
         contextActivity = this.getActivity();
+        Bundle data = getArguments();
+        mRunTimerBase = data.getLong("timer");
         View view = inflater.inflate(R.layout.fragment_move_map, container, false);
         mapView = (MapView) view.findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
@@ -128,19 +140,7 @@ public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListene
         int i = 0;
         Log.e(TAG, "" + i++);
         Log.e(TAG, "locations size" + locations.size());
-//        boolean ret = checkGPS();
-//        if (!ret && openGPSDialog != null) {
-//            if (!openGPSDialog.isShowing()) {
-//                try {
-//                    showDialog(ID_OPEN_GPS_DIALOG);
-//                } catch (Exception e) {
-//
-//                }
-//            }
-//
-//        } else if (ret && (openGPSDialog != null)) {
-//            dismissDialog(ID_OPEN_GPS_DIALOG);
-//        }
+
         if (locations.size() != 0) {
             Messages.Location startLocation = locations.get(0);
             Messages.Location leLocation = locations.get(locations.size() - 1);
@@ -272,7 +272,7 @@ public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListene
 
     @Override
     public void onBackPressed() {
-
+        mCallBack.onMapFragmentClose();
     }
 
     @Override
@@ -289,5 +289,22 @@ public class MoveMapFragment extends Fragment implements AMap.OnMapLoadedListene
 ////        eventAdapter.setOnItemClickListener(this);
 ////        eventRecyclerView.setAdapter(eventAdapter);
 //    }
+
+    public interface OnMapFragmentClose {
+        void onMapFragmentClose();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mCallBack = (OnMapFragmentClose) activity;
+
+
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " music implement OnStaticMusicPlayFragment");
+        }
+    }
 
 }

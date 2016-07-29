@@ -32,6 +32,7 @@ import java.util.Date;
 
 //import com.runningmusic.MainFragmentActivity;
 //import com.runningmusic.oauth.ThirdLoginOAuth;
+
 /**
  * Created by guofuming on 18/1/16.
  */
@@ -45,8 +46,7 @@ public class Util {
     private static FileNameGenerator fileNameGenerator;
 
 
-
-//    @SuppressLint("SimpleDateFormat")
+    //    @SuppressLint("SimpleDateFormat")
 //    public static String dateFormat(Date date, String format) {
 //        if (format == null) {
 //            format = "yyyy-MM-dd HH:mm:ss";
@@ -62,7 +62,7 @@ public class Util {
 //    }
 //
     @SuppressLint("SimpleDateFormat")
-    public static String dateFormat(java.util.Date date, String format) {
+    public static String dateFormat( java.util.Date date, String format ) {
         if (format == null) {
             format = "yyyy-MM-dd HH:mm:ss";
         }
@@ -98,8 +98,7 @@ public class Util {
 //        }
 //        return timeSlot.getStartTime().startOfCurrentDay().getTime();
 //    }
-
-    public static boolean saveUserPreferences(String[] args) {
+    public static boolean saveUserPreferences( String[] args ) {
         SharedPreferences sPreferences = context().getSharedPreferences("XIAOBAI_SP", 0);
 
         Editor editor = sPreferences.edit();
@@ -162,7 +161,7 @@ public class Util {
 
     private static Context context_;
 
-    public static void setContext(Context context) {
+    public static void setContext( Context context ) {
         context_ = context;
     }
 
@@ -170,7 +169,7 @@ public class Util {
         return context_;
     }
 
-    public static String getDurationStringBySeconds(double seconds) {
+    public static String getDurationStringBySeconds( double seconds ) {
         int duration = (int) seconds;
         String durationString = "";
         if (duration >= 0) {
@@ -188,7 +187,7 @@ public class Util {
     /*
      * set& get unread Comment
      */
-    public static void setUnreadComment(int unreadCount) {
+    public static void setUnreadComment( int unreadCount ) {
         SharedPreferences sp = Util.getUserPreferences();
         Editor editor = sp.edit();
         editor.putInt("UNREADCOMMENT", unreadCount);
@@ -202,7 +201,7 @@ public class Util {
         return sp.getInt("UNREADCOMMENT", 0);
     }
 
-    public static void setUnreadNotification(int unreadCount) {
+    public static void setUnreadNotification( int unreadCount ) {
         SharedPreferences sp = Util.getUserPreferences();
         Editor editor = sp.edit();
         editor.putInt("UNREAD", unreadCount);
@@ -218,7 +217,7 @@ public class Util {
         return getUnreadNotification() > 0 ? true : false;
     }
 
-    public static void setLedongliRunning(boolean running) {
+    public static void setLedongliRunning( boolean running ) {
         SharedPreferences sp = Util.getUserPreferences();
         Editor editor = sp.edit();
         editor.putBoolean("IS_RUNNING", running);
@@ -292,15 +291,15 @@ public class Util {
 //        return goalCalories;
 //    }
 
-    public static void showMsg(String msgString) {
+    public static void showMsg( String msgString ) {
 
     }
 
-    public static double getSpeed(double stepsPerS, double height) {
+    public static double getSpeed( double stepsPerS, double height ) {
         return 0.25 * stepsPerS * height * stepsPerS;
     }
 
-    public static double getStepDistance(double steps, double height, double timeInterval) {
+    public static double getStepDistance( double steps, double height, double timeInterval ) {
         if (steps / timeInterval <= 1.68) {
             return steps * height * 0.42;
         }
@@ -308,7 +307,7 @@ public class Util {
         return strideLength * steps;
     }
 
-    public static double getCalorie(double steps, double timeInterval, double weight, double height, double age, boolean male) {
+    public static double getCalorie( double steps, double timeInterval, double weight, double height, double age, boolean male ) {
         if (steps == 0 || timeInterval == 0) {
             return 0;
         }
@@ -360,7 +359,11 @@ public class Util {
         return result;
     }
 
-    public static long swapEndian(long i) {
+    public static int getCalorie( double steps) {
+        return (int)steps/20;
+    }
+
+    public static long swapEndian( long i ) {
         long b0, b1, b2, b3, b4, b5, b6, b7;
 
         b0 = (i & 0xffL) >> 0;
@@ -375,15 +378,15 @@ public class Util {
         return ((b0 << 56) | (b1 << 48) | (b2 << 40) | (b3 << 32) | (b4 << 24) | (b5 << 16) | (b6 << 8) | (b7 << 0));
     }
 
-    public static String formatDouble2(double number) {
+    public static String formatDouble2( double number ) {
         return new java.text.DecimalFormat("#0.0").format(number);
     }
 
-    public static String getKM(double number) {
+    public static String getKM( double number ) {
         return formatDouble2(number / 1000);
     }
 
-    public static String getCal(double number) {
+    public static String getCal( double number ) {
         if (number > 100) {
             return String.valueOf((int) number);
         } else {
@@ -391,11 +394,11 @@ public class Util {
         }
     }
 
-    public static String getKMhFromMs(double number) {
+    public static String getKMhFromMs( double number ) {
         return formatDouble2(number * 3.6);
     }
 
-    public static String getDurationStringBySeconds(double seconds, String hourUnit, String minUnit) {
+    public static String getDurationStringBySeconds( double seconds, String hourUnit, String minUnit ) {
         int duration = (int) seconds;
         String durationString = "";
         if (duration >= 0) {
@@ -410,7 +413,7 @@ public class Util {
         return durationString;
     }
 
-    public static boolean isEmpty(String str) {
+    public static boolean isEmpty( String str ) {
         return str == null || str.isEmpty() || str.equals("null") || str.equals("");
     }
 
@@ -436,7 +439,6 @@ public class Util {
 //        }
 //        return avatarImage;
 //    }
-
     public static boolean isLogin() {
         SharedPreferences sPreferences = Util.getUserPreferences();
         String nickname = sPreferences.getString(Constants.USER_INFO_NICKNAME, "");
@@ -483,7 +485,7 @@ public class Util {
     }
 
     // Bitmap → byte[]
-    public static byte[] Bitmap2Bytes(Bitmap bm) {
+    public static byte[] Bitmap2Bytes( Bitmap bm ) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 90, baos);
 
@@ -498,7 +500,7 @@ public class Util {
     }
 
     // byte[] → Bitmap
-    public static Bitmap Bytes2Bimap(byte[] b) {
+    public static Bitmap Bytes2Bimap( byte[] b ) {
         if (b.length != 0) {
             return BitmapFactory.decodeByteArray(b, 0, b.length);
         } else {
@@ -507,7 +509,7 @@ public class Util {
     }
 
     // load bitmap by filename
-    public static Bitmap loadFromFile(String filename) {
+    public static Bitmap loadFromFile( String filename ) {
         try {
             File f = new File(filename);
             if (!f.exists()) {
@@ -521,7 +523,7 @@ public class Util {
     }
 
     // load bitmap by file
-    public static Bitmap loadFromFile(File file) {
+    public static Bitmap loadFromFile( File file ) {
         try {
             if (!file.exists()) {
                 return null;
@@ -533,7 +535,7 @@ public class Util {
         }
     }
 
-    public static byte[] convertFileToByteArray(File f) {
+    public static byte[] convertFileToByteArray( File f ) {
         byte[] byteArray = null;
         try {
             InputStream inputStream = new FileInputStream(f);
@@ -577,10 +579,11 @@ public class Util {
     /**
      * author Guo Fuming
      * 检查设备是否含有底部虚拟按键
+     *
      * @param activity
      * @return
      */
-    public static boolean checkDeviceHasNavigationBar(Context activity) {
+    public static boolean checkDeviceHasNavigationBar( Context activity ) {
 
         boolean hasMenuKey = ViewConfiguration.get(activity).hasPermanentMenuKey();
         boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
@@ -592,10 +595,11 @@ public class Util {
     /**
      * author Guo Fuming
      * 返回设备底部虚拟按键的高度
+     *
      * @param activity
      * @return
      */
-    public static int getNavigationBarHeight(Activity activity) {
+    public static int getNavigationBarHeight( Activity activity ) {
 
         Resources resources = activity.getResources();
         int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
@@ -608,10 +612,11 @@ public class Util {
     /**
      * author Guo Fuming
      * 返回设备顶部通知栏的高度
+     *
      * @param activity
      * @return
      */
-    public static int getStatusBarHeight(Activity activity) {
+    public static int getStatusBarHeight( Activity activity ) {
 
         Resources resources = activity.getResources();
         int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
@@ -627,18 +632,19 @@ public class Util {
      * @param dp
      * @return
      */
-    public static float dp2px(Resources resources, float dp) {
+    public static float dp2px( Resources resources, float dp ) {
         final float scale = resources.getDisplayMetrics().density;
-        return  dp * scale + 0.5f;
+        return dp * scale + 0.5f;
     }
 
     /**
      * author Guo Fuming
+     *
      * @param resources
      * @param sp
      * @return
      */
-    public static float sp2px(Resources resources, float sp){
+    public static float sp2px( Resources resources, float sp ) {
         final float scale = resources.getDisplayMetrics().scaledDensity;
         return sp * scale;
     }
@@ -647,8 +653,8 @@ public class Util {
     /**
      *
      */
-    public static int getFixedBpm(int bpm) {
-        if (bpm >=190) {
+    public static int getFixedBpm( int bpm ) {
+        if (bpm >= 190) {
             return 190;
         } else if (bpm <= 60) {
             return 60;
@@ -658,10 +664,10 @@ public class Util {
     }
 
 
-    public static String getTimeForShow(int duration) {
-        String hour = String.format("%02d", duration/3600);
-        String minute = String.format("%02d", (duration/60) %60);
-        return (hour+":"+minute);
+    public static String getTimeForShow( int duration ) {
+        String hour = String.format("%02d", duration / 3600);
+        String minute = String.format("%02d", (duration / 60) % 60);
+        return (hour + ":" + minute);
     }
 
 
@@ -676,7 +682,7 @@ public class Util {
 //        return screenWidth;
 //    }
 
-    public static String generateFileName(String url) {
+    public static String generateFileName( String url ) {
         if (fileNameGenerator == null) {
             fileNameGenerator = new Md5FileNameGenerator();
 
@@ -685,26 +691,39 @@ public class Util {
     }
 
     public static String getPaceValue( double speed ) {
-        if (speed== 0) {
+        if (speed == 0) {
             return "" + "0" + "\'" + "00" + "\"";
         } else {
             String paceResult;
-            int min = (int)(1000/speed/60);
-            int seconds = (int)(1000/speed%60);
-            paceResult= "" + min + "\'" + String.format("%02d", seconds) + "\"";
+            int min = (int) (1000 / speed / 60);
+            int seconds = (int) (1000 / speed % 60);
+            paceResult = "" + min + "\'" + String.format("%02d", seconds) + "\"";
             return paceResult;
         }
 
     }
 
-    public static final class TempoComparator implements Comparator<Music> {
+    public static String getClockShowTime( int duration ) {
+        if (duration == 0) {
+            return "" + "0" + ":" + "00" + ":" + "00";
+        } else {
+            String timeResult;
+            int hour = duration / 3600;
+            int minute = (duration % 3600) / 60;
+            int seconnd = duration % 3600 % 60;
+            timeResult = "" + hour + ":" + String.format("%02d", minute) + ":" + String.format("%02d", seconnd);
+            return timeResult;
+        }
+    }
+
+    public final class TempoComparator implements Comparator<Music> {
 
         @Override
-        public int compare(Music lhs, Music rhs) {
+        public int compare( Music lhs, Music rhs ) {
             return compareLong(lhs.tempo, rhs.tempo);
         }
 
-        private int compareLong(int first, int second) {
+        private int compareLong( int first, int second ) {
             return (first < second) ? -1 : ((first == second) ? 0 : 1);
         }
     }

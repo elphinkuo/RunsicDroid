@@ -491,4 +491,6 @@ public class StaticMusicPlayFragment extends Fragment implements View.OnClickLis
         void onStaticMusicPlayFragmentClose();
     }
 
+
+
 }

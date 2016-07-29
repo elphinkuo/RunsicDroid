@@ -312,14 +312,14 @@ public class RunsicService extends Service implements MusicPlayCallback, MusicRe
         }
     }
 
-    public ArrayList<Music> queryCachedMusic(List<String> fileNames) {
-        ArrayList<Music> musics = musicDB.queryCachedMusic(fileNames);
-        for (Music music: musics) {
-            Log.e(TAG, "" + music.title);
-        }
-        Collections.sort(musics, new Util.TempoComparator());
-        return musics;
-    }
+//    public ArrayList<Music> queryCachedMusic(List<String> fileNames) {
+//        ArrayList<Music> musics = musicDB.queryCachedMusic(fileNames);
+//        for (Music music: musics) {
+//            Log.e(TAG, "" + music.title);
+//        }
+////        Collections.sort(musics, new Util.TempoComparator());
+//        return musics;
+//    }
 
 //    @Override
 //    public void onOffLineMode() {

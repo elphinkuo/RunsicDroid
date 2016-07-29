@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/dark"
+    android:background="#2e2f34"
     tools:context="com.runningmusic.runninspire.RunResultActivity"
     tools:showIn="@layout/activity_run_result">
 
@@ -36,7 +36,9 @@
                 android:layout_margin="0dp"
                 android:padding="0dp"
                 android:layout_centerInParent="true"
-                android:text="@string/run_result_title"/>
+                android:text="@string/run_result_title"
+                android:textSize="20dp"
+                android:textColor="@color/text_bright_white"/>
 
             <ImageView
                 android:id="@+id/result_back"
@@ -114,7 +116,7 @@
                 android:textColor="@color/text_bright_white"/>
 
             <TextView
-                android:id="@+id/calory"
+                android:id="@+id/result_calory"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -236,6 +238,10 @@
             android:layout_height="4dp"
             android:layout_above="@id/result_big_panel"
             android:background="@drawable/result_linear_color"/>
+
+
+
+
     </RelativeLayout>
 
 

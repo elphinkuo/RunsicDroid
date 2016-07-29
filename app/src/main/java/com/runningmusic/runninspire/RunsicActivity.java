@@ -16,6 +16,7 @@ import android.hardware.SensorManager;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -69,7 +70,7 @@ import java.util.List;
 import java.util.Timer;
 
 
-public class RunsicActivity extends FragmentActivity implements SensorEventListener, AMapLocationListener, View.OnClickListener, StaticMusicPlayFragment.OnStaticMusicPlayFragmentClose {
+public class RunsicActivity extends FragmentActivity implements SensorEventListener, AMapLocationListener, View.OnClickListener, StaticMusicPlayFragment.OnStaticMusicPlayFragmentClose, MoveMapFragment.OnMapFragmentClose {
 
     public String TAG = RunsicActivity.class.getName();
 
@@ -86,7 +87,13 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
     private static int songSum;
     private static boolean pausedBool;
     private static boolean bpmAutoBool;
+    private static int runType = 0;
     private static Music currentMusic;
+    private static boolean mapCornerStatus;
+
+
+    private Handler loopHandler;
+    private Runnable runnable;
 
 
     private static final int ID_OPEN_GPS_DIALOG = 1;
@@ -120,7 +127,9 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
     private Chronometer mRunTimer;
 
     private static long lastRunPause;
-    private static long lastMusicPause;
+
+    public static long runTimerBaseSender;
+
 
     private SensorManager sensorManager;
     private Sensor accelerometerSensor;
@@ -153,7 +162,8 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
 
         aQuery_ = new AQuery(this);
         recordDB = new RecordDB();
-
+        Intent intent = getIntent();
+        runType = intent.getIntExtra("run_type", 0);
 
         context = this;
         mapCornerIcon = (ImageView) findViewById(R.id.map_corner_icon);
@@ -187,6 +197,7 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         aQuery_.id(R.id.music_playing_next).clickable(true).clicked(this);
 
         highNumberTypeface = Typeface.createFromAsset(this.getAssets(), "fonts/tradegothicltstdbdcn20.ttf");
+        loopHandler = new Handler();
 
         lastRunPause = 0;
 
@@ -410,14 +421,10 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
     public void onLocationChanged( AMapLocation location ) {
         Log.e(TAG, "on Location Changed");
         if (lastLocation == null || lastLocation.getLatitude() != location.getLatitude() || lastLocation.getLongitude() != location.getLongitude()) {
-            Toast.makeText(getApplicationContext(), String.format("%f, %f, %.0f",
-                    location.getLatitude(), location.getLongitude(), location.getAccuracy()), Toast.LENGTH_SHORT).show();
-
             SportTracker.pushLocation(new Date().getTime(), location.getLatitude(), location.getLongitude(), (float) 0, location.getSpeed());
             lastLocation = location;
             SportTracker.getDistance();
             SportTracker.getSpeed();
-
             Log.e(TAG, "LOCATION CHANGE DISTANCE IS " + SportTracker.getDistance() + " SPEED IS " + SportTracker.getSpeed());
 //            EventBus.getDefault().post(new LocationChangedEvent(SportTracker.getDistance(), SportTracker.getSpeed()));
 
@@ -437,6 +444,9 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         if (Util.DEBUG) {
             Log.e(TAG, "onStart");
         }
+
+        mRunTimer.setBase(SystemClock.elapsedRealtime() + lastRunPause);
+        mRunTimer.start();
     }
 
     @Override
@@ -476,8 +486,7 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
 //            currentMusicThumb.setImageUrl(music.coverURL, imageLoader);
 //        }
 
-//            mRunTimer.setBase(SystemClock.elapsedRealtime() + lastRunPause);
-//            mRunTimer.start();
+
 //            mMusicPlayTimer.setBase(SystemClock.elapsedRealtime() + lastMusicPause);
 //            mMusicPlayTimer.start();
 //        }
@@ -488,6 +497,31 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
 //            Log.i(TAG, "acttivity start time is " + manualActivity_.getStartTime() + "----------" + manualActivity_.getStartLong());
 //            Log.e(TAG, "distance is " + manualActivity_.getDistance());
         Log.e(TAG, "on Resume lastRunPause is " + lastRunPause);
+
+        runnable = new Runnable() {
+
+            @Override
+            public void run() {
+                refresh();
+                loopHandler.postDelayed(this, 1000);
+                Log.e("", "loop timer test");
+            }
+        };
+        loopHandler.postDelayed(runnable, 1000);
+    }
+
+    private void refresh() {
+
+        aQuery_.id(R.id.distance_data).text(String.format("%.2f", SportTracker.getDistance() / 1000));
+        aQuery_.id(R.id.pace_data).text(Util.getPaceValue(SportTracker.getSpeed()));
+        mapCornerStatus = !mapCornerStatus;
+        if (mapCornerStatus) {
+            aQuery_.id(R.id.map_corner_icon).background(R.mipmap.icon_map_bright);
+        } else {
+            aQuery_.id(R.id.map_corner_icon).background(R.mipmap.icon_map_dark);
+        }
+
+
     }
 
     private boolean checkGPS() {
@@ -575,8 +609,10 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
 
         //Header 按钮动画
         mIsMapClose = false;
-
         Fragment mapFragment = new MoveMapFragment();
+        Bundle bundle = new Bundle();
+        bundle.putLong("timer", mRunTimer.getBase());
+        mapFragment.setArguments(bundle);
         musicListFragmentID = mapFragment.getId();
         FragmentTransaction transactionTop = fragmentManager.beginTransaction();
         transactionTop.setCustomAnimations(R.anim.slidein_fromtop, R.anim.slideout_fromtop, R.anim.slidein_fromtop, R.anim.slideout_fromtop);
@@ -659,7 +695,7 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
                 break;
             case R.id.music_like:
                 Log.e(TAG, "music like onclicked");
-                if (currentMusic==null) {
+                if (currentMusic == null) {
                     return;
                 }
                 SharedPreferences sharedPreferences = Util.getUserPreferences();
@@ -876,7 +912,7 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
 
             Intent intent = new Intent();
             intent.setClass(this, RunResultActivity.class);
-            if (sport.getExtra().getLocationCount()>20) {
+            if (sport.getExtra().getLocationCount() > 20) {
                 intent.putExtra("showmap", true);
             } else {
                 intent.putExtra("showmap", false);
@@ -951,7 +987,12 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
         SportTracker.start(new Date().getTime());
     }
 
-    public void setType() {
+    public void setType( int type ) {
+        if (type == 1) {
+            SportTracker.setType(Messages.Sport.Type.INDOOR_RUNNING.name());
+        } else {
+            SportTracker.setType(Messages.Sport.Type.RUNNING.name());
+        }
     }
 
     public void end() {
@@ -1076,5 +1117,10 @@ public class RunsicActivity extends FragmentActivity implements SensorEventListe
             return true;
         }
 
+    }
+
+    @Override
+    public void onMapFragmentClose() {
+        onMapClose();
     }
 }

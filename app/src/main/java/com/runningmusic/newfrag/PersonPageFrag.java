@@ -165,7 +165,7 @@ public class PersonPageFrag extends Fragment {
             public void onClick(View v) {
                 LoginFragment loginFragment = new LoginFragment();
                 FragmentManager fragmentManager = context.getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, loginFragment).commit();
+                fragmentManager.beginTransaction().add(R.id.content_frame, loginFragment).commit();
             }
         });
         return fragmentView;
@@ -215,6 +215,7 @@ public class PersonPageFrag extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        Log.e(TAG, "onResume");
         EventBus.getDefault().register(this);
     }
 

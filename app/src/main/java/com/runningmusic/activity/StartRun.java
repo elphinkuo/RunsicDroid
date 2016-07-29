@@ -51,6 +51,7 @@ public class StartRun extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(context, RunsicActivity.class);
+                intent.putExtra("run_ype", 1);
                 startActivity(intent);
                 Intent motionIntent = new Intent(context, RunsicService.class);
                 startService(motionIntent);
@@ -64,9 +65,11 @@ public class StartRun extends Activity {
             public void onClick(View v) {
 
                 Intent intent = new Intent();
-                intent.setClass(context, RunResultActivity.class);
+                intent.setClass(context, RunsicActivity.class);
+                intent.putExtra("run_ype", 0);
                 startActivity(intent);
-
+                Intent motionIntent = new Intent(context, RunsicService.class);
+                startService(motionIntent);
 
                 context.finish();
 

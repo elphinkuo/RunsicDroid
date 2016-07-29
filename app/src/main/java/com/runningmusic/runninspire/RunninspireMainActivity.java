@@ -131,6 +131,8 @@ public class RunninspireMainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (currentTab_.equals("我的") || currentTab_.equals("曲库") || currentTab_.equals("GO") || currentTab_.equals("活动") || currentTab_.equals("更多")) {
             finish();
+        } else {
+            getFragmentManager().popBackStack();
         }
     }
 
